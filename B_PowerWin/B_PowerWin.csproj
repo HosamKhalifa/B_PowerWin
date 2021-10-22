@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DEC35303-B6CF-48E5-B807-A07E6061ACDD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>B_PowerWin</RootNamespace>
+    <AssemblyName>B_PowerWin</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v16.1" />
+    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v16.1" />
+    <Reference Include="DevExpress.Images.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Spreadsheet.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v16.1" />
+    <Reference Include="DevExpress.Sparkline.v16.1.Core" />
+    <Reference Include="DevExpress.Utils.v16.1.UI, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.1.UI, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.1.Wizard, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.1" />
+    <Reference Include="DevExpress.Printing.v16.1.Core" />
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v16.1.Extensions, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpreadsheet.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppDbContext.cs" />
+    <Compile Include="Cryptography.cs" />
+    <Compile Include="DB\AccountBase.cs" />
+    <Compile Include="DB\AccountGroup.cs" />
+    <Compile Include="DB\Address.cs" />
+    <Compile Include="DB\Bank.cs" />
+    <Compile Include="DB\BaseType.cs" />
+    <Compile Include="DB\BaseTypeEnum.cs" />
+    <Compile Include="DB\BaseTypeTypeEnum.cs" />
+    <Compile Include="DB\Cash.cs" />
+    <Compile Include="DB\City.cs" />
+    <Compile Include="DB\Company.cs" />
+    <Compile Include="DB\Country.cs" />
+    <Compile Include="DB\Currency.cs" />
+    <Compile Include="DB\Customer.cs" />
+    <Compile Include="DB\DimDefault.cs" />
+    <Compile Include="DB\DocumentBase.cs" />
+    <Compile Include="DB\DocumentGL.cs" />
+    <Compile Include="DB\DocumentLine.cs" />
+    <Compile Include="DB\DocumentLineInvent.cs" />
+    <Compile Include="DB\Employee.cs" />
+    <Compile Include="DB\InventDimDefault.cs" />
+    <Compile Include="DB\Item.cs" />
+    <Compile Include="DB\ItemBatch.cs" />
+    <Compile Include="DB\ItemBatchSerial.cs" />
+    <Compile Include="DB\ItemBatchTypeEnum.cs" />
+    <Compile Include="DB\ItemColor.cs" />
+    <Compile Include="DB\ItemColorEnum.cs" />
+    <Compile Include="DB\ItemSerialStatusEnum.cs" />
+    <Compile Include="DB\ItemSize.cs" />
+    <Compile Include="DB\ItemSizeEnum.cs" />
+    <Compile Include="DB\ItemVariants.cs" />
+    <Compile Include="DB\JournalType.cs" />
+    <Compile Include="DB\JournalTypeDetailSummaryEnum.cs" />
+    <Compile Include="DB\JournalTypeEnum.cs" />
+    <Compile Include="DB\LedgerCalender.cs" />
+    <Compile Include="DB\LedgerCOA.cs" />
+    <Compile Include="DB\LedgerJournal.cs" />
+    <Compile Include="DB\LedgerLineTypeEnum.cs" />
+    <Compile Include="DB\LedgerPeriod.cs" />
+    <Compile Include="DB\LedgerPeriodStatusEnum.cs" />
+    <Compile Include="DB\LedgerYear.cs" />
+    <Compile Include="DB\LineBase.cs" />
+    <Compile Include="DB\LineBaseCRUDEnum.cs" />
+    <Compile Include="DB\LineTotalEffectEnum.cs" />
+    <Compile Include="DB\MainAccount.cs" />
+    <Compile Include="DB\MainAccountGroup.cs" />
+    <Compile Include="DB\MainAccountTypeEnum.cs" />
+    <Compile Include="DB\NoYesEnum.cs" />
+    <Compile Include="DB\PaymentTerm.cs" />
+    <Compile Include="DB\Pos.cs" />
+    <Compile Include="DB\PostingLayerEnum.cs" />
+    <Compile Include="DB\SecAccessType.cs" />
+    <Compile Include="DB\SecAccessTypeTypeEnum.cs" />
+    <Compile Include="DB\SecPrincipal.cs" />
+    <Compile Include="DB\SecPrincipalRole.cs" />
+    <Compile Include="DB\SecPrincipalRoleMem.cs" />
+    <Compile Include="DB\SecPrincipalUser.cs" />
+    <Compile Include="DB\SeedDatabase.cs" />
+    <Compile Include="DB\TaxCode.cs" />
+    <Compile Include="DB\TaxCodeValueSetup.cs" />
+    <Compile Include="DB\TaxGroup.cs" />
+    <Compile Include="DB\TaxGroupMemberSetup.cs" />
+    <Compile Include="DB\TaxValueTypeEnum.cs" />
+    <Compile Include="DB\UILabel.cs" />
+    <Compile Include="DB\UILabelAutoLookup.cs" />
+    <Compile Include="DB\UILabelLangTxt.cs" />
+    <Compile Include="DB\UILabelType.cs" />
+    <Compile Include="DB\Vendor.cs" />
+    <Compile Include="DB_Util.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalMethods.cs" />
+    <Compile Include="GL\Forms\MainAccountGroupFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\Forms\MainAccountGroupFrm.Designer.cs">
+      <DependentUpon>MainAccountGroupFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomLookup\GL_Lookups.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomLookup\GL_Lookups.Designer.cs">
+      <DependentUpon>GL_Lookups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomLookup\LookupManager.cs" />
+    <Compile Include="GUI\ExcelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ExcelForm.Designer.cs">
+      <DependentUpon>ExcelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FormArgs.cs" />
+    <Compile Include="GUI\FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormBase.Designer.cs">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Grid\AppServicesDataSet.cs">
+      <DependentUpon>AppServicesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Grid\AppServicesDataSet.Designer.cs">
+      <DependentUpon>AppServicesDataSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Grid\ChartConfigurationBarXUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Grid\ChartConfigurationBarXUC.Designer.cs">
+      <DependentUpon>ChartConfigurationBarXUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Grid\ExpressionColumnOptionsXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Grid\ExpressionColumnOptionsXtraForm.Designer.cs">
+      <DependentUpon>ExpressionColumnOptionsXtraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Grid\GridCtrlBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\Grid\GridManager.cs" />
+    <Compile Include="GUI\Grid\PreviewXtraGridHeaderXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Grid\PreviewXtraGridHeaderXtraForm.Designer.cs">
+      <DependentUpon>PreviewXtraGridHeaderXtraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Grid\PreviewXtraGridInfo.cs" />
+    <Compile Include="GUI\Grid\XtraGridColumnInfoDS.cs">
+      <DependentUpon>XtraGridColumnInfoDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Grid\XtraGridColumnInfoDS.Designer.cs">
+      <DependentUpon>XtraGridColumnInfoDS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Grid\XtraGridColumnInfoDS2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XtraGridColumnInfoDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Grid\XtraGridPopupMenu_ColumnsReorderXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Grid\XtraGridPopupMenu_ColumnsReorderXtraForm.Designer.cs">
+      <DependentUpon>XtraGridPopupMenu_ColumnsReorderXtraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Grid\XtraGridPopupMenu_PivotXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Grid\XtraGridPopupMenu_PivotXtraForm.Designer.cs">
+      <DependentUpon>XtraGridPopupMenu_PivotXtraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Grid\XtraGridViewInfo.cs" />
+    <Compile Include="GUI\LookupBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\Grid\PreviewXtraGrid.cs" />
+    <Compile Include="GUI\UILabelManagerFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\UILabelManagerFrm.Designer.cs">
+      <DependentUpon>UILabelManagerFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm.Designer.cs">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110222111165_init_0001.cs" />
+    <Compile Include="Migrations\202110222111165_init_0001.designer.cs">
+      <DependentUpon>202110222111165_init_0001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MySession.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedExt\DateTimeExt.cs" />
+    <Compile Include="SharedExt\ExceptionExtensions.cs" />
+    <Compile Include="SharedExt\MyFormExt.cs" />
+    <Compile Include="SharedExt\StringExt.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GL\Forms\MainAccountGroupFrm.resx">
+      <DependentUpon>MainAccountGroupFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomLookup\GL_Lookups.resx">
+      <DependentUpon>GL_Lookups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ExcelForm.resx">
+      <DependentUpon>ExcelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Grid\ChartConfigurationBarXUC.resx">
+      <DependentUpon>ChartConfigurationBarXUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Grid\ExpressionColumnOptionsXtraForm.resx">
+      <DependentUpon>ExpressionColumnOptionsXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Grid\PreviewXtraGridHeaderXtraForm.resx">
+      <DependentUpon>PreviewXtraGridHeaderXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Grid\XtraGridPopupMenu_ColumnsReorderXtraForm.resx">
+      <DependentUpon>XtraGridPopupMenu_ColumnsReorderXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Grid\XtraGridPopupMenu_PivotXtraForm.resx">
+      <DependentUpon>XtraGridPopupMenu_PivotXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UILabelManagerFrm.resx">
+      <DependentUpon>UILabelManagerFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm.resx">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110222111165_init_0001.resx">
+      <DependentUpon>202110222111165_init_0001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="GUI\Grid\AppServicesDataSet.xsc">
+      <DependentUpon>AppServicesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GUI\Grid\AppServicesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AppServicesDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GUI\Grid\AppServicesDataSet.xss">
+      <DependentUpon>AppServicesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GUI\Grid\XtraGridColumnInfoDS.xsc">
+      <DependentUpon>XtraGridColumnInfoDS.xsd</DependentUpon>
+    </None>
+    <None Include="GUI\Grid\XtraGridColumnInfoDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>XtraGridColumnInfoDS2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GUI\Grid\XtraGridColumnInfoDS.xss">
+      <DependentUpon>XtraGridColumnInfoDS.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Bank.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.MainAccount.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.MainAccountGroup.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.GUI.CustomLookup.GL_Lookups.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GL\Reports\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DB\SqlScript.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,16 @@
+﻿USE [B-PowerDB]
+GO
+
+USE [B-PowerDB]
+GO
+
+/****** Object:  Sequence [dbo].[line_base_sequ]    Script Date: 2021-10-20 9:05:40 PM ******/
+CREATE SEQUENCE [dbo].[line_base_sequ] 
+ AS [bigint]
+ START WITH 1
+ INCREMENT BY 1
+ MINVALUE -9223372036854775808
+ MAXVALUE 9223372036854775807
+ CACHE 
+GO
+
