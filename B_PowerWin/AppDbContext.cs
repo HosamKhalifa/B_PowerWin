@@ -6,6 +6,8 @@ using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 
 namespace B_PowerWin
 {
@@ -17,7 +19,8 @@ namespace B_PowerWin
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-           modelBuilder.Entity<UILabelLangTxt>().HasKey(tbl => new { tbl.LabelId, tbl.LabelType, tbl.LangId }); 
+           modelBuilder.Entity<UILabelLangTxt>().HasKey(tbl => new { tbl.LabelId, tbl.LabelType, tbl.LangId });
+           modelBuilder.Entity<EnumTable>().HasKey(tbl => new { tbl.SysName, tbl.ValueId});
            /* 
             modelBuilder.HasSequence<Int64>(DB_Util.LINE_BASE_SEQU);
             modelBuilder.Entity<LineBase>()
@@ -99,6 +102,31 @@ namespace B_PowerWin
 
         }
 
+        public virtual void CancelChanges()
+        {
+            var changes = this.ChangeTracker.Entries().Where(x => x.State != EntityState.Unchanged).ToList();
+            foreach (var obj in changes)
+            {
+                switch (obj.State)
+                {
+                  
+                    case EntityState.Added:
+                        obj.State = EntityState.Detached;
+                        break;
+                    case EntityState.Deleted:
+                        obj.State = EntityState.Unchanged;
+                        break;
+                    case EntityState.Modified:
+                        obj.CurrentValues.SetValues(obj.OriginalValues);
+                        obj.State = EntityState.Unchanged;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+
         #region Tables
         public DbSet<BaseType> BaseTypes { get; set; }
         public DbSet<Company> Companies { get; set; }
@@ -110,7 +138,7 @@ namespace B_PowerWin
 
         public DbSet<DocumentBase> Documents { get; set; }
         public DbSet<DocumentLine> DocumentLines { get; set; }
-
+        
 
 
         public DbSet<Country> Countries { get; set; }
@@ -121,6 +149,7 @@ namespace B_PowerWin
         public DbSet<UILabel> UILabels { get; set; }
         public DbSet<UILabelLangTxt> UILabelTxts { get; set; }
 
+        public DbSet<EnumTable> EnumTables { get; set; }
 
         //***********GL**************************************************************
         #region Tables_GL

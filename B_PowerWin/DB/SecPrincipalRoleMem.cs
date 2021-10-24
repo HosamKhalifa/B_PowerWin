@@ -15,6 +15,7 @@ namespace B_PowerWin.DB
         public string RolePrincipalId { get; set; }
         [StringLength(120)]
         public string MemberPrincipalId { get; set; }
+        public int? AccessType { get; set; }
         public DateTime? EffectiveFrom { get; set; }
         public DateTime? EffectiveTo { get; set; }
 

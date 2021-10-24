@@ -9,13 +9,15 @@ using DevExpress.XtraGrid.Registrator;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Base.Handler;
 using DevExpress.XtraGrid.Views.Base.ViewInfo;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace B_PowerWin.GUI.Grid
 {
     [ToolboxItem(true)]
     public class GridCtrlBase : GridControl
     {
-       
+        public AppDbContext dbContext { get; set; }
 
         protected override BaseView CreateDefaultView()
         {
@@ -63,9 +65,48 @@ namespace B_PowerWin.GUI.Grid
     public class GridViewBase : DevExpress.XtraGrid.Views.Grid.GridView
     {
         private DB.BaseTypeEnum fBaseTypeEnum = DB.BaseTypeEnum.None;
+        private GridViewEditModeEnum fGridViewEditMode = GridViewEditModeEnum.FormEdit;
+        public GridViewEditModeEnum GridViewEditMode {get { return fGridViewEditMode; }set { fGridViewEditMode = value; } }
         public DB.BaseTypeEnum BaseTypeEnum { get { return fBaseTypeEnum; } set { fBaseTypeEnum = value; } }
+
+        public void EnableEditButtons()
+        {
+            var gc = this.GridControl;
+            gc.UseEmbeddedNavigator = GridViewEditMode != GridViewEditModeEnum.ReadOnly;
+            ControlNavigator cn = (ControlNavigator)gc.EmbeddedNavigator;
+            cn.Buttons.Remove.Enabled = GridViewEditMode != GridViewEditModeEnum.ReadOnly;
+            cn.Buttons.Append.Enabled = GridViewEditMode != GridViewEditModeEnum.ReadOnly;
+            cn.Buttons.Edit.Enabled = GridViewEditMode != GridViewEditModeEnum.ReadOnly;
+            if (GridViewEditMode == GridViewEditModeEnum.FormEdit )
+            {
+                this.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplace;
+                this.OptionsEditForm.BindingMode = EditFormBindingMode.Cached;
+                this.OptionsEditForm.EditFormColumnCount = 2;
+            }
+
+        }
         public GridViewBase()
         {
+            //Labels
+            //Should calling after datasource settings ApplyLabelToColumns();
+            this.DataSourceChanged += (s, e) =>
+            {
+                if (!this.DesignMode)
+                {
+                    
+                    if (this.DataSource != null)                                //Level 1
+                    {
+                        this.BeginInit();
+                        GridManager.InitGuiFromDB(gv:this,EnableAutoFormat:true);
+                                                                                
+                        this.EndInit();
+                    }
+             
+                }
+
+
+            };
+
 
         }
 

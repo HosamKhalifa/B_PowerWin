@@ -25,6 +25,11 @@ namespace B_PowerWin.DB
         public long? LastUserJob { get; set; }
         public DateTime? EffectiveFrom { get; set; }
         public DateTime? EffectiveTo { get; set; }
+        [StringLength(50)]
+        public string SkinName { get; set; }
+        [StringLength(10)]
+        public string  LangId { get; set; }
+
 
     }
 }

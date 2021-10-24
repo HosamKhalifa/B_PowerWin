@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.uILabelLangTxtGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
             this.uILabelLangTxtGV = new B_PowerWin.GUI.Grid.GridViewBase();
             this.colLabelId1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -35,6 +36,7 @@
             this.colLangId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTxt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.uiLabelGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
+            this.uILabelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uiLabelGV = new B_PowerWin.GUI.Grid.GridViewBase();
             this.colLabelId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFieldName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -49,9 +51,14 @@
             this.colGrid_VisibleOrder = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGrid_LookupFormRef = new DevExpress.XtraGrid.Columns.GridColumn();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             ((System.ComponentModel.ISupportInitialize)(this.uILabelLangTxtGC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uILabelLangTxtGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiLabelGC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uILabelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiLabelGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -59,6 +66,7 @@
             // 
             // uILabelLangTxtGC
             // 
+            this.uILabelLangTxtGC.dbContext = null;
             this.uILabelLangTxtGC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uILabelLangTxtGC.Location = new System.Drawing.Point(0, 0);
             this.uILabelLangTxtGC.MainView = this.uILabelLangTxtGV;
@@ -77,6 +85,7 @@
             this.colLangId,
             this.colTxt});
             this.uILabelLangTxtGV.GridControl = this.uILabelLangTxtGC;
+            this.uILabelLangTxtGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
             this.uILabelLangTxtGV.Name = "uILabelLangTxtGV";
             // 
             // colLabelId1
@@ -109,14 +118,20 @@
             // 
             // uiLabelGC
             // 
+            this.uiLabelGC.DataSource = this.uILabelBindingSource;
+            this.uiLabelGC.dbContext = null;
             this.uiLabelGC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiLabelGC.Location = new System.Drawing.Point(0, 0);
             this.uiLabelGC.MainView = this.uiLabelGV;
             this.uiLabelGC.Name = "uiLabelGC";
-            this.uiLabelGC.Size = new System.Drawing.Size(796, 309);
+            this.uiLabelGC.Size = new System.Drawing.Size(796, 257);
             this.uiLabelGC.TabIndex = 0;
             this.uiLabelGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.uiLabelGV});
+            // 
+            // uILabelBindingSource
+            // 
+            this.uILabelBindingSource.DataSource = typeof(B_PowerWin.DB.UILabel);
             // 
             // uiLabelGV
             // 
@@ -135,6 +150,7 @@
             this.colGrid_VisibleOrder,
             this.colGrid_LookupFormRef});
             this.uiLabelGV.GridControl = this.uiLabelGC;
+            this.uiLabelGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
             this.uiLabelGV.Name = "uiLabelGV";
             // 
             // colLabelId
@@ -226,30 +242,69 @@
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
             this.splitContainerControl1.Horizontal = false;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 29);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.uiLabelGC);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.uILabelLangTxtGC);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(796, 539);
+            this.splitContainerControl1.Size = new System.Drawing.Size(796, 487);
             this.splitContainerControl1.SplitterPosition = 225;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 29);
+            this.barDockControlTop.Size = new System.Drawing.Size(796, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 516);
+            this.barDockControlBottom.Size = new System.Drawing.Size(796, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 29);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 487);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(796, 29);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 487);
             // 
             // UILabelManagerFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(796, 539);
             this.Controls.Add(this.splitContainerControl1);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Name = "UILabelManagerFrm";
+            this.Controls.SetChildIndex(this.barDockControlTop, 0);
+            this.Controls.SetChildIndex(this.barDockControlBottom, 0);
+            this.Controls.SetChildIndex(this.barDockControlRight, 0);
+            this.Controls.SetChildIndex(this.barDockControlLeft, 0);
+            this.Controls.SetChildIndex(this.splitContainerControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.uILabelLangTxtGC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uILabelLangTxtGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiLabelGC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uILabelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiLabelGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -275,5 +330,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn colLangId;
         private DevExpress.XtraGrid.Columns.GridColumn colTxt;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private System.Windows.Forms.BindingSource uILabelBindingSource;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
     }
 }

@@ -108,5 +108,26 @@ namespace B_PowerWin.DB
                 en_lang = null;
             }
         }
+
+        public static void SeedEnumTable(AppDbContext context)
+        {
+            string enumName = "";
+            Assembly asm = Assembly.GetCallingAssembly();
+            var types = asm
+                            .GetTypes();
+            foreach (var typ in types.Where(x => x.IsEnum && !string.IsNullOrEmpty(x.Namespace) && x.Namespace.StartsWith("B_PowerWin.DB") ))
+            {
+                enumName = typ.Name;
+                foreach (var item in Enum.GetValues(typ))
+                {
+                    var valueName = Enum.GetName(typ, item);
+                    var value = Enum.Parse(typ, valueName);
+                   
+                   
+                    context.EnumTables.AddOrUpdate(new EnumTable() { SysName = enumName, ValueId = (int)value, ValueName = valueName });
+                    context.SaveChanges();
+                }
+            }
+        }
     }
 }

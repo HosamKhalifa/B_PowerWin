@@ -1,0 +1,18 @@
+﻿CREATE OR ALTER VIEW sec_principal_user_active_view
+as
+SELECT        P.PrincipalId, P.PrincipalName, U.UserKey, U.EmplId, U.Pwd, U.DefaultCompany, U.LastUserJob, U.EffectiveFrom, U.EffectiveTo
+FROM            dbo.sec_principal_user AS U INNER JOIN
+                         dbo.sec_principal AS P ON U.PrincipalId = P.PrincipalId
+WHERE GetDate() between dbo.DateOnly(u.EffectiveFrom) and ISNULL(U.EffectiveTo,GetDate()+365)
+
+GO
+CREATE OR ALTER VIEW dbo.sec_principal_role_mem_active_view
+as
+SELECT        m.RolePrincipalId, p.PrincipalName, r.RoleType, r.ObjectId, m.MemberPrincipalId, AU.PrincipalName AS UserName, AU.UserKey, AU.EmplId
+FROM            sec_principal AS p INNER JOIN
+                         sec_principal_role AS r ON p.PrincipalId = r.PrincipalId INNER JOIN
+                         sec_principal_role_mem AS m ON r.PrincipalId = m.RolePrincipalId INNER JOIN
+                         sec_principal_user_active_view AS AU ON m.MemberPrincipalId = AU.PrincipalId
+
+
+GO

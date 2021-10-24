@@ -12,6 +12,16 @@ namespace B_PowerWin.DB
     [Table("line_base")]
     public class LineBase
     {
+        public LineBase()
+        {
+            this.CreatedAt = DateTime.Today;
+            this.ModifiedAt = DateTime.Today;
+            this.CreatedBy = MySession.Session.UserId;
+            this.ModifiedBy = MySession.Session.UserId;
+            var baseTypeId = (int)GetBaseTypeEnum();
+           
+            this.BaseType = baseTypeId;
+        }
         [NotMapped]
         public string LastErrorMessage { get; set; }
         public virtual bool IsBusinessObject()
@@ -83,13 +93,16 @@ namespace B_PowerWin.DB
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long? Id { get; set; }
-        [StringLength(50)]
+        [StringLength(50),Required]
         public string CreatedBy { get; set; }
+        [Required]
         public DateTime? CreatedAt { get; set; }
-        [StringLength(50)]
+        [StringLength(50),Required]
         public string ModifiedBy { get; set; }
+        [Required]
         public DateTime ModifiedAt { get; set; }
-        public BaseType BaseType { get; set; }
+        [Required]
+        public int BaseType { get; set; }
         public long? ParnetId { get; set; }
         #endregion
     }

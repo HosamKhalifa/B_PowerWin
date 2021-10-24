@@ -1,8 +1,7 @@
-﻿USE [B-PowerDB]
-GO
-
+﻿
 USE [B-PowerDB]
 GO
+IF NOT EXISTS(select * from sysobjects where name='line_base_sequ' and xtype='SO')
 
 /****** Object:  Sequence [dbo].[line_base_sequ]    Script Date: 2021-10-20 9:05:40 PM ******/
 CREATE SEQUENCE [dbo].[line_base_sequ] 
@@ -13,4 +12,246 @@ CREATE SEQUENCE [dbo].[line_base_sequ]
  MAXVALUE 9223372036854775807
  CACHE 
 GO
+
+CREATE OR ALTER FUNCTION tf_sec_user_permissions(@UserId			nvarchar(120))
+returns @Report Table(Id						int identity,
+					  UserKey					int,
+					  UserId					nvarchar(120),
+					  EmplId					bigint,
+					  PermssionId			  	nvarchar(120),
+					  RoleType					int,
+					  ObjectId					bigint,
+					  AccessType				int ,
+					  AccessTypeName			nvarchar(100) ,
+					  AccessTypeType			int ,
+					  AllowRead					int ,
+					  AllowCreate				int ,
+					  AllowRemove				int ,
+					  AllowApprove				int ,
+					  AllowReject				int ,
+					  AllowPost					int ,
+					  AllowUnpost				int ,
+					  IsProcessed				int DEFAULT 0	
+
+					  )
+AS
+BEGIN
+DECLARE
+@Id						int,
+@PermssionId			nvarchar(12)
+--[1]Init population 
+INSERT INTO @Report(UserKey,UserId,EmplId,PermssionId,RoleType,ObjectId,AccessType,AccessTypeName,AccessTypeType,AllowRead,AllowCreate,AllowRemove,AllowApprove,AllowReject,AllowPost,AllowUnpost)
+SELECT  V.UserKey,v.MemberPrincipalId,V.EmplId,V.RolePrincipalId,V.RoleType,V.ObjectId,V.AccessType,a.AccessTypeName,a.AccessTypeType,a.AllowRead,a.AllowCreate,a.AllowRemove,a.AllowApprove,a.AllowReject,a.AllowPost,a.AllowUnpost
+FROM sec_principal_role_mem_active_view v inner join 
+     sec_access_type a on v.AccessType = a.AccessType
+WHERE V.MemberPrincipalId = @UserId;
+
+--[2] Iterate for each reponsibilty and replace with it's permission
+ WHILE((SELECT Count(*) FROM @Report R WHERE IsProcessed = 0 and  R.RoleType = dbo.SF_EnumValue('SecAccessTypeTypeEnum.Responsibility')) > 0)
+ BEGIN
+    
+	--Replace resposability with its permissions line 
+	SELECT Top(1) @Id				= Id , 
+	              @PermssionId		= PermssionId
+	FROM @Report WHERE RoleType = dbo.SF_EnumValue('SecAccessTypeTypeEnum.Responsibility')
+
+	INSERT INTO @Report(UserKey,UserId,EmplId,PermssionId,RoleType,ObjectId,AccessType,AccessTypeName,AccessTypeType,AllowRead,AllowCreate,AllowRemove,AllowApprove,AllowReject,AllowPost,AllowUnpost)
+	SELECT  V.UserKey,v.MemberPrincipalId,V.EmplId,V.RolePrincipalId,V.RoleType,V.ObjectId,V.AccessType,a.AccessTypeName,a.AccessTypeType,a.AllowRead,a.AllowCreate,a.AllowRemove,a.AllowApprove,a.AllowReject,a.AllowPost,a.AllowUnpost
+	FROM sec_principal_role_mem_active_view v inner join 
+		 sec_access_type a on v.AccessType = a.AccessType
+	WHERE V.MemberPrincipalId = @PermssionId;
+
+	--Mark Reponsibility line as processed
+	UPDATE @Report SET IsProcessed = 1  WHERE Id = @Id
+	SET @Id				= null
+	SET	@PermssionId	= null
+
+ END ;
+
+RETURN 
+END
+GO
+CREATE OR ALTER FUNCTION SF_EnumValue(@FullName       nvarchar(120))
+
+RETURNS int
+AS
+
+BEGIN
+declare
+@Return			int=0
+SELECT @Return = e.ValueId
+FROM enum_table e
+WHERE (e.SysName + '.' + e.ValueName) = @FullName
+return @Return
+
+
+END
+GO
+
+CREATE OR ALTER FUNCTION [dbo].[CF_Date_HigherDate]
+(
+	@Date1		DATE,
+	@Date2		DATE
+)
+RETURNS DATE
+AS
+BEGIN
+DECLARE
+@ReturnDate		DATE 
+	IF @Date1 > @Date2 
+		BEGIN
+			SET @ReturnDate = @Date1
+		END
+	ELSE
+		BEGIN
+			SET @ReturnDate = @Date2
+		END	
+RETURN @ReturnDate
+END
+
+GO
+
+
+CREATE OR ALTER  FUNCTION [dbo].[CF_Date_LowerDate]
+(
+	@Date1		DATE,
+	@Date2		DATE
+)
+RETURNS DATE
+AS
+BEGIN
+DECLARE
+@ReturnDate		DATE 
+	IF @Date1 < @Date2 
+		BEGIN
+			SET @ReturnDate = @Date1
+		END
+	ELSE
+		BEGIN
+			SET @ReturnDate = @Date2
+		END	
+RETURN @ReturnDate
+END
+GO
+
+CREATE OR ALTER FUNCTION [dbo].[CF_Date_MediumDateString](@dateValue			DateTime)
+RETURNS varchar(50)
+AS
+BEGIN
+DECLARE
+@returnValue				varchar(50)
+SET @returnValue = convert(varchar(50),Day(@dateValue) )+ '-' +
+				   dbo.F_MonthName(@dateValue) + '-' + 
+				   CONVERT(varchar(50),Year(@dateValue) )
+return @returnValue
+				   
+				
+
+END
+GO
+
+CREATE OR ALTER FUNCTION [dbo].[CF_Date_ShortDateString](@dateValue     date)
+RETURNS varchar(50)
+AS
+BEGIN
+DECLARE
+@returnValue				varchar(50)=''
+
+SET @returnValue = convert(varchar(50),YEAR(@dateValue)) + '-' + 
+				   [dbo].[CF_String_PadLeft](convert(varchar(50),Month(@dateValue)),'0',2) + '-' + 
+				    [dbo].[CF_String_PadLeft](convert(varchar(50),Day(@dateValue)),'0',2)
+RETURN @returnValue
+
+END
+GO
+
+CREATE OR ALTER FUNCTION [dbo].[CF_String_DisplayNumber](@prefixValue			varchar(50),
+										@numberValue			int=0,
+										@displayNumberLength	int=0
+										)
+RETURNS varchar(100)
+AS
+BEGIN
+
+DECLARE
+@returnValue			varchar(100)='',
+@strValue				varchar(50)=Convert(varchar(50),@numberValue)
+
+IF( (Len(@strValue) + Len(@prefixValue) ) <= @displayNumberLength)
+	BEGIN
+		SET @returnValue = dbo.CF_String_PadRight(@prefixValue,'0',@displayNumberLength - Len(@strValue) )
+		SET @returnValue+= @strValue
+	END
+
+	RETURN @returnValue
+END
+
+GO
+
+CREATE OR ALTER FUNCTION [dbo].[CF_String_PadLeft](	@stringValue		varchar(100),
+											@paddingChar		varchar(1) , 
+											@totalWidth			int
+								 )
+RETURNS VARCHAR(100)
+AS
+BEGIN
+DECLARE
+	@i					int =0 ,
+	@str				varchar(100)='',
+	@returnValue		varchar(100) = ''
+
+SET @i					= Len(@stringValue)
+SET @returnValue		= @stringValue
+
+	IF(@i < @totalWidth)
+	BEGIN
+		SET @str = SPACE(@totalWidth - @i )
+		SET @str = REPLACE(@str,' ',@paddingChar)
+		SET @returnValue = concat(@str ,@stringValue)
+	END
+RETURN @returnValue
+END
+GO
+
+CREATE OR ALTER FUNCTION [dbo].[CF_String_PadRight](	@stringValue		varchar(100),
+											@paddingChar		varchar(1) , 
+											@totalWidth			int
+								 )
+RETURNS VARCHAR(100)
+AS
+BEGIN
+DECLARE
+	@i					int =0 ,
+	@str				varchar(100)='',
+	@returnValue		varchar(100) = ''
+
+SET @i					= Len(@stringValue)
+SET @returnValue		= @stringValue
+
+	IF(@i < @totalWidth)
+	BEGIN
+		SET @str = SPACE(@totalWidth - @i )
+		SET @str = REPLACE(@str,' ',@paddingChar)
+		SET @returnValue = concat(@stringValue,@str)
+	END
+RETURN @returnValue
+END
+GO
+
+
+CREATE OR ALTER FUNCTION [dbo].[DateOnly] 
+(
+	
+	@DateTimeValue DATETIME
+)
+RETURNS DATETIME
+AS
+BEGIN
+	
+	RETURN (SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, @DateTimeValue)) )
+
+
+END
+GO
+
 

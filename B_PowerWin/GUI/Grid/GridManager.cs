@@ -12,6 +12,8 @@ using DevExpress.XtraGrid.Drawing;
 using System.Data.Entity;
 using DevExpress.XtraGrid.Columns;
 using B_PowerWin.GUI.CustomLookup;
+using B_PowerWin.DB;
+using DevExpress.XtraGrid.Helpers;
 
 namespace B_PowerWin.GUI.Grid
 {
@@ -35,37 +37,103 @@ namespace B_PowerWin.GUI.Grid
         public void Attach(params Grid.GridCtrlBase[] _gridControls)
         {
             GridControls = null;//Clear existing list
-
+            
             GridControls = _gridControls;
-            InitGuiProperties(GridControls);
-            InitGuiFromDB(GridControls);
-        }
 
+            InitGuiProperties(GridControls);
+
+            //InitGuiFromDB(GridControls);
+        }
+        public static void InitGuiFromDB(GridViewBase gv,bool EnableAutoFormat)
+        {
+            if (!(gv.BaseTypeEnum == DB.BaseTypeEnum.None))
+            {
+                if (EnableAutoFormat)
+                {
+                    foreach (GridColumn grdC in gv.Columns)
+                    {
+                        grdC.Visible = false;
+                        grdC.VisibleIndex = -1;
+                        grdC.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
+                        grdC.OptionsColumn.AllowEdit = false;
+                    }
+                }
+                var db = MySession.Session.Database;
+                var lo_BaseType = db.BaseTypes.Find((int)gv.BaseTypeEnum);
+                var colList = db.UILabels.Where(x => x.BaseType.BaseTypeId == lo_BaseType.BaseTypeId).OrderBy(x => x.Grid_VisibleOrder).ToList();
+                foreach (var col in colList )
+                {
+                    var grdCol = gv.Columns.ColumnByFieldName(col.FieldName);
+                    if (grdCol != null)
+                    {
+                     
+                        col.ApplyFieldSettings(gv, grdCol, true);
+                    }
+
+
+                }
+
+            }
+        }
         private void InitGuiFromDB(GridCtrlBase[] _gridControls)
         {
             foreach (var gc in _gridControls)
             {
+                
                 foreach (var item in gc.Views)
                 {
                     if (item is DevExpress.XtraGrid.Views.Grid.GridView)
                     {
                         var gv = (GridViewBase)item;
-                        if(!(gv.BaseTypeEnum == DB.BaseTypeEnum.None))
+                        
+                        if (!(gv.BaseTypeEnum == DB.BaseTypeEnum.None))
                         {
+                            var db = MySession.Session.Database;
+                            var lo_BaseType = db.BaseTypes.Find((int)gv.BaseTypeEnum);
+                            var colList = db.UILabels.Where(x => x.BaseType.BaseTypeId == lo_BaseType.BaseTypeId).ToList();
+                            foreach (var col in colList)
+                            {
+                                var grdCol = gv.Columns.ColumnByFieldName(col.FieldName);
+                                if (grdCol != null)
+                                {
+                                    grdCol.Visible = !col.Grid_IsHidden;
+                                    grdCol.OptionsColumn.AllowEdit = !col.Grid_IsDisabled;
+                                    grdCol.VisibleIndex = col.Grid_VisibleOrder;
+                                    grdCol.Width = grdCol.Visible ? col.Grid_Width : 0;
+                                   
+                                }
+                             
+
+                            }
 
                         }
+                        
 
                     }
 
 
                 }
-            }
+               
+               
+            }
+
         }
 
         private void InitGuiProperties(GridControl[] _gridControls)
         {
             foreach (var gc in _gridControls)
             {
+                //GridControl settings
+                gc.GotFocus += (s, e) => {
+                    var gcParntFrm = gc.FindForm();
+                    if(gcParntFrm is FormBase )
+                    {
+                        (gc.FocusedView as GridViewBase)
+                        .EnableEditButtons();
+                    }
+                };
+
+                //Grid View Settings
                 foreach (var item in gc.Views)
                 {
                     if (item is DevExpress.XtraGrid.Views.Grid.GridView)
@@ -77,6 +145,11 @@ namespace B_PowerWin.GUI.Grid
                         gv.OptionsView.EnableAppearanceEvenRow = true;
                         gv.OptionsMenu.ShowGroupSummaryEditorItem = true;
                         gv.OptionsMenu.ShowConditionalFormattingItem = true;
+                        gv.OptionsClipboard.AllowExcelFormat = DevExpress.Utils.DefaultBoolean.True;
+                        gv.OptionsClipboard.ClipboardMode = DevExpress.Export.ClipboardMode.PlainText;
+                        gv.OptionsLayout.StoreAllOptions = true;
+                        gv.OptionsLayout.StoreAppearance = true;
+                        gv.OptionsLayout.StoreFormatRules = true;
                         //Attach current object to form 
                         var gcParntFrm = gc.FindForm();
                         if (gcParntFrm is FormBase)
@@ -85,6 +158,7 @@ namespace B_PowerWin.GUI.Grid
                                 if (e.FocusedRowHandle >= 0)
                                 {
                                     (gcParntFrm as FormBase).FormArgs.CurrentObject = gv.GetFocusedRow();
+
                                 }
                             };
                         }
@@ -262,6 +336,12 @@ namespace B_PowerWin.GUI.Grid
                                     //    }
                                     //}
                                 };
+                                saveLayoutMenuItem.Click += (s, e) =>
+                                {
+                                    
+                                };
+
+
                                 //=======================================================================================
                                 //Add menu to grid 
                                 //=======================================================================================

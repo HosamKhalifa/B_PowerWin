@@ -15,6 +15,7 @@ namespace B_PowerWin.GUI
     {
         public FormArgs FormArgs { get; set; }
         public GUI.Grid.GridManager FormGridManager { get; set; }
+        
         public FormBase()
         {
             InitializeComponent();
@@ -24,11 +25,17 @@ namespace B_PowerWin.GUI
         {
             FormArgs.CallerFormArgs = _callerArgs;
             InitializeComponent();
-            InitFormBase();
+            InitFormBase(_callerArgs);
         }
-
-        private void InitFormBase()
+        public virtual void ViewDetail(long? _PKey)
         {
+            //using Args.CallerArgs which contain current record
+
+            //Should be overrid on child forms to exposing logic to filter current form when called from another form 
+        }
+        private void InitFormBase(FormArgs _callerArgs=null)
+        {
+            FormArgs = new FormArgs(this) { CallerFormArgs = _callerArgs};
             FormGridManager = new Grid.GridManager();
 
         }

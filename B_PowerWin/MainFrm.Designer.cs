@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.preferencesBarItem = new DevExpress.XtraBars.BarSubItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -40,6 +42,7 @@
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.gLNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.mainAccountGroupNBI = new DevExpress.XtraNavBar.NavBarItem();
+            this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.SuspendLayout();
@@ -55,8 +58,11 @@
             this.barManager1.DockControls.Add(this.barDockControlLeft);
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.preferencesBarItem,
+            this.skinBarSubItem1});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 0;
+            this.barManager1.MaxItemId = 2;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -65,6 +71,8 @@
             this.bar1.DockCol = 0;
             this.bar1.DockRow = 1;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.skinBarSubItem1)});
             this.bar1.Text = "Tools";
             // 
             // bar2
@@ -73,9 +81,17 @@
             this.bar2.DockCol = 0;
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.preferencesBarItem)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
+            // 
+            // preferencesBarItem
+            // 
+            this.preferencesBarItem.Caption = "Preferences";
+            this.preferencesBarItem.Id = 0;
+            this.preferencesBarItem.Name = "preferencesBarItem";
             // 
             // bar3
             // 
@@ -94,7 +110,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(728, 49);
+            this.barDockControlTop.Size = new System.Drawing.Size(728, 51);
             // 
             // barDockControlBottom
             // 
@@ -107,15 +123,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 49);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 455);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 51);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 453);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(728, 49);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 455);
+            this.barDockControlRight.Location = new System.Drawing.Point(728, 51);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 453);
             // 
             // navBarControl1
             // 
@@ -125,10 +141,11 @@
             this.gLNavBarGroup});
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.mainAccountGroupNBI});
-            this.navBarControl1.Location = new System.Drawing.Point(0, 49);
+            this.navBarControl1.Location = new System.Drawing.Point(0, 51);
             this.navBarControl1.Name = "navBarControl1";
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.ExplorerBar;
-            this.navBarControl1.Size = new System.Drawing.Size(140, 455);
+            this.navBarControl1.Size = new System.Drawing.Size(140, 453);
             this.navBarControl1.TabIndex = 5;
             this.navBarControl1.Text = "navBarControl1";
             // 
@@ -147,9 +164,14 @@
             this.mainAccountGroupNBI.Name = "mainAccountGroupNBI";
             this.mainAccountGroupNBI.SmallImage = ((System.Drawing.Image)(resources.GetObject("mainAccountGroupNBI.SmallImage")));
             // 
+            // skinBarSubItem1
+            // 
+            this.skinBarSubItem1.Caption = "Skin";
+            this.skinBarSubItem1.Id = 1;
+            this.skinBarSubItem1.Name = "skinBarSubItem1";
+            // 
             // MainFrm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(728, 527);
             this.Controls.Add(this.navBarControl1);
             this.Controls.Add(this.barDockControlLeft);
@@ -178,5 +200,7 @@
         private DevExpress.XtraNavBar.NavBarControl navBarControl1;
         private DevExpress.XtraNavBar.NavBarGroup gLNavBarGroup;
         private DevExpress.XtraNavBar.NavBarItem mainAccountGroupNBI;
+        private DevExpress.XtraBars.BarSubItem preferencesBarItem;
+        private DevExpress.XtraBars.SkinBarSubItem skinBarSubItem1;
     }
 }

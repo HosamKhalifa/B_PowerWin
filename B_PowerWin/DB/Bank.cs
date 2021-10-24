@@ -22,7 +22,7 @@ namespace B_PowerWin.DB
 
         public override void OnCreate(AppDbContext _db)
         {
-            this.BaseType = _db.BaseTypes.Find((int)BaseTypeEnum.Bank);
+            this.BaseType = (int)BaseTypeEnum.Bank;
             base.OnCreate(_db);
         }
     }

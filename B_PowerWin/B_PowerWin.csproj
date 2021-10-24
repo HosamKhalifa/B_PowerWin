@@ -106,6 +106,8 @@
     <Compile Include="DB\DocumentLine.cs" />
     <Compile Include="DB\DocumentLineInvent.cs" />
     <Compile Include="DB\Employee.cs" />
+    <Compile Include="DB\EnumTable.cs" />
+    <Compile Include="DB\FormEntityEnum.cs" />
     <Compile Include="DB\InventDimDefault.cs" />
     <Compile Include="DB\Item.cs" />
     <Compile Include="DB\ItemBatch.cs" />
@@ -175,6 +177,12 @@
       <DependentUpon>GL_Lookups.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CustomLookup\LookupManager.cs" />
+    <Compile Include="GUI\EditFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\EditFormBase.Designer.cs">
+      <DependentUpon>EditFormBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ExcelForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,10 +214,12 @@
     <Compile Include="GUI\Grid\ExpressionColumnOptionsXtraForm.Designer.cs">
       <DependentUpon>ExpressionColumnOptionsXtraForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Grid\GridColumnInfo.cs" />
     <Compile Include="GUI\Grid\GridCtrlBase.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="GUI\Grid\GridManager.cs" />
+    <Compile Include="GUI\Grid\GridViewEditModeEnum.cs" />
     <Compile Include="GUI\Grid\PreviewXtraGridHeaderXtraForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +271,26 @@
     <Compile Include="Migrations\202110222111165_init_0001.designer.cs">
       <DependentUpon>202110222111165_init_0001.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110231516235_init_0002.cs" />
+    <Compile Include="Migrations\202110231516235_init_0002.designer.cs">
+      <DependentUpon>202110231516235_init_0002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110240702362_init_0003.cs" />
+    <Compile Include="Migrations\202110240702362_init_0003.designer.cs">
+      <DependentUpon>202110240702362_init_0003.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110241902150_init_00031.cs" />
+    <Compile Include="Migrations\202110241902150_init_00031.designer.cs">
+      <DependentUpon>202110241902150_init_00031.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110241922206_init_00032.cs" />
+    <Compile Include="Migrations\202110241922206_init_00032.designer.cs">
+      <DependentUpon>202110241922206_init_00032.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110242218178_init_00033.cs" />
+    <Compile Include="Migrations\202110242218178_init_00033.designer.cs">
+      <DependentUpon>202110242218178_init_00033.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySession.cs" />
     <Compile Include="Program.cs" />
@@ -278,8 +308,14 @@
     <EmbeddedResource Include="GUI\CustomLookup\GL_Lookups.resx">
       <DependentUpon>GL_Lookups.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\EditFormBase.resx">
+      <DependentUpon>EditFormBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ExcelForm.resx">
       <DependentUpon>ExcelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormBase.resx">
+      <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Grid\ChartConfigurationBarXUC.resx">
       <DependentUpon>ChartConfigurationBarXUC.cs</DependentUpon>
@@ -304,6 +340,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110222111165_init_0001.resx">
       <DependentUpon>202110222111165_init_0001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110231516235_init_0002.resx">
+      <DependentUpon>202110231516235_init_0002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110240702362_init_0003.resx">
+      <DependentUpon>202110240702362_init_0003.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110241902150_init_00031.resx">
+      <DependentUpon>202110241902150_init_00031.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110241922206_init_00032.resx">
+      <DependentUpon>202110241922206_init_00032.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110242218178_init_00033.resx">
+      <DependentUpon>202110242218178_init_00033.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -342,6 +393,7 @@
     <None Include="Properties\DataSources\B_PowerWin.DB.Bank.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.MainAccount.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.MainAccountGroup.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.UILabel.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.GUI.CustomLookup.GL_Lookups.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -358,6 +410,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DB\SqlScript.txt" />
+    <Content Include="DB\SqlViews.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

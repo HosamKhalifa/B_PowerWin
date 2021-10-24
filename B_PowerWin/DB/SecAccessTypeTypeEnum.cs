@@ -14,6 +14,7 @@ namespace B_PowerWin.DB
         Menu=40,
         SysOutputReport=50,
         SysDisplayForm=60,
-        SysAction=70
+        SysAction=70,
+        Responsibility=100
     }
 }

@@ -19,12 +19,14 @@ namespace B_PowerWin
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            BonusSkins.Register();
+            //BonusSkins.Register();
             SkinManager.EnableFormSkins();
-            UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            MySession.Session = new MySession("root");
-
-            Application.Run(new MainFrm());
+            
+            UserLookAndFeel.Default.SetSkinStyle("Office 2010 Blue");
+            var mainFrm = new MainFrm();
+            new MySession("root", mainFrm);
+            Application.Run(mainFrm);
+            //Application.Run(new MainFrm());
         }
 
     }

@@ -37,6 +37,7 @@ namespace B_PowerWin
             //userGC.DataSource = usersBS;
             testSimpleButton.Click += (s, e) => {
                 DB.SeedDatabase.SeedUILabels(MySession.Session.Database);
+                DB.SeedDatabase.SeedEnumTable(MySession.Session.Database);
             };
 
             
