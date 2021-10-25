@@ -19,9 +19,16 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.MainAccount;
         }
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.MainAccount;
+            base.OnCreate(_db);
+        }
         public MainAccountTypeEnum MainAccountType { get; set; }
-        public NoYesEnum IsTotal { get; set; }
-        //[ForeignKey("MainAccountGroup")]
-        public MainAccountGroup MainAccountGroup { get; set; }
+        [ForeignKey("MainAccountGroup")]
+        public long? MainAccountGroupId { get; set; }
+        public bool IsTotal { get; set; }
+        
+        public virtual MainAccountGroup MainAccountGroup { get; set; }
     }
 }

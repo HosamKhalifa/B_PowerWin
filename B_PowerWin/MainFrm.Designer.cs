@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.preferencesBarItem = new DevExpress.XtraBars.BarSubItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -42,7 +42,8 @@
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.gLNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.mainAccountGroupNBI = new DevExpress.XtraNavBar.NavBarItem();
-            this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
+            this.mainAccountNBI = new DevExpress.XtraNavBar.NavBarItem();
+            this.gLDimensionNBI = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.SuspendLayout();
@@ -74,6 +75,12 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.skinBarSubItem1)});
             this.bar1.Text = "Tools";
+            // 
+            // skinBarSubItem1
+            // 
+            this.skinBarSubItem1.Caption = "Skin";
+            this.skinBarSubItem1.Id = 1;
+            this.skinBarSubItem1.Name = "skinBarSubItem1";
             // 
             // bar2
             // 
@@ -140,7 +147,9 @@
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.gLNavBarGroup});
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
-            this.mainAccountGroupNBI});
+            this.mainAccountGroupNBI,
+            this.mainAccountNBI,
+            this.gLDimensionNBI});
             this.navBarControl1.Location = new System.Drawing.Point(0, 51);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
@@ -154,7 +163,9 @@
             this.gLNavBarGroup.Caption = "GL";
             this.gLNavBarGroup.Expanded = true;
             this.gLNavBarGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.mainAccountGroupNBI)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.mainAccountGroupNBI),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.mainAccountNBI),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.gLDimensionNBI)});
             this.gLNavBarGroup.Name = "gLNavBarGroup";
             this.gLNavBarGroup.SmallImage = ((System.Drawing.Image)(resources.GetObject("gLNavBarGroup.SmallImage")));
             // 
@@ -164,11 +175,17 @@
             this.mainAccountGroupNBI.Name = "mainAccountGroupNBI";
             this.mainAccountGroupNBI.SmallImage = ((System.Drawing.Image)(resources.GetObject("mainAccountGroupNBI.SmallImage")));
             // 
-            // skinBarSubItem1
+            // mainAccountNBI
             // 
-            this.skinBarSubItem1.Caption = "Skin";
-            this.skinBarSubItem1.Id = 1;
-            this.skinBarSubItem1.Name = "skinBarSubItem1";
+            this.mainAccountNBI.Caption = "Main account";
+            this.mainAccountNBI.Name = "mainAccountNBI";
+            this.mainAccountNBI.SmallImage = ((System.Drawing.Image)(resources.GetObject("mainAccountNBI.SmallImage")));
+            // 
+            // gLDimensionNBI
+            // 
+            this.gLDimensionNBI.Caption = "GL Dimensions setup";
+            this.gLDimensionNBI.Name = "gLDimensionNBI";
+            this.gLDimensionNBI.SmallImage = ((System.Drawing.Image)(resources.GetObject("gLDimensionNBI.SmallImage")));
             // 
             // MainFrm
             // 
@@ -202,5 +219,7 @@
         private DevExpress.XtraNavBar.NavBarItem mainAccountGroupNBI;
         private DevExpress.XtraBars.BarSubItem preferencesBarItem;
         private DevExpress.XtraBars.SkinBarSubItem skinBarSubItem1;
+        private DevExpress.XtraNavBar.NavBarItem mainAccountNBI;
+        private DevExpress.XtraNavBar.NavBarItem gLDimensionNBI;
     }
 }

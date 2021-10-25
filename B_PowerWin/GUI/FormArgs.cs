@@ -35,6 +35,8 @@ namespace B_PowerWin.GUI
         public string SimpleParm_Str { get; set; }
         public Object SimpleParm_Obj { get; set; }
         public decimal? SimpleParm_Decimal { get; set; }
+        public bool FilterByLookup { get; set; } = false;
+
 
 
     }

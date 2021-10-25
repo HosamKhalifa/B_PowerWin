@@ -14,6 +14,8 @@ using DevExpress.XtraGrid.Columns;
 using B_PowerWin.GUI.CustomLookup;
 using B_PowerWin.DB;
 using DevExpress.XtraGrid.Helpers;
+using DevExpress.XtraGrid.Views.Grid;
+using System.Data.Entity.Migrations;
 
 namespace B_PowerWin.GUI.Grid
 {
@@ -68,6 +70,10 @@ namespace B_PowerWin.GUI.Grid
                     {
                      
                         col.ApplyFieldSettings(gv, grdCol, true);
+                        if (col.LookupCode != DB.UILabelAutoLookup.None)
+                        {
+                            LookupManager.ApplyGVLookup(gv, grdCol, col.LookupCode, col.LookupFilterExp);
+                        }
                     }
 
 
@@ -338,7 +344,7 @@ namespace B_PowerWin.GUI.Grid
                                 };
                                 saveLayoutMenuItem.Click += (s, e) =>
                                 {
-                                    
+                                    SaveLayoutAsDefault((GridViewBase)gv);
                                 };
 
 
@@ -352,6 +358,7 @@ namespace B_PowerWin.GUI.Grid
                                 argE.Menu.Items.Add(pivotGridMenuItem);
                                 argE.Menu.Items.Add(refreshMenuItem);
                                 argE.Menu.Items.Add(viewDetailsMenuItem);
+                                argE.Menu.Items.Add(saveLayoutMenuItem);
 
 
                             }
@@ -470,6 +477,28 @@ namespace B_PowerWin.GUI.Grid
 
 
                 }
+            }
+        }
+
+        public void SaveLayoutAsDefault(GridViewBase gv)
+        {
+            if (gv.BaseTypeEnum != BaseTypeEnum.None)
+            {
+                foreach (var grdCol in gv.Columns.Where(x => x.Tag is GridColumnInfo ))
+                {
+                    var info = (GridColumnInfo)grdCol.Tag;
+                    if (info.ColumnLablel != null)
+                    {
+                        info.ColumnLablel.Grid_VisibleOrder = grdCol.VisibleIndex+1;
+                        info.ColumnLablel.Grid_Width = grdCol.Width;
+                        if (grdCol.VisibleIndex < 0 || !grdCol.Visible) { info.ColumnLablel.Grid_IsHidden = true; }
+                        if(grdCol.OptionsColumn.ReadOnly || grdCol.OptionsColumn.AllowEdit == false) { info.ColumnLablel.Grid_IsDisabled = true; }
+                        MySession.Session.Database.UILabels.AddOrUpdate(info.ColumnLablel);
+                        MySession.Session.Database.SaveChanges();
+                    }
+                }
+                MySession.Session.Database.SaveChanges();
+
             }
         }
 

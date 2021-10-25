@@ -12,6 +12,8 @@ using B_PowerWin.DB;
 using System.Linq.Expressions;
 using B_PowerWin.GUI.Grid;
 using DevExpress.XtraGrid.Columns;
+using System.Data.Entity;
+using B_PowerWin.GL.Forms;
 
 namespace B_PowerWin.GUI.CustomLookup
 {
@@ -51,14 +53,24 @@ namespace B_PowerWin.GUI.CustomLookup
                 case UILabelAutoLookup.ItemGroup:
                     break;
                 case UILabelAutoLookup.MainAccount:
-                   
+
+                    MySession.Session.Database.MainAccounts.Load();
                     mainAccountBS.DataSource = MySession.Session.Database.MainAccounts.Local;
                     mainAccountBS.Filter = _FilterExp;
+                    mainAccountBS.ResetBindings(true);
 
                      repItem = MyLookupPR.Items[mainAccountSLookupGV.Name];
                     
                     break;
                 case UILabelAutoLookup.MainAccountGroup:
+
+                    MySession.Session.Database.MainAccountGroups.Load();
+                    mainAccountGroupBS.DataSource = MySession.Session.Database.MainAccountGroups.Local;
+                    mainAccountGroupBS.Filter = _FilterExp;
+                    mainAccountGroupBS.ResetBindings(true);
+                    repItem = MyLookupPR.Items[mainAccountGroupLookup.Name];
+                    
+
                     break;
                 case UILabelAutoLookup.MainAccountChild:
                     break;
@@ -81,6 +93,17 @@ namespace B_PowerWin.GUI.CustomLookup
             //Link to Binding source
            
         }
-        
+
+        private void mainAccountGroupLookup_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis)
+            {
+                var frm = new MainAccountGroupFrm();
+                frm.FormClosing+=(frmS, frmE)=>{
+                    MySession.Session.Database.MainAccountGroups.Load();
+                };
+                frm.Show();
+            }
+        }
     }
 }

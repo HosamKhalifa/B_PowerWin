@@ -120,4 +120,31 @@
   <metadata name="uILabelBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>142, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buildLabaelsBI.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAJXRFWHRUaXRsZQBCdWlsZDtT
+        ZXR0aW5ncztDdXN0b21pejtPcHRpb25zWQmgmAAAAL5JREFUOE+9kUEKAjEMRQe6mGPMGeo9BO/hzsUc
+        QLv3OOMBXM9RXBcU4/+QwQZmmuLCwCMk5P+mbScihpSSOJh5UxAObcV/DIAXZt4Uj/tJSpZY6bcZbFFq
+        WgxeYAb9QqnxDNjr9udbOFymHXLWHFoMeDLFAkZwBG/NrCGpG8wYCjr8pKCA9egZ9LouT6ToCgbNrNmP
+        VQMMZMC1KRjQ45Vowpr97BlE8PMG7huAYAzWUEHbL9SAgNfhm8RvX7oP7LDQAsI0/DoAAAAASUVORK5C
+        YII=
+</value>
+  </data>
+  <data name="buildLabaelsBI.LargeGlyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAJXRFWHRUaXRsZQBCdWlsZDtT
+        ZXR0aW5ncztDdXN0b21pejtPcHRpb25zWQmgmAAAActJREFUWEfNlT1Ow0AUhHODtFGUNk2aKAehzEWQ
+        qCMhV3RcgxNwACqq0NJHiAZFNBEIscxE+5yXl4nwD5ZZ6VPWs29ndu21M0gp9YoUI0VRpAZwnvTzSFFQ
+        u1UJJ1L0uB3VJnoppOjJRrVbXoT09Egx0Li1XkDeRSuiZ0SKRjZo3FovAPxFU74lUiRvD5fpHN9fO5Qc
+        Gq9VnYEmM4gUiTIyPl4fUXJovFZ1BprMIFIkysh4f7rdh3Ln/OW1qjOit0eKRBk1JXp7pEiUUVOit0eK
+        RBk1JXp7pEiUUUWewdCj/A0pEkxU5ooXsHGsL67vp2CbmSp/Q4oERioswvABQkZgjP4SXKE/BykzN0/W
+        gJHPKTuRHPAbGxrmoDuwABNwAz4z7FPjGGtYWy7iJNgQYQougLsy4yqwdmw5J8GGCFPwmS9hyN2pMMXC
+        5xyFekKQgqd9DfjMeYstgHdlBWYZ9qnZ+MTnHIV6XNA5hjDjaeeB43O2gBXGOL+EmhtnLefs3w4ZTjBR
+        hXq4AL5mNOVhs4AZxuICeCds3Gq3zJHhBBNVqOdfLKDXR9D7ISTdvYZVgWE3H6KqwKybT3EdaAjKXaHf
+        /s+oDQip+HecBj/ZKKh8xQJ6+wAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>

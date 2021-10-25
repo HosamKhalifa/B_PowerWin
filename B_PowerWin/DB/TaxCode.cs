@@ -19,6 +19,11 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.TaxCode;
         }
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.TaxCode;
+            base.OnCreate(_db);
+        }
         public int? CompanyId { get; set; }
         [StringLength(10)]
         public string TaxCodeId { get; set; }

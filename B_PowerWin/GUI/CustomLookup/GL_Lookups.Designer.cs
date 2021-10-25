@@ -28,22 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.MyLookupPR = new DevExpress.XtraEditors.Repository.PersistentRepository();
+            this.components = new System.ComponentModel.Container();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            this.MyLookupPR = new DevExpress.XtraEditors.Repository.PersistentRepository(this.components);
             this.mainAccount = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
-            this.mainAccountBS = new System.Windows.Forms.BindingSource();
+            this.mainAccountBS = new System.Windows.Forms.BindingSource(this.components);
             this.mainAccountSLookupGV = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colReferenceNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMainAccountType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.mainAccountGroupLookup = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.mainAccountGroupBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.mainAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountSLookupGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainAccountGroupLookup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainAccountGroupBS)).BeginInit();
             this.SuspendLayout();
             // 
             // MyLookupPR
             // 
             this.MyLookupPR.Items.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.mainAccount});
+            this.mainAccount,
+            this.mainAccountGroupLookup});
             // 
             // mainAccount
             // 
@@ -100,6 +107,26 @@
             this.colMainAccountType.VisibleIndex = 2;
             this.colMainAccountType.Width = 111;
             // 
+            // mainAccountGroupLookup
+            // 
+            this.mainAccountGroupLookup.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "Edit...", -1, true, true, true, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
+            this.mainAccountGroupLookup.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("GroupNum", "Group Num", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("GroupName", "Group Name", 60, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MainAccountType", "Main Account Type", 20, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far)});
+            this.mainAccountGroupLookup.DataSource = this.mainAccountGroupBS;
+            this.mainAccountGroupLookup.DisplayMember = "GroupName";
+            this.mainAccountGroupLookup.Name = "mainAccountGroupLookup";
+            this.mainAccountGroupLookup.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
+            this.mainAccountGroupLookup.ValueMember = "Id";
+            this.mainAccountGroupLookup.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.mainAccountGroupLookup_ButtonClick);
+            // 
+            // mainAccountGroupBS
+            // 
+            this.mainAccountGroupBS.DataSource = typeof(B_PowerWin.DB.MainAccountGroup);
+            // 
             // GL_Lookups
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -109,6 +136,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainAccount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountSLookupGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainAccountGroupLookup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainAccountGroupBS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -121,5 +150,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMainAccountType;
         public DevExpress.XtraEditors.Repository.PersistentRepository MyLookupPR;
         private System.Windows.Forms.BindingSource mainAccountBS;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit mainAccountGroupLookup;
+        private System.Windows.Forms.BindingSource mainAccountGroupBS;
     }
 }

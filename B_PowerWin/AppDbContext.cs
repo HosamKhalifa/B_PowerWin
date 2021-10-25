@@ -139,8 +139,6 @@ namespace B_PowerWin
         public DbSet<DocumentBase> Documents { get; set; }
         public DbSet<DocumentLine> DocumentLines { get; set; }
         
-
-
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
 
@@ -148,9 +146,11 @@ namespace B_PowerWin
         public DbSet<InventDimDefault> InventDimDefaults { get; set; }
         public DbSet<UILabel> UILabels { get; set; }
         public DbSet<UILabelLangTxt> UILabelTxts { get; set; }
-
         public DbSet<EnumTable> EnumTables { get; set; }
-
+        //***********UIGridLayout**************************************************************
+        public DbSet<UIGridMaster> UIGridMasters { get; set; }
+        public DbSet<UIGridLayoutHeader> UIGridLayoutHeaders { get; set; }
+        public DbSet<UIGridLayoutLine> UIGridLayoutLine { get; set; }
         //***********GL**************************************************************
         #region Tables_GL
         public DbSet<Currency> Currencies { get; set; }
@@ -160,6 +160,15 @@ namespace B_PowerWin
         public DbSet<LedgerJournal> LedgerJournals { get; set; }
         public DbSet<MainAccount> MainAccounts { get; set; }
         public DbSet<MainAccountGroup> MainAccountGroups { get; set; }
+        public DbSet<BusinessUnit> BusinessUnits { get; set; }
+        public DbSet<Site> Sites { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Equipment> Equipments { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Purpose> Purposes { get; set; }
+        public DbSet<Bank> Banks { get; set; }
+        public DbSet<Cash> Cashes { get; set; }
+
         public DbSet<DocumentGL> DocumentGLs { get; set; }
         public DbSet<TaxGroup> TaxGroups { get; set; }
         public DbSet<TaxCode> TaxCodes { get; set; }
@@ -176,6 +185,7 @@ namespace B_PowerWin
 
         public DbSet<ItemBatch> ItemBatches { get; set; }
         public DbSet<ItemBatchSerial> ItemBatchSerials { get; set; }
+        public DbSet<InventStore> InventStores { get; set; }
 
         public DbSet<DocumentLineInvent> DocumentLineInvents { get; set; }
 
@@ -188,7 +198,7 @@ namespace B_PowerWin
 
         //***********AP*********************************************************
         #region Tables_AP
-        public DbSet<Bank> Banks { get; set; }
+      
         public DbSet<Vendor> Vendors { get; set; }
         public DbSet<PaymentTerm> PaymentTerms { get; set; }
 

@@ -19,6 +19,14 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.JournalType;
         }
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.JournalType;
+            base.OnCreate(_db);
+        }
+
+        
+        public virtual ICollection<LedgerJournal> LedgerJournals { get; set; }
         public int? CompanyId { get; set; }
         [Required]
         public JournalTypeEnum JourType { get; set; }

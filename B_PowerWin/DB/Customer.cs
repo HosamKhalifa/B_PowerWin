@@ -19,8 +19,18 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.Customer;
         }
+
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.Customer;
+            base.OnCreate(_db);
+        }
+        public virtual ICollection<DimDefault> DimDefaults { get; set; }
+
+
         [Required]
         public decimal? CreditLimit { get; set; }
+
 
     }
 }

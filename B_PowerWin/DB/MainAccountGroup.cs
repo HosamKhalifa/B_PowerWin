@@ -15,6 +15,11 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.MainAccountGroup;
         }
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.MainAccountGroup;
+            base.OnCreate(_db);
+        }
         [StringLength(50),/*Display(ResourceType =typeof(Labels),Name ="GroupId")*/]
         public string GroupNum { get; set; }
         [Required,StringLength(100),/* Display(ResourceType = typeof(Labels), Name = "GroupName")*/]

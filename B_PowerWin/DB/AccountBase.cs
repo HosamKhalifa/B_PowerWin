@@ -15,6 +15,7 @@ namespace B_PowerWin.DB
 
         public int? CompanyId { get; set; }
         [StringLength(250), Required]
+        
         public string Name { get; set; }
         [StringLength(50), Required]
         public string DisplayNum { get; set; }
@@ -26,9 +27,10 @@ namespace B_PowerWin.DB
         public TaxGroup TaxGroup { get; set; }
         public long DisplayNumSequ { get; set; }
         public bool MainAccountSetManually { get; set; }
-        public MainAccount MainAccount { get; set; }/*Item,Item Var will inherits from Group or From */
+        [ForeignKey("MainAccount")]
+        public long? MainAccountId { get; set; }/*Item,Item Var will inherits from Group or From */
         public bool Suspended { get; set; }
-
+        public virtual MainAccount MainAccount { get; set; }
 
     }
 }

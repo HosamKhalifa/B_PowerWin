@@ -18,6 +18,7 @@ namespace B_PowerWin.GUI.CustomLookup
             if(GL_LookupStorage == null) { GL_LookupStorage = new GL_Lookups(); }
 
             var lov = GL_LookupStorage.GetLookupObject(_lookUpCode, _FilterExp);
+            _gv.GridControl.ExternalRepository = GL_LookupStorage.MyLookupPR;
             _gvcol.ColumnEdit = lov;
         }
 

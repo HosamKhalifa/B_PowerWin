@@ -30,10 +30,8 @@ namespace B_PowerWin.GUI
         {
             var grdMgr = new GridManager();
             grdMgr.Attach(uiLabelGC, uILabelLangTxtGC);
-            //uiLabelGV.ValidateRow += (s, e) => {
-            //    MySession.Session.Database.UILabels.AddOrUpdate(e.Row as UILabel);
-            //     MySession.Session.Database.SaveChanges();
-            // };
+
+            bar1.AddItem(buildLabaelsBI);
             uiLabelGV.FocusedRowChanged += (s, e) => {
                 try
                 {
@@ -46,23 +44,10 @@ namespace B_PowerWin.GUI
                 }
                
             };
-            //seedDatabaseLBI.ItemClick += (s, e) => {
-            //    SeedDatabase.SeedUsers(MySession.Session.Database);
-            //    SeedDatabase.SeedUILabels(MySession.Session.Database);
-                
-            //    SeedDatabase.SeedEnumTable(MySession.Session.Database);
-            //};
-            //saveLBI.ItemClick += (s, e) => {
-            //    uILabelBindingSource.EndEdit();
-            //    dbContext.ChangeTracker.DetectChanges();
-                
-
-            //    if(XtraMessageBox.Show("Save changes?","Save",MessageBoxButtons.OK) == DialogResult.OK)
-            //    {
-            //        dbContext.SaveChanges();
-            //    }
-                
-            //};
+            buildLabaelsBI.ItemClick += (s, e) => {
+                DB.SeedDatabase.SeedUILabels(MySession.Session.Database);
+                DB.SeedDatabase.SeedEnumTable(MySession.Session.Database);
+            };
         }
 
         private void InitData()

@@ -19,6 +19,11 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.TaxGroup;
         }
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.TaxGroup;
+            base.OnCreate(_db);
+        }
         public int? CompanyId { get; set; }
         [StringLength(50)]
         public string GroupName { get; set; }

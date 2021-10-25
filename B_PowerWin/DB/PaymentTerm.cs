@@ -19,6 +19,11 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.PaymentTerm;
         }
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.PaymentTerm;
+            base.OnCreate(_db);
+        }
         [StringLength(30)]
         public string PaymTermCode { get; set; }
         [StringLength(60)]

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UILabelManagerFrm));
             this.uILabelLangTxtGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
             this.uILabelLangTxtGV = new B_PowerWin.GUI.Grid.GridViewBase();
             this.colLabelId1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -36,25 +36,25 @@
             this.colLangId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTxt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.uiLabelGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
-            this.uILabelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.uILabelBindingSource = new System.Windows.Forms.BindingSource();
             this.uiLabelGV = new B_PowerWin.GUI.Grid.GridViewBase();
             this.colLabelId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFieldName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBaseType = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLookupMember = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLookupMemberCharWidth = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLookupEditor = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLookupEditorAlernateValueMember = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLookupCode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLookupFilterExp = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGrid_IsHidden = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGrid_IsDisabled = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGrid_Width = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGrid_VisibleOrder = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGrid_LookupFormRef = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.buildLabaelsBI = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.uILabelLangTxtGC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uILabelLangTxtGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiLabelGC)).BeginInit();
@@ -124,7 +124,7 @@
             this.uiLabelGC.Location = new System.Drawing.Point(0, 0);
             this.uiLabelGC.MainView = this.uiLabelGV;
             this.uiLabelGC.Name = "uiLabelGC";
-            this.uiLabelGC.Size = new System.Drawing.Size(796, 257);
+            this.uiLabelGC.Size = new System.Drawing.Size(796, 255);
             this.uiLabelGC.TabIndex = 0;
             this.uiLabelGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.uiLabelGV});
@@ -140,17 +140,16 @@
             this.colLabelId,
             this.colFieldName,
             this.colBaseType,
-            this.colLookupMember,
-            this.colLookupMemberCharWidth,
-            this.colLookupEditor,
-            this.colLookupEditorAlernateValueMember,
+            this.colLookupCode,
+            this.colLookupFilterExp,
             this.colGrid_IsHidden,
             this.colGrid_IsDisabled,
             this.colGrid_Width,
             this.colGrid_VisibleOrder,
-            this.colGrid_LookupFormRef});
+            this.colGrid_LookupFormRef,
+            this.gridColumn1});
             this.uiLabelGV.GridControl = this.uiLabelGC;
-            this.uiLabelGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
+            this.uiLabelGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.SimpleEdit;
             this.uiLabelGV.Name = "uiLabelGV";
             // 
             // colLabelId
@@ -169,86 +168,79 @@
             // 
             // colBaseType
             // 
-            this.colBaseType.FieldName = "BaseType.BaseTypeName";
+            this.colBaseType.FieldName = "BaseType";
             this.colBaseType.Name = "colBaseType";
             this.colBaseType.Visible = true;
             this.colBaseType.VisibleIndex = 2;
             // 
-            // colLookupMember
+            // colLookupCode
             // 
-            this.colLookupMember.FieldName = "LookupMember";
-            this.colLookupMember.Name = "colLookupMember";
-            this.colLookupMember.Visible = true;
-            this.colLookupMember.VisibleIndex = 3;
+            this.colLookupCode.FieldName = "LookupCode";
+            this.colLookupCode.Name = "colLookupCode";
+            this.colLookupCode.Visible = true;
+            this.colLookupCode.VisibleIndex = 3;
             // 
-            // colLookupMemberCharWidth
+            // colLookupFilterExp
             // 
-            this.colLookupMemberCharWidth.FieldName = "LookupMemberCharWidth";
-            this.colLookupMemberCharWidth.Name = "colLookupMemberCharWidth";
-            this.colLookupMemberCharWidth.Visible = true;
-            this.colLookupMemberCharWidth.VisibleIndex = 4;
-            // 
-            // colLookupEditor
-            // 
-            this.colLookupEditor.FieldName = "LookupEditor";
-            this.colLookupEditor.Name = "colLookupEditor";
-            this.colLookupEditor.Visible = true;
-            this.colLookupEditor.VisibleIndex = 5;
-            // 
-            // colLookupEditorAlernateValueMember
-            // 
-            this.colLookupEditorAlernateValueMember.FieldName = "LookupEditorAlernateValueMember";
-            this.colLookupEditorAlernateValueMember.Name = "colLookupEditorAlernateValueMember";
-            this.colLookupEditorAlernateValueMember.Visible = true;
-            this.colLookupEditorAlernateValueMember.VisibleIndex = 6;
+            this.colLookupFilterExp.FieldName = "LookupFilterExp";
+            this.colLookupFilterExp.Name = "colLookupFilterExp";
+            this.colLookupFilterExp.Visible = true;
+            this.colLookupFilterExp.VisibleIndex = 4;
             // 
             // colGrid_IsHidden
             // 
             this.colGrid_IsHidden.FieldName = "Grid_IsHidden";
             this.colGrid_IsHidden.Name = "colGrid_IsHidden";
             this.colGrid_IsHidden.Visible = true;
-            this.colGrid_IsHidden.VisibleIndex = 7;
+            this.colGrid_IsHidden.VisibleIndex = 5;
             // 
             // colGrid_IsDisabled
             // 
             this.colGrid_IsDisabled.FieldName = "Grid_IsDisabled";
             this.colGrid_IsDisabled.Name = "colGrid_IsDisabled";
             this.colGrid_IsDisabled.Visible = true;
-            this.colGrid_IsDisabled.VisibleIndex = 8;
+            this.colGrid_IsDisabled.VisibleIndex = 6;
             // 
             // colGrid_Width
             // 
             this.colGrid_Width.FieldName = "Grid_Width";
             this.colGrid_Width.Name = "colGrid_Width";
             this.colGrid_Width.Visible = true;
-            this.colGrid_Width.VisibleIndex = 9;
+            this.colGrid_Width.VisibleIndex = 7;
             // 
             // colGrid_VisibleOrder
             // 
             this.colGrid_VisibleOrder.FieldName = "Grid_VisibleOrder";
             this.colGrid_VisibleOrder.Name = "colGrid_VisibleOrder";
             this.colGrid_VisibleOrder.Visible = true;
-            this.colGrid_VisibleOrder.VisibleIndex = 10;
+            this.colGrid_VisibleOrder.VisibleIndex = 8;
             // 
             // colGrid_LookupFormRef
             // 
             this.colGrid_LookupFormRef.FieldName = "Grid_LookupFormRef";
             this.colGrid_LookupFormRef.Name = "colGrid_LookupFormRef";
             this.colGrid_LookupFormRef.Visible = true;
-            this.colGrid_LookupFormRef.VisibleIndex = 11;
+            this.colGrid_LookupFormRef.VisibleIndex = 9;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.FieldName = "BaseType.BaseTypeName";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 10;
             // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
             this.splitContainerControl1.Horizontal = false;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 29);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 31);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.uiLabelGC);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.uILabelLangTxtGC);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(796, 487);
+            this.splitContainerControl1.Size = new System.Drawing.Size(796, 485);
             this.splitContainerControl1.SplitterPosition = 225;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -257,7 +249,7 @@
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 29);
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 31);
             this.barDockControlTop.Size = new System.Drawing.Size(796, 0);
             // 
             // barDockControlBottom
@@ -271,15 +263,24 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 29);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 487);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 485);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(796, 29);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 487);
+            this.barDockControlRight.Location = new System.Drawing.Point(796, 31);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 485);
+            // 
+            // buildLabaelsBI
+            // 
+            this.buildLabaelsBI.Caption = "Build Labels";
+            this.buildLabaelsBI.Glyph = ((System.Drawing.Image)(resources.GetObject("buildLabaelsBI.Glyph")));
+            this.buildLabaelsBI.Id = 2;
+            this.buildLabaelsBI.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("buildLabaelsBI.LargeGlyph")));
+            this.buildLabaelsBI.Name = "buildLabaelsBI";
+            this.buildLabaelsBI.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // UILabelManagerFrm
             // 
@@ -311,18 +312,6 @@
         #endregion
         private Grid.GridCtrlBase uiLabelGC;
         private Grid.GridViewBase uiLabelGV;
-        private DevExpress.XtraGrid.Columns.GridColumn colLabelId;
-        private DevExpress.XtraGrid.Columns.GridColumn colFieldName;
-        private DevExpress.XtraGrid.Columns.GridColumn colBaseType;
-        private DevExpress.XtraGrid.Columns.GridColumn colLookupMember;
-        private DevExpress.XtraGrid.Columns.GridColumn colLookupMemberCharWidth;
-        private DevExpress.XtraGrid.Columns.GridColumn colLookupEditor;
-        private DevExpress.XtraGrid.Columns.GridColumn colLookupEditorAlernateValueMember;
-        private DevExpress.XtraGrid.Columns.GridColumn colGrid_IsHidden;
-        private DevExpress.XtraGrid.Columns.GridColumn colGrid_IsDisabled;
-        private DevExpress.XtraGrid.Columns.GridColumn colGrid_Width;
-        private DevExpress.XtraGrid.Columns.GridColumn colGrid_VisibleOrder;
-        private DevExpress.XtraGrid.Columns.GridColumn colGrid_LookupFormRef;
         private Grid.GridCtrlBase uILabelLangTxtGC;
         private Grid.GridViewBase uILabelLangTxtGV;
         private DevExpress.XtraGrid.Columns.GridColumn colLabelId1;
@@ -335,5 +324,17 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraGrid.Columns.GridColumn colLabelId;
+        private DevExpress.XtraGrid.Columns.GridColumn colFieldName;
+        private DevExpress.XtraGrid.Columns.GridColumn colBaseType;
+        private DevExpress.XtraGrid.Columns.GridColumn colLookupCode;
+        private DevExpress.XtraGrid.Columns.GridColumn colLookupFilterExp;
+        private DevExpress.XtraGrid.Columns.GridColumn colGrid_IsHidden;
+        private DevExpress.XtraGrid.Columns.GridColumn colGrid_IsDisabled;
+        private DevExpress.XtraGrid.Columns.GridColumn colGrid_Width;
+        private DevExpress.XtraGrid.Columns.GridColumn colGrid_VisibleOrder;
+        private DevExpress.XtraGrid.Columns.GridColumn colGrid_LookupFormRef;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraBars.BarButtonItem buildLabaelsBI;
     }
 }

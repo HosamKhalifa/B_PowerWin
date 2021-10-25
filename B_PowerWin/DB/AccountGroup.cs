@@ -19,7 +19,13 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.AccountGroup;
         }
-
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.AccountGroup;
+            base.OnCreate(_db);
+        }
+        public virtual ICollection<InventDimDefault> InventDimDefaults { get; set; }
+        
         [Required]
         public BaseType GroupedBaseType { get; set; }
 

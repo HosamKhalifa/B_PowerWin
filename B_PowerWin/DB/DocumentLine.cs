@@ -19,13 +19,14 @@ namespace B_PowerWin.DB
 
         #region Main Dimensions
         public long? MainAccount { get; set; }
-        public long? BusinessUnit { get; set; }
+        public long? BusinessUnitId { get; set; }
         public long? SiteId { get; set; }
         public long? DeptId { get; set; }
         public long? EqupId { get; set; }
         public long? ProjectId { get; set; }
         public long? PurposeId { get; set; }
         public long? BankId { get; set; }
+        public long? CashId { get; set; }
         public long? CustId { get; set; }
         public long? VendId { get; set; }
         public long? EmplId { get; set; }
@@ -35,13 +36,14 @@ namespace B_PowerWin.DB
 
         #region Offset Dimensions
         public long? OffsetMainAccount { get; set; }
-        public long? OffsetBusinessUnit { get; set; }
+        public long? OffsetBusinessUnitId { get; set; }
         public long? OffsetSiteId { get; set; }
         public long? OffsetDeptId { get; set; }
         public long? OffsetEqupId { get; set; }
         public long? OffsetProjectId { get; set; }
         public long? OffsetPurposeId { get; set; }
         public long? OffsetBankId { get; set; }
+        public long? OffsetCashId { get; set; }
         public long? OffsetCustId { get; set; }
         public long? OffsetVendId { get; set; }
         public long? OffsetEmplId { get; set; }
@@ -68,6 +70,7 @@ namespace B_PowerWin.DB
 
         public decimal? TaxAmount { get; set; }
         public decimal? LineValue { get; set; }
+        
         public LineTotalEffectEnum LineTotalEffect { get; set; }
         public decimal? CostPrice { get; set; }
 

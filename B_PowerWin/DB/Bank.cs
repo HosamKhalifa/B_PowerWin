@@ -25,5 +25,7 @@ namespace B_PowerWin.DB
             this.BaseType = (int)BaseTypeEnum.Bank;
             base.OnCreate(_db);
         }
+
+        public virtual ICollection<DimDefault> DimDefaults { get; set; }
     }
 }

@@ -18,7 +18,14 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.Cash;
         }
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.Cash;
+            base.OnCreate(_db);
+        }
 
+        public virtual ICollection<DimDefault> DimDefaults { get; set; }
+        
         public long? Employee { get; set; }
 
     }

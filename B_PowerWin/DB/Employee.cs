@@ -19,6 +19,13 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.Employee;
         }
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.Employee;
+            base.OnCreate(_db);
+        }
+
+        public virtual ICollection<DimDefault> DimDefaults { get; set; }
 
         [StringLength(30)]
         public string IdentityCard { get; set; }

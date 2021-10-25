@@ -94,12 +94,14 @@
     <Compile Include="DB\BaseType.cs" />
     <Compile Include="DB\BaseTypeEnum.cs" />
     <Compile Include="DB\BaseTypeTypeEnum.cs" />
+    <Compile Include="DB\BusinessUnit.cs" />
     <Compile Include="DB\Cash.cs" />
     <Compile Include="DB\City.cs" />
     <Compile Include="DB\Company.cs" />
     <Compile Include="DB\Country.cs" />
     <Compile Include="DB\Currency.cs" />
     <Compile Include="DB\Customer.cs" />
+    <Compile Include="DB\Department.cs" />
     <Compile Include="DB\DimDefault.cs" />
     <Compile Include="DB\DocumentBase.cs" />
     <Compile Include="DB\DocumentGL.cs" />
@@ -107,8 +109,10 @@
     <Compile Include="DB\DocumentLineInvent.cs" />
     <Compile Include="DB\Employee.cs" />
     <Compile Include="DB\EnumTable.cs" />
+    <Compile Include="DB\Equipment.cs" />
     <Compile Include="DB\FormEntityEnum.cs" />
     <Compile Include="DB\InventDimDefault.cs" />
+    <Compile Include="DB\InventStore.cs" />
     <Compile Include="DB\Item.cs" />
     <Compile Include="DB\ItemBatch.cs" />
     <Compile Include="DB\ItemBatchSerial.cs" />
@@ -139,6 +143,8 @@
     <Compile Include="DB\PaymentTerm.cs" />
     <Compile Include="DB\Pos.cs" />
     <Compile Include="DB\PostingLayerEnum.cs" />
+    <Compile Include="DB\Project.cs" />
+    <Compile Include="DB\Purpose.cs" />
     <Compile Include="DB\SecAccessType.cs" />
     <Compile Include="DB\SecAccessTypeTypeEnum.cs" />
     <Compile Include="DB\SecPrincipal.cs" />
@@ -146,15 +152,20 @@
     <Compile Include="DB\SecPrincipalRoleMem.cs" />
     <Compile Include="DB\SecPrincipalUser.cs" />
     <Compile Include="DB\SeedDatabase.cs" />
+    <Compile Include="DB\Site.cs" />
     <Compile Include="DB\TaxCode.cs" />
     <Compile Include="DB\TaxCodeValueSetup.cs" />
     <Compile Include="DB\TaxGroup.cs" />
     <Compile Include="DB\TaxGroupMemberSetup.cs" />
     <Compile Include="DB\TaxValueTypeEnum.cs" />
+    <Compile Include="DB\UIGridLayoutHeader.cs" />
+    <Compile Include="DB\UIGridLayoutLine.cs" />
+    <Compile Include="DB\UIGridLayoutVersionEnum.cs" />
     <Compile Include="DB\UILabel.cs" />
     <Compile Include="DB\UILabelAutoLookup.cs" />
     <Compile Include="DB\UILabelLangTxt.cs" />
     <Compile Include="DB\UILabelType.cs" />
+    <Compile Include="DB\UIGridMaster.cs" />
     <Compile Include="DB\Vendor.cs" />
     <Compile Include="DB_Util.cs" />
     <Compile Include="Form1.cs">
@@ -164,6 +175,18 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalMethods.cs" />
+    <Compile Include="GL\Forms\GLDimensionSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\Forms\GLDimensionSetup.Designer.cs">
+      <DependentUpon>GLDimensionSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GL\Forms\MainAccountFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\Forms\MainAccountFrm.Designer.cs">
+      <DependentUpon>MainAccountFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GL\Forms\MainAccountGroupFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,29 +290,13 @@
     <Compile Include="MainFrm.Designer.cs">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110222111165_init_0001.cs" />
-    <Compile Include="Migrations\202110222111165_init_0001.designer.cs">
-      <DependentUpon>202110222111165_init_0001.cs</DependentUpon>
+    <Compile Include="Migrations\202110252128439_init_0008.cs" />
+    <Compile Include="Migrations\202110252128439_init_0008.designer.cs">
+      <DependentUpon>202110252128439_init_0008.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110231516235_init_0002.cs" />
-    <Compile Include="Migrations\202110231516235_init_0002.designer.cs">
-      <DependentUpon>202110231516235_init_0002.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110240702362_init_0003.cs" />
-    <Compile Include="Migrations\202110240702362_init_0003.designer.cs">
-      <DependentUpon>202110240702362_init_0003.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110241902150_init_00031.cs" />
-    <Compile Include="Migrations\202110241902150_init_00031.designer.cs">
-      <DependentUpon>202110241902150_init_00031.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110241922206_init_00032.cs" />
-    <Compile Include="Migrations\202110241922206_init_00032.designer.cs">
-      <DependentUpon>202110241922206_init_00032.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110242218178_init_00033.cs" />
-    <Compile Include="Migrations\202110242218178_init_00033.designer.cs">
-      <DependentUpon>202110242218178_init_00033.cs</DependentUpon>
+    <Compile Include="Migrations\202110252223566_init_0009.cs" />
+    <Compile Include="Migrations\202110252223566_init_0009.designer.cs">
+      <DependentUpon>202110252223566_init_0009.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySession.cs" />
@@ -301,6 +308,12 @@
     <Compile Include="SharedExt\StringExt.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GL\Forms\GLDimensionSetup.resx">
+      <DependentUpon>GLDimensionSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GL\Forms\MainAccountFrm.resx">
+      <DependentUpon>MainAccountFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GL\Forms\MainAccountGroupFrm.resx">
       <DependentUpon>MainAccountGroupFrm.cs</DependentUpon>
@@ -338,23 +351,11 @@
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110222111165_init_0001.resx">
-      <DependentUpon>202110222111165_init_0001.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110252128439_init_0008.resx">
+      <DependentUpon>202110252128439_init_0008.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110231516235_init_0002.resx">
-      <DependentUpon>202110231516235_init_0002.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110240702362_init_0003.resx">
-      <DependentUpon>202110240702362_init_0003.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110241902150_init_00031.resx">
-      <DependentUpon>202110241902150_init_00031.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110241922206_init_00032.resx">
-      <DependentUpon>202110241922206_init_00032.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110242218178_init_00033.resx">
-      <DependentUpon>202110242218178_init_00033.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110252223566_init_0009.resx">
+      <DependentUpon>202110252223566_init_0009.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -391,6 +392,7 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\B_PowerWin.DB.Bank.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.BusinessUnit.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.MainAccount.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.MainAccountGroup.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.UILabel.datasource" />

@@ -19,6 +19,10 @@ namespace B_PowerWin.GUI
         {
             InitializeComponent();
         }
+        public EditFormBase(FormArgs _callerArgs):base(_callerArgs)
+        {
+
+        }
         public DialogResult SaveConfirmMsg()
         {
             var result = XtraMessageBox.Show("There are changes founded at this form Do you want to save changes?", "Closing form", MessageBoxButtons.YesNoCancel);

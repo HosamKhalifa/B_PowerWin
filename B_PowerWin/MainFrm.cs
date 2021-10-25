@@ -33,6 +33,22 @@ namespace B_PowerWin
                 var frm = new GL.Forms.MainAccountGroupFrm() { MdiParent = this, WindowState = FormWindowState.Maximized };
                 frm.Show();
             };
+            //Main Account
+            mainAccountNBI.LinkClicked += (s, e) => {
+
+                e.Link.Item.Tag = DB.BaseTypeEnum.MainAccount;
+                var frm = new GL.Forms.MainAccountFrm() { MdiParent = this, WindowState = FormWindowState.Maximized };
+                frm.Show();
+
+            };
+            //GL Dimensions setup
+            gLDimensionNBI.LinkClicked += (s, e) => {
+
+                
+                var frm = new GL.Forms.GLDimensionSetup() { MdiParent = this, WindowState = FormWindowState.Maximized };
+                frm.Show();
+
+            };
         }
 
         private void SkinManage()

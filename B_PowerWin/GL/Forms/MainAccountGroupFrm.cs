@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Helpers;
+using B_PowerWin.GUI;
 
 namespace B_PowerWin.GL.Forms
 {
@@ -20,6 +21,10 @@ namespace B_PowerWin.GL.Forms
             InitializeComponent();
             InitData();
           
+        }
+        public MainAccountGroupFrm(FormArgs _callerArgs):base(_callerArgs)
+        {
+
         }
         public override void RefreshData()
         {

@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.mainAccountGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mainAccountGroupBindingSource = new System.Windows.Forms.BindingSource();
             this.mainAccountGroupGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
             this.mainAccountGroupGV = new B_PowerWin.GUI.Grid.GridViewBase();
             this.colGroupNum = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -85,7 +84,7 @@
             this.colBaseType,
             this.colParnetId});
             this.mainAccountGroupGV.GridControl = this.mainAccountGroupGC;
-            this.mainAccountGroupGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
+            this.mainAccountGroupGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.SimpleEdit;
             this.mainAccountGroupGV.Name = "mainAccountGroupGV";
             // 
             // colGroupNum

@@ -38,10 +38,11 @@ namespace B_PowerWin.DB
             if (!enableAutoFormat) return;//Exit for non formated grid view after wirting caption 
 
 
-            Size columnSize = TextRenderer.MeasureText("".PadLeft(Grid_Width, 'A'), grdCol.AppearanceCell.Font);
-            c.Width = Grid_IsHidden ? 0 : columnSize.Width;
+            //Size columnSize = TextRenderer.MeasureText("".PadLeft(Grid_Width, 'A'), grdCol.AppearanceCell.Font);
+            //c.Width = Grid_IsHidden ? 0 : columnSize.Width;
+            c.Width = Grid_IsHidden ? 0  : Grid_Width ;
             c.OptionsColumn.ReadOnly = Grid_IsDisabled;
-            c.OptionsColumn.AllowEdit = Grid_IsDisabled;
+            c.OptionsColumn.AllowEdit = !Grid_IsDisabled;
             c.OptionsEditForm.Visible = Grid_IsDisabled ? DevExpress.Utils.DefaultBoolean.False : DevExpress.Utils.DefaultBoolean.Default;
 
             c.Visible = !Grid_IsHidden;

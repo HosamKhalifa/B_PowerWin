@@ -11,6 +11,19 @@ namespace B_PowerWin.DB
     [Table("sec_principal_role_mem")]
     public class SecPrincipalRoleMem:LineBase
     {
+        public override bool IsBusinessObject()
+        {
+            return true;
+        }
+        public override BaseTypeEnum GetBaseTypeEnum()
+        {
+            return BaseTypeEnum.SecPrincipalRoleMem;
+        }
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.SecPrincipalRoleMem;
+            base.OnCreate(_db);
+        }
         [StringLength(120)]
         public string RolePrincipalId { get; set; }
         [StringLength(120)]

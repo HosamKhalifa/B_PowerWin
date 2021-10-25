@@ -19,6 +19,13 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.ItemColor;
         }
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.ItemColor;
+            base.OnCreate(_db);
+        }
+        public virtual ICollection<InventDimDefault> InventDimDefaults { get; set; }
+
         public Item Item { get; set; }
         public ItemSizeEnum SizeEnum { get; set; }
         [StringLength(60)]

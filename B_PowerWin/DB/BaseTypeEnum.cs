@@ -37,11 +37,13 @@ namespace B_PowerWin.DB
         Cash=1025,
         AccountGroup=1026,
         SecPrincipalRole=1027,
-        SecPrincipalUser=1028
-
-
-
-
-
+        SecPrincipalUser=1028,
+        Purpose = 1029,
+        Project = 1030,
+        Equipment = 1031,
+        Department = 1032,
+        Site = 1033,
+        InventStore = 1034,
+        BusinessUnit = 1035
     }
 }

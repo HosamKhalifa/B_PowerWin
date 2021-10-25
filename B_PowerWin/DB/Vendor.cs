@@ -10,6 +10,11 @@ namespace B_PowerWin.DB
     [Table("vendor")]
     public class Vendor:AccountBase
     {
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.Vendor;
+            base.OnCreate(_db);
+        }
         public override bool IsBusinessObject()
         {
             return true;
@@ -19,5 +24,7 @@ namespace B_PowerWin.DB
             return BaseTypeEnum.Vendor;
         }
 
+        public virtual ICollection<DimDefault> DimDefaults { get; set; }
+        public virtual ICollection<InventDimDefault> InventDimDefaults { get; set; }
     }
 }

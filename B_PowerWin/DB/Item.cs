@@ -19,7 +19,12 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.Item;
         }
-
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.Item;
+            base.OnCreate(_db);
+        }
+        public virtual ICollection<InventDimDefault> InventDimDefaults { get; set; }
         public decimal? PurchPrice { get; set; }
         public decimal? SalesPrice { get; set; }
         public decimal? SalesPriceMin { get; set; }

@@ -33,5 +33,9 @@ namespace B_PowerWin.DB
         public string TaxCardNum { get; set; }
         public string TaxCommRegisterNum { get; set; }
 
+
+        
+        public virtual ICollection<LedgerJournal> LedgerJournals { get; set; }
+
     }
 }

@@ -18,13 +18,31 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.Pos;
         }
-        public MainAccount ArAccount { get; set; }
-        public MainAccount CashAccount { get; set; }
-        public Employee PosManager { get; set; }
-        public JournalType SalesJournal { get; set; }
-        public JournalType ExpenseJournal { get; set; }
-        public JournalType InventTransferJournal { get; set; }
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.Pos;
+            base.OnCreate(_db);
+        }
+        public virtual ICollection<DimDefault> DimDefaults { get; set; }
+        public virtual ICollection<InventDimDefault> InventDimDefaults { get; set; }
+        [ForeignKey("ArAccount")]
+        public long? ArAccountId { get; set; }
+        [ForeignKey("CashAccount")]
+        public long? CashAccountId { get; set; }
+        [ForeignKey("PosManager")]
+        public long? PosManagerId { get; set; }
+        [ForeignKey("SalesJournal")]
+        public long? SalesJournalId { get; set; }
+        [ForeignKey("ExpenseJournal")]
+        public long? ExpenseJournalId { get; set; }
+        [ForeignKey("InventTransferJournal")]
+        public long? InventTransferJournalId { get; set; }
 
-
+        public virtual MainAccount ArAccount { get; set; }
+        public virtual MainAccount CashAccount { get; set; }
+        public virtual  Employee PosManager { get; set; }
+        public virtual  JournalType SalesJournal { get; set; }
+        public virtual  JournalType ExpenseJournal { get; set; }
+        public virtual  JournalType InventTransferJournal { get; set; }
     }
 }

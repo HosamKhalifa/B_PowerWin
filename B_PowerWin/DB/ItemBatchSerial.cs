@@ -21,6 +21,11 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.ItemBatchSerial;
         }
+        public override void OnCreate(AppDbContext _db)
+        {
+            BaseType = (int)BaseTypeEnum.ItemBatchSerial;
+            base.OnCreate(_db);
+        }
         [StringLength(60)]
         public string SerialNum { get; set; }
         [StringLength(30)]

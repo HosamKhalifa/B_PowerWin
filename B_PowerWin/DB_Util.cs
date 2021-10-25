@@ -114,7 +114,7 @@ namespace B_PowerWin
                         dbDimDefault.BusinessUnit = dbParentDimDefault.BusinessUnit;
                         dbDimDefault.SiteId = dbParentDimDefault.SiteId;
                         dbDimDefault.PosId = dbParentDimDefault.PosId;
-                        dbDimDefault.WarehouseId = dbParentDimDefault.WarehouseId;
+                        dbDimDefault.InventStoreId = dbParentDimDefault.InventStoreId;
                         dbDimDefault.VendId = dbParentDimDefault.VendId;
                         dbDimDefault.ItemId = dbParentDimDefault.ItemId;
                         dbDimDefault.ItemGroupId = dbParentDimDefault.ItemGroupId;
