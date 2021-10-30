@@ -6,18 +6,24 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using B_PowerWin.SharedExt;
+using B_PowerWin.DBEvents;
 
 namespace B_PowerWin.DB
 {
     [Table("line_base")]
-    public class LineBase
+    public class LineBase:ILineBase
     {
+        public event InitNewRowHandler InitNewRow;
+        public virtual void OnInitNewRow(InitNewRowEventArgs e)
+        {
+            InitNewRow?.Invoke(this, e);
+        }
         public LineBase()
         {
-            this.CreatedAt = DateTime.Today;
-            this.ModifiedAt = DateTime.Today;
-            this.CreatedBy = MySession.Session.UserId;
-            this.ModifiedBy = MySession.Session.UserId;
+            CreatedBy = MySession.Session.UserId;
+            CreatedAt = DateTime.Now;
+            ModifiedAt = DateTime.Now;
+            ModifiedBy = MySession.Session.UserId;
             var baseTypeId = (int)GetBaseTypeEnum();
            
             this.BaseType = baseTypeId;
@@ -57,16 +63,21 @@ namespace B_PowerWin.DB
         }
         public virtual void OnCreate(AppDbContext _db)
         {
+            CreatedBy = MySession.Session.UserId;
+            CreatedAt = DateTime.Now;
+            ModifiedAt = DateTime.Now;
+            ModifiedBy = MySession.Session.UserId;
             if (!ValidateLine(_db, LineBaseCRUDEnum.Create))
             {
 
                 throw GetLineExceptionDetails(_db,LineBaseCRUDEnum.Create);
             }
-            Id = DB_Util.LineBaseSequNextVal(_db);
-            CreatedBy = MySession.Session.UserId;
-            CreatedAt = DateTime.Now;
-            ModifiedAt = DateTime.Now;
-            ModifiedBy = MySession.Session.UserId;
+
+            Id = Id == null || Id == 0? DB_Util.LineBaseSequNextVal(_db):Id;
+            
+            var baseTypeId = (int)GetBaseTypeEnum();
+
+            this.BaseType = baseTypeId;
 
         }
         public virtual void OnUpdate(AppDbContext _db)
@@ -87,6 +98,17 @@ namespace B_PowerWin.DB
                 throw GetLineExceptionDetails(_db, LineBaseCRUDEnum.Delete);
             }
         }
+
+        public virtual void BuildMetaData(AppDbContext _db)
+        {
+            //In Childs each class should create records
+            //BaseType
+            //SecRole 
+            //This method will be called when seed database 
+             
+        }
+
+
 
 
         #region DB_Fields

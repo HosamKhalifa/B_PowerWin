@@ -35,6 +35,7 @@
             this.saveBI = new DevExpress.XtraBars.BarButtonItem();
             this.refreshBI = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
+            this.bar2 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -46,7 +47,8 @@
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
             this.bar1,
-            this.bar3});
+            this.bar3,
+            this.bar2});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -101,6 +103,15 @@
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Status bar";
             // 
+            // bar2
+            // 
+            this.bar2.BarName = "Custom bar";
+            this.bar2.DockCol = 1;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.Offset = 133;
+            this.bar2.Text = "Custom";
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -152,8 +163,9 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         public DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.BarButtonItem saveBI;
         public DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraBars.BarButtonItem refreshBI;
+        public DevExpress.XtraBars.Bar bar2;
+        public DevExpress.XtraBars.BarButtonItem saveBI;
+        public DevExpress.XtraBars.BarButtonItem refreshBI;
     }
 }

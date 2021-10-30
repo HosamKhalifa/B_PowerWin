@@ -34,5 +34,17 @@ namespace B_PowerWin.Properties {
                 this["AppSkinName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("en-US")]
+        public string LangId {
+            get {
+                return ((string)(this["LangId"]));
+            }
+            set {
+                this["LangId"] = value;
+            }
+        }
     }
 }

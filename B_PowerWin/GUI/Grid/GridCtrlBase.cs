@@ -77,6 +77,10 @@ namespace B_PowerWin.GUI.Grid
             cn.Buttons.Remove.Enabled = GridViewEditMode != GridViewEditModeEnum.ReadOnly;
             cn.Buttons.Append.Enabled = GridViewEditMode != GridViewEditModeEnum.ReadOnly;
             cn.Buttons.Edit.Enabled = GridViewEditMode != GridViewEditModeEnum.ReadOnly;
+            this.OptionsBehavior.AllowAddRows = GridViewEditMode == GridViewEditModeEnum.ReadOnly?DevExpress.Utils.DefaultBoolean.False:DevExpress.Utils.DefaultBoolean.Default;
+            this.OptionsBehavior.AllowDeleteRows = GridViewEditMode == GridViewEditModeEnum.ReadOnly ? DevExpress.Utils.DefaultBoolean.False : DevExpress.Utils.DefaultBoolean.Default;
+            this.OptionsBehavior.Editable = GridViewEditMode != GridViewEditModeEnum.ReadOnly;
+
             if (GridViewEditMode == GridViewEditModeEnum.FormEdit )
             {
                 this.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplace;
@@ -100,6 +104,7 @@ namespace B_PowerWin.GUI.Grid
                         GridManager.InitGuiFromDB(gv:this,EnableAutoFormat:true);
                                                                                 
                         this.EndInit();
+                        this.GridControl.ForceInitialize();
                     }
              
                 }

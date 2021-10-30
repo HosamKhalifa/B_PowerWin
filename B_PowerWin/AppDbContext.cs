@@ -17,11 +17,14 @@ namespace B_PowerWin
         {
             
         }
+       
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
            modelBuilder.Entity<UILabelLangTxt>().HasKey(tbl => new { tbl.LabelId, tbl.LabelType, tbl.LangId });
            modelBuilder.Entity<EnumTable>().HasKey(tbl => new { tbl.SysName, tbl.ValueId});
-           /* 
+           modelBuilder.Entity<SysSequenceValue>().HasKey(x => new { x.SequNum, x.SysSequRecycle, x.CurrentRecycleValue });
+
+            /* 
             modelBuilder.HasSequence<Int64>(DB_Util.LINE_BASE_SEQU);
             modelBuilder.Entity<LineBase>()
                                            .Property(o => o.Id)
@@ -44,17 +47,17 @@ namespace B_PowerWin
             {
                 //item.Property("ModifiedAt").CurrentValue = DateTime.Now;
                 //item.Property("ModifiedBy").CurrentValue = MySession.Session.UserId;
-                if(item.Entity is LineBase)
+                if(item.Entity is ILineBase)
                 {
-                    ((LineBase)item.Entity).OnUpdate(this);
+                    ((ILineBase)item.Entity).OnUpdate(this);
                 }
 
             }
             foreach (var item in this.ChangeTracker.Entries().Where(x => x.State == EntityState.Added))
             {
-                if (item.Entity is LineBase)
+                if (item.Entity is ILineBase)
                 {
-                    ((LineBase)item.Entity).OnCreate(this);
+                    ((ILineBase)item.Entity).OnCreate(this);
                 }
                 #region OldCode
                 /*
@@ -87,18 +90,13 @@ namespace B_PowerWin
             }
             foreach (var item in this.ChangeTracker.Entries().Where(x => x.State == EntityState.Deleted))
             {
-                if (item.Entity is LineBase)
+                if (item.Entity is ILineBase)
                 {
-                    ((LineBase)item.Entity).OnDelete(this);
+                    ((ILineBase)item.Entity).OnDelete(this);
                 }
             }
 
-
-
-
             return base.SaveChanges();
-
-
 
         }
 
@@ -138,7 +136,8 @@ namespace B_PowerWin
 
         public DbSet<DocumentBase> Documents { get; set; }
         public DbSet<DocumentLine> DocumentLines { get; set; }
-        
+        public DbSet<SysSequence> SysSequences { get; set; }
+        public DbSet<SysSequenceValue> SysSequenceValues { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
 
@@ -217,6 +216,12 @@ namespace B_PowerWin
         public DbSet<SecAccessType> SecAccessTypes { get; set; }
         public DbSet<SecPrincipal> Principals { get; set; }
         public DbSet<SecPrincipalRole> SecPrincipalRoles { get; set; }
+        public DbSet<SecPrincipalRoleAction> SecPrincipalRoleActions { get; set; }
+        public DbSet<SecPrincipalRoleForm> SecPrincipalRoleForm { get; set; }
+        public DbSet<SecPrincipalRoleJournal> SecPrincipalRoleJournals { get; set; }
+        public DbSet<SecPrincipalRoleMaster> SecPrincipalRoleMasters { get; set; }
+        public DbSet<SecPrincipalRoleReport> SecPrincipalRoleReports { get; set; }
+        public DbSet<SecPrincipalRoleResponsibility> SecPrincipalRoleResponsibilities { get; set; }
         public DbSet<SecPrincipalUser> SecPrincipalUsers { get; set; }
         public DbSet<SecPrincipalRoleMem> SecPrincipalRoleMems { get; set; }
         #endregion

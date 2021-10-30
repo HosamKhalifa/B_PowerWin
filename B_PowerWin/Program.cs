@@ -5,6 +5,9 @@ using System.Windows.Forms;
 using DevExpress.UserSkins;
 using DevExpress.Skins;
 using DevExpress.LookAndFeel;
+using B_PowerWin.Properties;
+using DevExpress.XtraEditors;
+using B_PowerWin.SharedExt;
 
 namespace B_PowerWin
 {
@@ -19,12 +22,14 @@ namespace B_PowerWin
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //BonusSkins.Register();
+            BonusSkins.Register();
             SkinManager.EnableFormSkins();
             
             UserLookAndFeel.Default.SetSkinStyle("Office 2010 Blue");
             var mainFrm = new MainFrm();
             new MySession("root", mainFrm);
+            
+            
             Application.Run(mainFrm);
             //Application.Run(new MainFrm());
         }

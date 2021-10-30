@@ -38,6 +38,7 @@ namespace B_PowerWin.GL.Forms
         {
             FormGridManager = new GUI.Grid.GridManager();
             FormGridManager.Attach(mainAccountGroupGC);
+            
             RefreshData();
 
        }

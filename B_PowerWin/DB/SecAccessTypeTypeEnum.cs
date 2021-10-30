@@ -8,6 +8,7 @@ namespace B_PowerWin.DB
 {
     public enum SecAccessTypeTypeEnum
     {
+        User = 5,
         System=10,
         Master=20,
         Journal=30,

@@ -28,31 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GLDimensionSetup));
             this.dimensionNavPane = new DevExpress.XtraBars.Navigation.NavigationPane();
             this.businessUnitNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.businessUnitGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
-            this.businessUnitGV = new B_PowerWin.GUI.Grid.GridViewBase();
-            this.siteNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.siteGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
-            this.siteGV = new B_PowerWin.GUI.Grid.GridViewBase();
-            this.deptartmentNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.departmentGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
-            this.departmentGV = new B_PowerWin.GUI.Grid.GridViewBase();
-            this.projectNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.projectGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
-            this.projectGV = new B_PowerWin.GUI.Grid.GridViewBase();
-            this.purposeNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.purposeGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
-            this.purposeGV = new B_PowerWin.GUI.Grid.GridViewBase();
-            this.equipmentNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.equipmentGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
-            this.equipmentGV = new B_PowerWin.GUI.Grid.GridViewBase();
             this.businessUnitBS = new System.Windows.Forms.BindingSource();
-            this.siteBS = new System.Windows.Forms.BindingSource();
-            this.departmentBS = new System.Windows.Forms.BindingSource();
-            this.projectBS = new System.Windows.Forms.BindingSource();
-            this.purposeBS = new System.Windows.Forms.BindingSource();
-            this.equipmentBS = new System.Windows.Forms.BindingSource();
+            this.businessUnitGV = new B_PowerWin.GUI.Grid.GridViewBase();
             this.colDimDefaults = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInventDimDefaults = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBusinessUnitCode = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -65,32 +46,52 @@
             this.colModifiedAt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBaseType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colParnetId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.siteNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.siteGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
+            this.siteBS = new System.Windows.Forms.BindingSource();
+            this.siteGV = new B_PowerWin.GUI.Grid.GridViewBase();
+            this.deptartmentNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.departmentGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
+            this.departmentBS = new System.Windows.Forms.BindingSource();
+            this.departmentGV = new B_PowerWin.GUI.Grid.GridViewBase();
+            this.projectNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.projectGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
+            this.projectBS = new System.Windows.Forms.BindingSource();
+            this.projectGV = new B_PowerWin.GUI.Grid.GridViewBase();
+            this.purposeNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.purposeGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
+            this.purposeBS = new System.Windows.Forms.BindingSource();
+            this.purposeGV = new B_PowerWin.GUI.Grid.GridViewBase();
+            this.equipmentNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.equipmentGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
+            this.equipmentBS = new System.Windows.Forms.BindingSource();
+            this.equipmentGV = new B_PowerWin.GUI.Grid.GridViewBase();
             ((System.ComponentModel.ISupportInitialize)(this.dimensionNavPane)).BeginInit();
             this.dimensionNavPane.SuspendLayout();
             this.businessUnitNavPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.businessUnitGC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.businessUnitBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessUnitGV)).BeginInit();
             this.siteNavPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.siteGC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.siteBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siteGV)).BeginInit();
             this.deptartmentNavPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departmentGC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentGV)).BeginInit();
             this.projectNavPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projectGC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectGV)).BeginInit();
             this.purposeNavPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.purposeGC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purposeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.purposeGV)).BeginInit();
             this.equipmentNavPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentGC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equipmentGV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.businessUnitBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.siteBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.departmentBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.purposeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equipmentGV)).BeginInit();
             this.SuspendLayout();
             // 
             // dimensionNavPane
@@ -104,6 +105,7 @@
             this.dimensionNavPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dimensionNavPane.Location = new System.Drawing.Point(0, 31);
             this.dimensionNavPane.Name = "dimensionNavPane";
+            this.dimensionNavPane.PageProperties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.dimensionNavPane.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.businessUnitNavPage,
             this.siteNavPage,
@@ -119,10 +121,14 @@
             // 
             // businessUnitNavPage
             // 
+            this.businessUnitNavPage.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("businessUnitNavPage.Appearance.Image")));
+            this.businessUnitNavPage.Appearance.Options.UseImage = true;
+            this.businessUnitNavPage.Appearance.Options.UseTextOptions = true;
             this.businessUnitNavPage.Caption = "Business unit";
             this.businessUnitNavPage.Controls.Add(this.businessUnitGC);
+            this.businessUnitNavPage.Image = ((System.Drawing.Image)(resources.GetObject("businessUnitNavPage.Image")));
             this.businessUnitNavPage.Name = "businessUnitNavPage";
-            this.businessUnitNavPage.Size = new System.Drawing.Size(651, 471);
+            this.businessUnitNavPage.Size = new System.Drawing.Size(633, 471);
             // 
             // businessUnitGC
             // 
@@ -133,10 +139,14 @@
             this.businessUnitGC.MainView = this.businessUnitGV;
             this.businessUnitGC.MenuManager = this.barManager1;
             this.businessUnitGC.Name = "businessUnitGC";
-            this.businessUnitGC.Size = new System.Drawing.Size(651, 471);
+            this.businessUnitGC.Size = new System.Drawing.Size(633, 471);
             this.businessUnitGC.TabIndex = 0;
             this.businessUnitGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.businessUnitGV});
+            // 
+            // businessUnitBS
+            // 
+            this.businessUnitBS.DataSource = typeof(B_PowerWin.DB.BusinessUnit);
             // 
             // businessUnitGV
             // 
@@ -157,150 +167,6 @@
             this.businessUnitGV.GridControl = this.businessUnitGC;
             this.businessUnitGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.SimpleEdit;
             this.businessUnitGV.Name = "businessUnitGV";
-            // 
-            // siteNavPage
-            // 
-            this.siteNavPage.Caption = "Sites {Locations}";
-            this.siteNavPage.Controls.Add(this.siteGC);
-            this.siteNavPage.Name = "siteNavPage";
-            this.siteNavPage.Size = new System.Drawing.Size(651, 471);
-            // 
-            // siteGC
-            // 
-            this.siteGC.DataSource = this.siteBS;
-            this.siteGC.dbContext = null;
-            this.siteGC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.siteGC.Location = new System.Drawing.Point(0, 0);
-            this.siteGC.MainView = this.siteGV;
-            this.siteGC.MenuManager = this.barManager1;
-            this.siteGC.Name = "siteGC";
-            this.siteGC.Size = new System.Drawing.Size(651, 471);
-            this.siteGC.TabIndex = 0;
-            this.siteGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.siteGV});
-            // 
-            // siteGV
-            // 
-            this.siteGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.None;
-            this.siteGV.GridControl = this.siteGC;
-            this.siteGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
-            this.siteGV.Name = "siteGV";
-            // 
-            // deptartmentNavPage
-            // 
-            this.deptartmentNavPage.Caption = "Departments";
-            this.deptartmentNavPage.Controls.Add(this.departmentGC);
-            this.deptartmentNavPage.Name = "deptartmentNavPage";
-            this.deptartmentNavPage.Size = new System.Drawing.Size(651, 471);
-            // 
-            // departmentGC
-            // 
-            this.departmentGC.DataSource = this.departmentBS;
-            this.departmentGC.dbContext = null;
-            this.departmentGC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.departmentGC.Location = new System.Drawing.Point(0, 0);
-            this.departmentGC.MainView = this.departmentGV;
-            this.departmentGC.MenuManager = this.barManager1;
-            this.departmentGC.Name = "departmentGC";
-            this.departmentGC.Size = new System.Drawing.Size(651, 471);
-            this.departmentGC.TabIndex = 0;
-            this.departmentGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.departmentGV});
-            // 
-            // departmentGV
-            // 
-            this.departmentGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.None;
-            this.departmentGV.GridControl = this.departmentGC;
-            this.departmentGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
-            this.departmentGV.Name = "departmentGV";
-            // 
-            // projectNavPage
-            // 
-            this.projectNavPage.Caption = "Projects";
-            this.projectNavPage.Controls.Add(this.projectGC);
-            this.projectNavPage.Name = "projectNavPage";
-            this.projectNavPage.Size = new System.Drawing.Size(651, 471);
-            // 
-            // projectGC
-            // 
-            this.projectGC.DataSource = this.projectBS;
-            this.projectGC.dbContext = null;
-            this.projectGC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectGC.Location = new System.Drawing.Point(0, 0);
-            this.projectGC.MainView = this.projectGV;
-            this.projectGC.MenuManager = this.barManager1;
-            this.projectGC.Name = "projectGC";
-            this.projectGC.Size = new System.Drawing.Size(651, 471);
-            this.projectGC.TabIndex = 0;
-            this.projectGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.projectGV});
-            // 
-            // projectGV
-            // 
-            this.projectGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.None;
-            this.projectGV.GridControl = this.projectGC;
-            this.projectGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
-            this.projectGV.Name = "projectGV";
-            // 
-            // purposeNavPage
-            // 
-            this.purposeNavPage.Caption = "Purposes";
-            this.purposeNavPage.Controls.Add(this.purposeGC);
-            this.purposeNavPage.Name = "purposeNavPage";
-            this.purposeNavPage.Size = new System.Drawing.Size(651, 471);
-            // 
-            // purposeGC
-            // 
-            this.purposeGC.DataSource = this.purposeBS;
-            this.purposeGC.dbContext = null;
-            this.purposeGC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.purposeGC.Location = new System.Drawing.Point(0, 0);
-            this.purposeGC.MainView = this.purposeGV;
-            this.purposeGC.MenuManager = this.barManager1;
-            this.purposeGC.Name = "purposeGC";
-            this.purposeGC.Size = new System.Drawing.Size(651, 471);
-            this.purposeGC.TabIndex = 0;
-            this.purposeGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.purposeGV});
-            // 
-            // purposeGV
-            // 
-            this.purposeGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.None;
-            this.purposeGV.GridControl = this.purposeGC;
-            this.purposeGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
-            this.purposeGV.Name = "purposeGV";
-            // 
-            // equipmentNavPage
-            // 
-            this.equipmentNavPage.Caption = "Equipments";
-            this.equipmentNavPage.Controls.Add(this.equipmentGC);
-            this.equipmentNavPage.Name = "equipmentNavPage";
-            this.equipmentNavPage.Size = new System.Drawing.Size(651, 471);
-            // 
-            // equipmentGC
-            // 
-            this.equipmentGC.DataSource = this.equipmentBS;
-            this.equipmentGC.dbContext = null;
-            this.equipmentGC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.equipmentGC.Location = new System.Drawing.Point(0, 0);
-            this.equipmentGC.MainView = this.equipmentGV;
-            this.equipmentGC.MenuManager = this.barManager1;
-            this.equipmentGC.Name = "equipmentGC";
-            this.equipmentGC.Size = new System.Drawing.Size(651, 471);
-            this.equipmentGC.TabIndex = 0;
-            this.equipmentGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.equipmentGV});
-            // 
-            // equipmentGV
-            // 
-            this.equipmentGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.None;
-            this.equipmentGV.GridControl = this.equipmentGC;
-            this.equipmentGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
-            this.equipmentGV.Name = "equipmentGV";
-            // 
-            // businessUnitBS
-            // 
-            this.businessUnitBS.DataSource = typeof(B_PowerWin.DB.BusinessUnit);
             // 
             // colDimDefaults
             // 
@@ -386,6 +252,162 @@
             this.colParnetId.Visible = true;
             this.colParnetId.VisibleIndex = 11;
             // 
+            // siteNavPage
+            // 
+            this.siteNavPage.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("siteNavPage.Appearance.Image")));
+            this.siteNavPage.Appearance.Options.UseImage = true;
+            this.siteNavPage.Appearance.Options.UseTextOptions = true;
+            this.siteNavPage.Caption = "Sites {Locations}";
+            this.siteNavPage.Controls.Add(this.siteGC);
+            this.siteNavPage.Image = ((System.Drawing.Image)(resources.GetObject("siteNavPage.Image")));
+            this.siteNavPage.Name = "siteNavPage";
+            this.siteNavPage.Size = new System.Drawing.Size(633, 471);
+            // 
+            // siteGC
+            // 
+            this.siteGC.DataSource = this.siteBS;
+            this.siteGC.dbContext = null;
+            this.siteGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.siteGC.Location = new System.Drawing.Point(0, 0);
+            this.siteGC.MainView = this.siteGV;
+            this.siteGC.MenuManager = this.barManager1;
+            this.siteGC.Name = "siteGC";
+            this.siteGC.Size = new System.Drawing.Size(633, 471);
+            this.siteGC.TabIndex = 0;
+            this.siteGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.siteGV});
+            // 
+            // siteGV
+            // 
+            this.siteGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.Site;
+            this.siteGV.GridControl = this.siteGC;
+            this.siteGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
+            this.siteGV.Name = "siteGV";
+            // 
+            // deptartmentNavPage
+            // 
+            this.deptartmentNavPage.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("deptartmentNavPage.Appearance.Image")));
+            this.deptartmentNavPage.Appearance.Options.UseImage = true;
+            this.deptartmentNavPage.Caption = "Departments";
+            this.deptartmentNavPage.Controls.Add(this.departmentGC);
+            this.deptartmentNavPage.Image = ((System.Drawing.Image)(resources.GetObject("deptartmentNavPage.Image")));
+            this.deptartmentNavPage.Name = "deptartmentNavPage";
+            this.deptartmentNavPage.Size = new System.Drawing.Size(633, 471);
+            // 
+            // departmentGC
+            // 
+            this.departmentGC.DataSource = this.departmentBS;
+            this.departmentGC.dbContext = null;
+            this.departmentGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.departmentGC.Location = new System.Drawing.Point(0, 0);
+            this.departmentGC.MainView = this.departmentGV;
+            this.departmentGC.MenuManager = this.barManager1;
+            this.departmentGC.Name = "departmentGC";
+            this.departmentGC.Size = new System.Drawing.Size(633, 471);
+            this.departmentGC.TabIndex = 0;
+            this.departmentGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.departmentGV});
+            // 
+            // departmentGV
+            // 
+            this.departmentGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.Department;
+            this.departmentGV.GridControl = this.departmentGC;
+            this.departmentGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
+            this.departmentGV.Name = "departmentGV";
+            // 
+            // projectNavPage
+            // 
+            this.projectNavPage.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("projectNavPage.Appearance.Image")));
+            this.projectNavPage.Appearance.Options.UseImage = true;
+            this.projectNavPage.Caption = "Projects";
+            this.projectNavPage.Controls.Add(this.projectGC);
+            this.projectNavPage.Image = ((System.Drawing.Image)(resources.GetObject("projectNavPage.Image")));
+            this.projectNavPage.Name = "projectNavPage";
+            this.projectNavPage.Size = new System.Drawing.Size(633, 471);
+            // 
+            // projectGC
+            // 
+            this.projectGC.DataSource = this.projectBS;
+            this.projectGC.dbContext = null;
+            this.projectGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.projectGC.Location = new System.Drawing.Point(0, 0);
+            this.projectGC.MainView = this.projectGV;
+            this.projectGC.MenuManager = this.barManager1;
+            this.projectGC.Name = "projectGC";
+            this.projectGC.Size = new System.Drawing.Size(633, 471);
+            this.projectGC.TabIndex = 0;
+            this.projectGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.projectGV});
+            // 
+            // projectGV
+            // 
+            this.projectGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.Project;
+            this.projectGV.GridControl = this.projectGC;
+            this.projectGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
+            this.projectGV.Name = "projectGV";
+            // 
+            // purposeNavPage
+            // 
+            this.purposeNavPage.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("purposeNavPage.Appearance.Image")));
+            this.purposeNavPage.Appearance.Options.UseImage = true;
+            this.purposeNavPage.Caption = "Purposes";
+            this.purposeNavPage.Controls.Add(this.purposeGC);
+            this.purposeNavPage.Image = ((System.Drawing.Image)(resources.GetObject("purposeNavPage.Image")));
+            this.purposeNavPage.Name = "purposeNavPage";
+            this.purposeNavPage.Size = new System.Drawing.Size(633, 471);
+            // 
+            // purposeGC
+            // 
+            this.purposeGC.DataSource = this.purposeBS;
+            this.purposeGC.dbContext = null;
+            this.purposeGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.purposeGC.Location = new System.Drawing.Point(0, 0);
+            this.purposeGC.MainView = this.purposeGV;
+            this.purposeGC.MenuManager = this.barManager1;
+            this.purposeGC.Name = "purposeGC";
+            this.purposeGC.Size = new System.Drawing.Size(633, 471);
+            this.purposeGC.TabIndex = 0;
+            this.purposeGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.purposeGV});
+            // 
+            // purposeGV
+            // 
+            this.purposeGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.Purpose;
+            this.purposeGV.GridControl = this.purposeGC;
+            this.purposeGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
+            this.purposeGV.Name = "purposeGV";
+            // 
+            // equipmentNavPage
+            // 
+            this.equipmentNavPage.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("equipmentNavPage.Appearance.Image")));
+            this.equipmentNavPage.Appearance.Options.UseImage = true;
+            this.equipmentNavPage.Caption = "Equipments";
+            this.equipmentNavPage.Controls.Add(this.equipmentGC);
+            this.equipmentNavPage.Image = ((System.Drawing.Image)(resources.GetObject("equipmentNavPage.Image")));
+            this.equipmentNavPage.Name = "equipmentNavPage";
+            this.equipmentNavPage.Size = new System.Drawing.Size(633, 471);
+            // 
+            // equipmentGC
+            // 
+            this.equipmentGC.DataSource = this.equipmentBS;
+            this.equipmentGC.dbContext = null;
+            this.equipmentGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.equipmentGC.Location = new System.Drawing.Point(0, 0);
+            this.equipmentGC.MainView = this.equipmentGV;
+            this.equipmentGC.MenuManager = this.barManager1;
+            this.equipmentGC.Name = "equipmentGC";
+            this.equipmentGC.Size = new System.Drawing.Size(633, 471);
+            this.equipmentGC.TabIndex = 0;
+            this.equipmentGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.equipmentGV});
+            // 
+            // equipmentGV
+            // 
+            this.equipmentGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.Equipment;
+            this.equipmentGV.GridControl = this.equipmentGC;
+            this.equipmentGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
+            this.equipmentGV.Name = "equipmentGV";
+            // 
             // GLDimensionSetup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,28 +421,28 @@
             this.dimensionNavPane.ResumeLayout(false);
             this.businessUnitNavPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.businessUnitGC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.businessUnitBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessUnitGV)).EndInit();
             this.siteNavPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.siteGC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.siteBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.siteGV)).EndInit();
             this.deptartmentNavPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.departmentGC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentGV)).EndInit();
             this.projectNavPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.projectGC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectGV)).EndInit();
             this.purposeNavPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.purposeGC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purposeBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.purposeGV)).EndInit();
             this.equipmentNavPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.equipmentGC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equipmentGV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.businessUnitBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.siteBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.departmentBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.purposeBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equipmentGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

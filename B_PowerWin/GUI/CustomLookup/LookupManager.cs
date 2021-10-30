@@ -21,8 +21,7 @@ namespace B_PowerWin.GUI.CustomLookup
             _gv.GridControl.ExternalRepository = GL_LookupStorage.MyLookupPR;
             _gvcol.ColumnEdit = lov;
         }
-
-
+     
 
 
     }

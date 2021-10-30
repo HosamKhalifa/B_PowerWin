@@ -75,6 +75,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -87,6 +89,7 @@
   <ItemGroup>
     <Compile Include="AppDbContext.cs" />
     <Compile Include="Cryptography.cs" />
+    <Compile Include="DBEvents\InitNewRowEventArgs.cs" />
     <Compile Include="DB\AccountBase.cs" />
     <Compile Include="DB\AccountGroup.cs" />
     <Compile Include="DB\Address.cs" />
@@ -111,6 +114,7 @@
     <Compile Include="DB\EnumTable.cs" />
     <Compile Include="DB\Equipment.cs" />
     <Compile Include="DB\FormEntityEnum.cs" />
+    <Compile Include="DB\ILineBase.cs" />
     <Compile Include="DB\InventDimDefault.cs" />
     <Compile Include="DB\InventStore.cs" />
     <Compile Include="DB\Item.cs" />
@@ -149,10 +153,19 @@
     <Compile Include="DB\SecAccessTypeTypeEnum.cs" />
     <Compile Include="DB\SecPrincipal.cs" />
     <Compile Include="DB\SecPrincipalRole.cs" />
+    <Compile Include="DB\SecPrincipalRoleAction.cs" />
+    <Compile Include="DB\SecPrincipalRoleForm.cs" />
+    <Compile Include="DB\SecPrincipalRoleJournal.cs" />
+    <Compile Include="DB\SecPrincipalRoleMaster.cs" />
     <Compile Include="DB\SecPrincipalRoleMem.cs" />
+    <Compile Include="DB\SecPrincipalRoleReport.cs" />
+    <Compile Include="DB\SecPrincipalRoleResponsibility.cs" />
     <Compile Include="DB\SecPrincipalUser.cs" />
     <Compile Include="DB\SeedDatabase.cs" />
     <Compile Include="DB\Site.cs" />
+    <Compile Include="DB\SysSequence.cs" />
+    <Compile Include="DB\SysSequenceValue.cs" />
+    <Compile Include="DB\SysSequRecycleEnum.cs" />
     <Compile Include="DB\TaxCode.cs" />
     <Compile Include="DB\TaxCodeValueSetup.cs" />
     <Compile Include="DB\TaxGroup.cs" />
@@ -181,6 +194,12 @@
     <Compile Include="GL\Forms\GLDimensionSetup.Designer.cs">
       <DependentUpon>GLDimensionSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="GL\Forms\JournalTypeSetupFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\Forms\JournalTypeSetupFrm.Designer.cs">
+      <DependentUpon>JournalTypeSetupFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GL\Forms\MainAccountFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +211,18 @@
     </Compile>
     <Compile Include="GL\Forms\MainAccountGroupFrm.Designer.cs">
       <DependentUpon>MainAccountGroupFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GL\Forms\SysSequenceSetupFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\Forms\SysSequenceSetupFrm.Designer.cs">
+      <DependentUpon>SysSequenceSetupFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Invent\InventStoreFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Invent\InventStoreFrm.Designer.cs">
+      <DependentUpon>InventStoreFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CustomLookup\GL_Lookups.cs">
       <SubType>UserControl</SubType>
@@ -290,18 +321,39 @@
     <Compile Include="MainFrm.Designer.cs">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110252128439_init_0008.cs" />
-    <Compile Include="Migrations\202110252128439_init_0008.designer.cs">
-      <DependentUpon>202110252128439_init_0008.cs</DependentUpon>
+    <Compile Include="Migrations\202110300948150_init_0017.cs" />
+    <Compile Include="Migrations\202110300948150_init_0017.designer.cs">
+      <DependentUpon>202110300948150_init_0017.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110252223566_init_0009.cs" />
-    <Compile Include="Migrations\202110252223566_init_0009.designer.cs">
-      <DependentUpon>202110252223566_init_0009.cs</DependentUpon>
+    <Compile Include="Migrations\202110300950513_init_0018.cs" />
+    <Compile Include="Migrations\202110300950513_init_0018.designer.cs">
+      <DependentUpon>202110300950513_init_0018.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110300954055_init_0019.cs" />
+    <Compile Include="Migrations\202110300954055_init_0019.designer.cs">
+      <DependentUpon>202110300954055_init_0019.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110302051340_init_0020.cs" />
+    <Compile Include="Migrations\202110302051340_init_0020.designer.cs">
+      <DependentUpon>202110302051340_init_0020.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sec\SecPrincipalEditorFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sec\SecPrincipalEditorFrm.Designer.cs">
+      <DependentUpon>SecPrincipalEditorFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sec\SecPrincipalFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sec\SecPrincipalFrm.Designer.cs">
+      <DependentUpon>SecPrincipalFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="SharedExt\DateTimeExt.cs" />
     <Compile Include="SharedExt\ExceptionExtensions.cs" />
     <Compile Include="SharedExt\MyFormExt.cs" />
@@ -312,11 +364,20 @@
     <EmbeddedResource Include="GL\Forms\GLDimensionSetup.resx">
       <DependentUpon>GLDimensionSetup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GL\Forms\JournalTypeSetupFrm.resx">
+      <DependentUpon>JournalTypeSetupFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GL\Forms\MainAccountFrm.resx">
       <DependentUpon>MainAccountFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GL\Forms\MainAccountGroupFrm.resx">
       <DependentUpon>MainAccountGroupFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GL\Forms\SysSequenceSetupFrm.resx">
+      <DependentUpon>SysSequenceSetupFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Invent\InventStoreFrm.resx">
+      <DependentUpon>InventStoreFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CustomLookup\GL_Lookups.resx">
       <DependentUpon>GL_Lookups.cs</DependentUpon>
@@ -351,11 +412,17 @@
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110252128439_init_0008.resx">
-      <DependentUpon>202110252128439_init_0008.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110300948150_init_0017.resx">
+      <DependentUpon>202110300948150_init_0017.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110252223566_init_0009.resx">
-      <DependentUpon>202110252223566_init_0009.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110300950513_init_0018.resx">
+      <DependentUpon>202110300950513_init_0018.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110300954055_init_0019.resx">
+      <DependentUpon>202110300954055_init_0019.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110302051340_init_0020.resx">
+      <DependentUpon>202110302051340_init_0020.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -367,6 +434,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Sec\SecPrincipalEditorFrm.resx">
+      <DependentUpon>SecPrincipalEditorFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sec\SecPrincipalFrm.resx">
+      <DependentUpon>SecPrincipalFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="GUI\Grid\AppServicesDataSet.xsc">
       <DependentUpon>AppServicesDataSet.xsd</DependentUpon>
@@ -393,8 +466,21 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\B_PowerWin.DB.Bank.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.BusinessUnit.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.InventStore.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.JournalType.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.MainAccount.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.MainAccountGroup.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipal.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalRole.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalRoleAction.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalRoleForm.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalRoleJournal.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalRoleMaster.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalRoleMem.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalRoleReport.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalRoleResponsibility.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalUser.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.SysSequence.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.UILabel.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.GUI.CustomLookup.GL_Lookups.datasource" />
     <None Include="Properties\Settings.settings">
@@ -413,6 +499,9 @@
   <ItemGroup>
     <Content Include="DB\SqlScript.txt" />
     <Content Include="DB\SqlViews.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

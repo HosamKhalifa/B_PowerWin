@@ -44,6 +44,14 @@ namespace B_PowerWin.DB
         Department = 1032,
         Site = 1033,
         InventStore = 1034,
-        BusinessUnit = 1035
+        BusinessUnit = 1035,
+        SysSequence = 1036,
+        DocumentGL = 1037,
+        SecPrincipalRoleResponsibility=1038,
+        SecPrincipalRoleReport=1039,
+        SecPrincipalRoleMaster = 1040,
+        SecPrincipalRoleJournal = 1041,
+        SecPrincipalRoleForm = 1042,
+        SecPrincipalRoleAction = 1043
     }
 }

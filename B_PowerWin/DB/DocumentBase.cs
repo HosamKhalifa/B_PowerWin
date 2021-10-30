@@ -11,7 +11,16 @@ namespace B_PowerWin.DB
     [Table("doc_base")]
    public class DocumentBase:LineBase
     {
+        [Required]
         public int? CompanyId { get; set; }
+        [Required,ForeignKey("JournalType")]
+        public long? JournalTypeId { get; set; }
+        public virtual JournalType JournalType { get; set; }//Reference 
+        [StringLength(50), Required]
+        public string DisplayNum { get; set; }
+        [StringLength(50)]
+        public string ReferenceNum { get; set; }
+        [Required]
         public DateTime? TransDate { get; set; }
         
         public int? TransDayId { get; set; }
@@ -26,8 +35,12 @@ namespace B_PowerWin.DB
         public string Address { get; set; }
         [StringLength(150)]
         public string ContactName { get; set; }
-        public Country Country { get; set; }
-        public City City { get; set; }
+        [StringLength(5),ForeignKey("Country")]
+        public string CountryId { get; set; }
+        public virtual Country Country { get; set; }
+        [ForeignKey("City")]
+        public long? CityId { get; set; }
+        public virtual City City { get; set; }
         public long? TaxGroup { get; set; }
         public string TaxFileNum { get; set; }
         public string TaxCardNum { get; set; }

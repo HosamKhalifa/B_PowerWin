@@ -29,7 +29,7 @@ namespace B_PowerWin.GUI
         private void InitEvents()
         {
             var grdMgr = new GridManager();
-            grdMgr.Attach(uiLabelGC, uILabelLangTxtGC);
+            grdMgr.Attach(uiLabelGC);
 
             bar1.AddItem(buildLabaelsBI);
             uiLabelGV.FocusedRowChanged += (s, e) => {
@@ -45,8 +45,9 @@ namespace B_PowerWin.GUI
                
             };
             buildLabaelsBI.ItemClick += (s, e) => {
-                DB.SeedDatabase.SeedUILabels(MySession.Session.Database);
                 DB.SeedDatabase.SeedEnumTable(MySession.Session.Database);
+                DB.SeedDatabase.SeedUILabels(MySession.Session.Database);
+               
             };
         }
 
@@ -60,20 +61,26 @@ namespace B_PowerWin.GUI
             //{
             //    // Bind data to control when loading complete
             
-            dbContext.UILabels.Include(X => X.BaseType.Lines).Load();
+            dbContext.UILabels.Include(X => X.LangTxts).Include(x=> x.BaseType).Load();
             uILabelBindingSource.DataSource = dbContext.UILabels.Local;    
 
             //}, System.Threading.Tasks.TaskScheduler.FromCurrentSynchronizationContext());
         }
         private void LoadLangTxt(UILabel _label)
         {
+            //if (dbContext.UILabelTxts.Where(x => x.LabelId == _label.LabelId).Count() == 0)
+            //{
+            //    SeedDatabase.SeedUILabelLangTxt(dbContext, _label);
+            //}
+
+            //dbContext.UILabelTxts.Local.Where(x => x.LabelId == _label.LabelId);
             
-            uILabelLangTxtGC.DataSource = dbContext.UILabelTxts.Local.Where(x => x.LabelId == _label.LabelId);
-            if(dbContext.UILabelTxts.Where(x => x.LabelId == _label.LabelId).Count() == 0)
-            {
-                SeedDatabase.SeedUILabelLangTxt(dbContext, _label);
-                uILabelLangTxtGC.DataSource = dbContext.UILabelTxts.Local.Where(x => x.LabelId == _label.LabelId);
-            }
+
+        }
+
+        private void entityTypeButtons_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+          
         }
     }
 }

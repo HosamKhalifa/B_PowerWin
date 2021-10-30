@@ -23,9 +23,10 @@ namespace B_PowerWin.GUI
         }
         public FormBase(FormArgs _callerArgs)
         {
-            FormArgs.CallerFormArgs = _callerArgs;
-            InitializeComponent();
             InitFormBase(_callerArgs);
+           
+            InitializeComponent();
+           
         }
         public virtual void ViewDetail(long? _PKey)
         {

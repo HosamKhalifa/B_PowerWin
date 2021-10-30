@@ -29,8 +29,10 @@ namespace B_PowerWin.GUI.CustomLookup
         public GL_Lookups()
         {
             InitializeComponent();
-            
-            
+            InitViewDetailsEvent();
+
+
+
         }
         public DevExpress.XtraEditors.Repository.RepositoryItem GetLookupObject(DB.UILabelAutoLookup _lookUpCode, string _FilterExp = "")
         {
@@ -72,6 +74,14 @@ namespace B_PowerWin.GUI.CustomLookup
                     
 
                     break;
+                case UILabelAutoLookup.SysSequence:
+                    MySession.Session.Database.SysSequences.Load();
+                    sequBindingSource.DataSource = MySession.Session.Database.SysSequences.Local;
+                    sequBindingSource.Filter = _FilterExp;
+                    sequBindingSource.ResetBindings(true);
+                    repItem = MyLookupPR.Items[sequLookup.Name];
+
+                    break;
                 case UILabelAutoLookup.MainAccountChild:
                     break;
                 case UILabelAutoLookup.MainAccountTotal:
@@ -96,14 +106,73 @@ namespace B_PowerWin.GUI.CustomLookup
 
         private void mainAccountGroupLookup_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis)
+            if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph)
             {
                 var frm = new MainAccountGroupFrm();
                 frm.FormClosing+=(frmS, frmE)=>{
-                    MySession.Session.Database.MainAccountGroups.Load();
+                    MySession.Session.Database.JournalTypes.Load();
                 };
                 frm.Show();
             }
         }
+
+        private void InitViewDetailsEvent()
+        {
+            mainAccountGroupLookup.ButtonClick += (s, e) =>
+            {
+                if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis)
+                {
+                    var frm = new MainAccountGroupFrm() { MdiParent = MySession.Session.MainForm};
+                    frm.FormClosing += (frmS, frmE) =>
+                    {
+                        MySession.Session.Database.MainAccountGroups.Load();
+                    };
+                    frm.Show();
+                }
+            };
+            //*****************************************************************************************
+            mainAccount.ButtonClick += (s, e) =>
+            {
+                if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis)
+                {
+                    var frm = new MainAccountGroupFrm() { MdiParent = MySession.Session.MainForm };
+                    frm.FormClosing += (frmS, frmE) =>
+                    {
+                        MySession.Session.Database.MainAccounts.Load();
+                    };
+                    frm.Show(); 
+                }
+            };
+            //*****************************************************************************************
+            sequLookup.ButtonClick += (s, e) =>
+            {
+                if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis)
+                {
+                    var frm = new SysSequenceSetupFrm() { MdiParent = MySession.Session.MainForm };
+                    frm.FormClosing += (frmS, frmE) =>
+                    {
+                        MySession.Session.Database.SysSequences.Load();
+                    };
+                    frm.Show(); 
+                }
+            };
+            //*****************************************************************************************
+            /*
+            x.ButtonClick += (s, e) =>
+            {
+                if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph)
+                {
+                    var frm = new SysSequenceSetupFrm();
+                    frm.FormClosing += (frmS, frmE) =>
+                    {
+                        MySession.Session.Database.x.Load();
+                    };
+                    frm.Show(); 
+                }
+            };
+            
+             */
+        }
+
     }
 }

@@ -9,6 +9,8 @@ namespace B_PowerWin.GUI
 {
    public class FormArgs
     {
+        private object fCurrentObject;
+
         public FormArgs(FormBase _parentForm)
         {
             this.Form = _parentForm;
@@ -16,9 +18,10 @@ namespace B_PowerWin.GUI
         }
         public FormBase Form { get; set; }
         public FormArgs CallerFormArgs { get; set; }
-        public object CurrentObject { get { return CurrentObject; }
+        public object CurrentObject { get { return fCurrentObject; }
             set
             {
+                fCurrentObject = value;
                 if (value is LineBase) { CurrentLine = (LineBase)value; }
                 if (value is AccountBase) { CurrentAccount = (AccountBase)value; }
                 if (value is DocumentBase) { CurrentDocument = (DocumentBase)value; }

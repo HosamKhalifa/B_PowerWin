@@ -1,4 +1,5 @@
 ﻿using B_PowerWin.DB;
+using B_PowerWin.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
@@ -27,7 +28,7 @@ namespace B_PowerWin
                 UserKey = usr.UserKey;
                 Employee = Database.Employees.Find(usr.EmplId);
                 Company = Database.Companies.Find(usr.DefaultCompany);
-                LangId = usr.LangId;
+                LangId = string.IsNullOrEmpty(usr.LangId)? Settings.Default["LangId"].ToString():usr.LangId ;
                 SkinName = usr.SkinName;
                 MainForm = _mainFrm;
                 

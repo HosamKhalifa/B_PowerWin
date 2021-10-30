@@ -11,6 +11,11 @@ namespace B_PowerWin.DB
     [Table("sec_access_type")]
     public class SecAccessType
     {
+
+
+        public virtual ICollection<SecPrincipalRoleMem> SecPrincipalRoleMems { get; set; }
+
+
         [Key]
         public int? AccessType { get; set; }
         [StringLength(100)]

@@ -18,10 +18,15 @@ namespace B_PowerWin.GUI
         public EditFormBase()
         {
             InitializeComponent();
+          
         }
+
+        
+       
+       
         public EditFormBase(FormArgs _callerArgs):base(_callerArgs)
         {
-
+            InitializeComponent();
         }
         public DialogResult SaveConfirmMsg()
         {

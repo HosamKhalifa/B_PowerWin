@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GL_Lookups));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             this.MyLookupPR = new DevExpress.XtraEditors.Repository.PersistentRepository(this.components);
             this.mainAccount = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.mainAccountBS = new System.Windows.Forms.BindingSource(this.components);
@@ -39,23 +42,29 @@
             this.colMainAccountType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.mainAccountGroupLookup = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.mainAccountGroupBS = new System.Windows.Forms.BindingSource(this.components);
+            this.sequLookup = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.sequBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.mainAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountSLookupGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountGroupLookup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountGroupBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sequLookup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sequBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // MyLookupPR
             // 
             this.MyLookupPR.Items.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.mainAccount,
-            this.mainAccountGroupLookup});
+            this.mainAccountGroupLookup,
+            this.sequLookup});
             // 
             // mainAccount
             // 
             this.mainAccount.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, true, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
             this.mainAccount.DataSource = this.mainAccountBS;
             this.mainAccount.DisplayMember = "ReferenceNum";
             this.mainAccount.KeyMember = "Id";
@@ -111,7 +120,7 @@
             // 
             this.mainAccountGroupLookup.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "Edit...", -1, true, true, true, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "Edit...", -1, true, true, true, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("mainAccountGroupLookup.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
             this.mainAccountGroupLookup.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("GroupNum", "Group Num", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("GroupName", "Group Name", 60, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending),
@@ -127,17 +136,39 @@
             // 
             this.mainAccountGroupBS.DataSource = typeof(B_PowerWin.DB.MainAccountGroup);
             // 
+            // sequLookup
+            // 
+            this.sequLookup.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "Go to table", -1, true, true, true, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F9), serializableAppearanceObject3, "Go to table", null, null, true)});
+            this.sequLookup.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SequNum", "Sequ Num", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SequName", "Sequ Name", 70, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SysSequRecycle", "Sys Sequ Recycle", 10, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far)});
+            this.sequLookup.DataSource = this.sequBindingSource;
+            this.sequLookup.DisplayMember = "DisplayTitle";
+            this.sequLookup.KeyMember = "Id";
+            this.sequLookup.Name = "sequLookup";
+            this.sequLookup.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
+            this.sequLookup.ValueMember = "Id";
+            // 
+            // sequBindingSource
+            // 
+            this.sequBindingSource.DataSource = typeof(B_PowerWin.DB.SysSequence);
+            // 
             // GL_Lookups
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "GL_Lookups";
-            this.Size = new System.Drawing.Size(622, 331);
+            this.Size = new System.Drawing.Size(752, 513);
             ((System.ComponentModel.ISupportInitialize)(this.mainAccount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountSLookupGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountGroupLookup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountGroupBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sequLookup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sequBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -152,5 +183,7 @@
         private System.Windows.Forms.BindingSource mainAccountBS;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit mainAccountGroupLookup;
         private System.Windows.Forms.BindingSource mainAccountGroupBS;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit sequLookup;
+        private System.Windows.Forms.BindingSource sequBindingSource;
     }
 }

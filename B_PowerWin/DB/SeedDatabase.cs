@@ -16,7 +16,7 @@ namespace B_PowerWin.DB
         {
             _db.SecPrincipalUsers.AddOrUpdate(new SecPrincipalUser() { UserKey = 1001, PrincipalId = "root", PrincipalName = "Application administrator", Pwd = Cryptography.Encrypt("OpenYourMind"), DefaultCompany = 1, EffectiveFrom = DateTime.Today.Date, EffectiveTo = DateTime.Today.AddYears(30) });
         }
-
+     
         public static void SeedUILabels(AppDbContext context)
         {
             var objCntxt = ((IObjectContextAdapter)context).ObjectContext;
@@ -34,10 +34,17 @@ namespace B_PowerWin.DB
                             .GetTypes();
                           //  .Where(t => t.Namespace.StartsWith("B_PowerWin.DB"));
 
-            foreach (var typ in types.Where(x => !string.IsNullOrEmpty(x.Namespace) && x.Namespace.StartsWith("B_PowerWin.DB")))
+            foreach (var typ in types.Where(x => !string.IsNullOrEmpty(x.Namespace) &&
+                                                 x.Namespace.StartsWith("B_PowerWin.DB") &&
+                                                 x.IsClass))
             {
                 var instance = Activator.CreateInstance(typ);
-
+                //Call BuildMetaData
+                MethodInfo buildMetaData = typ.GetMethod("BuildMetaData");
+                if(buildMetaData != null)
+                {
+                    buildMetaData.Invoke(instance, new object[] { context });
+                }
                 //Get Class type enum
                 
                 MethodInfo theMethod = typ.GetMethod("GetBaseTypeEnum");
@@ -51,6 +58,8 @@ namespace B_PowerWin.DB
                     {
                     try
                     {
+                        var newLine = context.UILabels.Find($"{baseTypeRecord.BaseTypeName}.{f.Name}");
+                        if(newLine != null) {continue; }//Existed 
                         var newUILbl = new UILabel()
                         {
                             BaseType = baseTypeRecord,

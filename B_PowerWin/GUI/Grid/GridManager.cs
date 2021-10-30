@@ -129,22 +129,35 @@ namespace B_PowerWin.GUI.Grid
         {
             foreach (var gc in _gridControls)
             {
+
                 //GridControl settings
                 gc.GotFocus += (s, e) => {
                     var gcParntFrm = gc.FindForm();
                     if(gcParntFrm is FormBase )
                     {
-                        (gc.FocusedView as GridViewBase)
-                        .EnableEditButtons();
+                        if (gc.FocusedView is GridViewBase)
+                        {
+                            (gc.FocusedView as GridViewBase).EnableEditButtons(); 
+                        }
                     }
                 };
 
                 //Grid View Settings
                 foreach (var item in gc.Views)
                 {
-                    if (item is DevExpress.XtraGrid.Views.Grid.GridView)
+                    if (item is GridViewBase)
                     {
+                        
                         var gv = (DevExpress.XtraGrid.Views.Grid.GridView)item;
+                        //InitNewrow 
+                        gv.InitNewRow += (s, e) => 
+                        {
+                            var lt_Row = (s as GridView).GetRow(e.RowHandle);
+                            if(lt_Row != null && lt_Row is LineBase)
+                            {
+                                (lt_Row as LineBase).OnInitNewRow(new DBEvents.InitNewRowEventArgs());
+                            }
+                        };
                         gv.OptionsView.ColumnAutoWidth = false;
                         gv.OptionsView.ShowAutoFilterRow = true;
                         gv.OptionsView.ShowFooter = true;
@@ -156,6 +169,17 @@ namespace B_PowerWin.GUI.Grid
                         gv.OptionsLayout.StoreAllOptions = true;
                         gv.OptionsLayout.StoreAppearance = true;
                         gv.OptionsLayout.StoreFormatRules = true;
+                        
+                        
+                            gv.InitNewRow += (s, e) => {
+                                if (gv.OptionsBehavior.EditingMode == GridEditingMode.EditForm || gv.OptionsBehavior.EditingMode == GridEditingMode.EditFormInplace || gv.OptionsBehavior.EditingMode == GridEditingMode.EditFormInplaceHideCurrentRow)
+                                {
+                                    (s as GridViewBase).ShowEditForm();
+                                }
+                                
+                            };
+                        
+
                         //Attach current object to form 
                         var gcParntFrm = gc.FindForm();
                         if (gcParntFrm is FormBase)
@@ -168,12 +192,36 @@ namespace B_PowerWin.GUI.Grid
                                 }
                             };
                         }
+                        //Add Shortcuts hint on Append & Remove buttons
+                        if(gv.GridControl.EmbeddedNavigator != null)
+                        {
+                            var cn = gv.GridControl.EmbeddedNavigator;
+                            cn.Buttons.Append.Hint = "New F6";
+                            cn.Buttons.Remove.Hint = "Delete Shift+F6";
+
+                        }
                         gv.KeyDown += (s, e) =>
                         {
+                            
                             if (e.KeyCode == Keys.T && e.Control)//Export current selection to Application excel sheet
                             {
                                 ExportToExcel(gv);
 
+                            }
+                            if(e.KeyCode == Keys.F6)
+                            {
+                                var cn = gv.GridControl.EmbeddedNavigator;
+                                if(cn != null)
+                                {
+                                    if (e.Shift) //Remove record
+                                    {
+                                        cn.Buttons.DoClick(cn.Buttons.Remove);
+                                    }
+                                    else //Insert new record
+                                    {
+                                        cn.Buttons.DoClick(cn.Buttons.Append);
+                                    }
+                                }
                             }
                         };
                         gv.PopupMenuShowing += (sender, argE) =>

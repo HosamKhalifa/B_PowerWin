@@ -23,7 +23,11 @@ namespace B_PowerWin.DB
         MainAccount         = 40,
         MainAccountGroup    = 41,
         MainAccountChild    = 42,
-        MainAccountTotal    = 43
+        MainAccountTotal    = 43,
+        
+        SysSequence         = 50,
+
+        JournalType         = 60
 
 
         

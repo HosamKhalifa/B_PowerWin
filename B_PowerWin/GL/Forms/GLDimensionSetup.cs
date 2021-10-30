@@ -18,6 +18,7 @@ namespace B_PowerWin.GL.Forms
             InitializeComponent();
             InitData();
         }
+
         public override void RefreshData()
         {
             dbContext = new AppDbContext();
@@ -63,5 +64,8 @@ namespace B_PowerWin.GL.Forms
             RefreshData();
 
         }
+
+
+
     }
 }

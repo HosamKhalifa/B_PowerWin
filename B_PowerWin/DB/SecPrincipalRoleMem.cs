@@ -24,14 +24,18 @@ namespace B_PowerWin.DB
             BaseType = (int)BaseTypeEnum.SecPrincipalRoleMem;
             base.OnCreate(_db);
         }
-        [StringLength(120)]
+        [StringLength(120),ForeignKey("RoleRef")]
         public string RolePrincipalId { get; set; }
-        [StringLength(120)]
+        [StringLength(120),ForeignKey("MemberRef")]
         public string MemberPrincipalId { get; set; }
+        [ForeignKey("AccessTypeRef")]
         public int? AccessType { get; set; }
         public DateTime? EffectiveFrom { get; set; }
         public DateTime? EffectiveTo { get; set; }
 
+        public virtual SecPrincipal MemberRef { get; set; }
+        public virtual SecPrincipalRole RoleRef { get; set; }
+        public virtual SecAccessType AccessTypeRef { get; set; }
 
     }
 }

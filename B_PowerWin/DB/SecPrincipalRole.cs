@@ -15,10 +15,10 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.SecPrincipalRole;
         }
-        public SecAccessTypeTypeEnum RoleType { get; set; }
+       
         public long? ObjectId { get; set; }
 
-
+        public override ICollection<SecPrincipalRoleMem> SecPrincipalRoleMems { get; set; }
 
     }
 }
