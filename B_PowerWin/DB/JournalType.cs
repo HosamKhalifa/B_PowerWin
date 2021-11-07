@@ -55,12 +55,16 @@ namespace B_PowerWin.DB
         public virtual ICollection<LedgerJournal> LedgerJournals { get; set; }
         public virtual ICollection<DocumentBase>  Documents { get; set; }
 
-        public string JourDocumentNextValue(AppDbContext _dbContext,DateTime? _date)
+        public string JourDocumentNextValue(AppDbContext _dbContext,DateTime? _date, out long? _SequVersionId)
         {
             string ls_Ret;
             var Seq = _dbContext.SysSequences.Find(fSequId);
-            if (Seq == null) { return ""; }
-            ls_Ret = Seq.NextVal(_dbContext, _date);
+            if (Seq == null)
+            {
+                _SequVersionId = null;
+                return "";
+            }
+            ls_Ret = Seq.NextVal(_dbContext, _date, out _SequVersionId);
             return ls_Ret;
         }
 

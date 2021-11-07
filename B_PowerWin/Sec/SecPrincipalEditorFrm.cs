@@ -36,6 +36,8 @@ namespace B_PowerWin.Sec
             FormGridManager.Attach(membersGC);
 
             membersBindingSource.AddingNew += MembersBindingSource_AddingNew;
+         
+
           
 
             RefreshData();
@@ -61,6 +63,9 @@ namespace B_PowerWin.Sec
             membersBindingSource.DataSource = dbContext.SecPrincipalRoleMems.Local;
             membersBindingSource.ResetBindings(true);
             membersGC.DataSource = membersBindingSource;
+            var accessList = dbContext.SecAccessTypes.Where(x => x.AccessTypeType == PrincipalRole.RoleType).ToList();
+            secAccessTypeBindingSource.DataSource = accessList;
+
             base.RefreshData();
         }
     }

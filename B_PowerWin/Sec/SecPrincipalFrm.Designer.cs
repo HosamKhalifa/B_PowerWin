@@ -48,8 +48,6 @@
             this.colLangId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrincipalId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrincipalName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSecPrincipalRoleMems = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colRoleType6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cardView2 = new DevExpress.XtraGrid.Views.Card.CardView();
             this.secResponsGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
             this.secResponsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -115,6 +113,7 @@
             this.colAccessType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEffectiveFrom1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEffectiveTo1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.seedAccessTypeBI = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.cardView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.secUserGC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.secPrincipalUserBindingSource)).BeginInit();
@@ -196,9 +195,8 @@
             this.colSkinName,
             this.colLangId,
             this.colPrincipalId,
-            this.colPrincipalName,
-            this.colSecPrincipalRoleMems,
-            this.colRoleType6});
+            this.colPrincipalName});
+            this.secUserGV.EnableAutoFormat = false;
             this.secUserGV.GridControl = this.secUserGC;
             this.secUserGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
             this.secUserGV.Name = "secUserGV";
@@ -208,99 +206,94 @@
             this.colUserKey.FieldName = "UserKey";
             this.colUserKey.Name = "colUserKey";
             this.colUserKey.Visible = true;
-            this.colUserKey.VisibleIndex = 0;
+            this.colUserKey.VisibleIndex = 2;
+            this.colUserKey.Width = 79;
             // 
             // colEmplId
             // 
             this.colEmplId.FieldName = "EmplId";
             this.colEmplId.Name = "colEmplId";
             this.colEmplId.Visible = true;
-            this.colEmplId.VisibleIndex = 1;
+            this.colEmplId.VisibleIndex = 3;
+            this.colEmplId.Width = 79;
             // 
             // colPwd
             // 
             this.colPwd.FieldName = "Pwd";
             this.colPwd.Name = "colPwd";
             this.colPwd.Visible = true;
-            this.colPwd.VisibleIndex = 2;
+            this.colPwd.VisibleIndex = 4;
+            this.colPwd.Width = 79;
             // 
             // colUserImage
             // 
             this.colUserImage.FieldName = "UserImage";
             this.colUserImage.Name = "colUserImage";
             this.colUserImage.Visible = true;
-            this.colUserImage.VisibleIndex = 3;
+            this.colUserImage.VisibleIndex = 5;
+            this.colUserImage.Width = 101;
             // 
             // colDefaultCompany
             // 
             this.colDefaultCompany.FieldName = "DefaultCompany";
             this.colDefaultCompany.Name = "colDefaultCompany";
             this.colDefaultCompany.Visible = true;
-            this.colDefaultCompany.VisibleIndex = 4;
+            this.colDefaultCompany.VisibleIndex = 6;
+            this.colDefaultCompany.Width = 134;
             // 
             // colLastUserJob
             // 
             this.colLastUserJob.FieldName = "LastUserJob";
             this.colLastUserJob.Name = "colLastUserJob";
-            this.colLastUserJob.Visible = true;
-            this.colLastUserJob.VisibleIndex = 5;
+            this.colLastUserJob.Width = 129;
             // 
             // colEffectiveFrom
             // 
             this.colEffectiveFrom.FieldName = "EffectiveFrom";
             this.colEffectiveFrom.Name = "colEffectiveFrom";
             this.colEffectiveFrom.Visible = true;
-            this.colEffectiveFrom.VisibleIndex = 6;
+            this.colEffectiveFrom.VisibleIndex = 7;
+            this.colEffectiveFrom.Width = 47;
             // 
             // colEffectiveTo
             // 
             this.colEffectiveTo.FieldName = "EffectiveTo";
             this.colEffectiveTo.Name = "colEffectiveTo";
             this.colEffectiveTo.Visible = true;
-            this.colEffectiveTo.VisibleIndex = 7;
+            this.colEffectiveTo.VisibleIndex = 8;
+            this.colEffectiveTo.Width = 47;
             // 
             // colSkinName
             // 
             this.colSkinName.FieldName = "SkinName";
             this.colSkinName.Name = "colSkinName";
             this.colSkinName.Visible = true;
-            this.colSkinName.VisibleIndex = 8;
+            this.colSkinName.VisibleIndex = 9;
+            this.colSkinName.Width = 47;
             // 
             // colLangId
             // 
             this.colLangId.FieldName = "LangId";
             this.colLangId.Name = "colLangId";
             this.colLangId.Visible = true;
-            this.colLangId.VisibleIndex = 9;
+            this.colLangId.VisibleIndex = 10;
+            this.colLangId.Width = 67;
             // 
             // colPrincipalId
             // 
             this.colPrincipalId.FieldName = "PrincipalId";
             this.colPrincipalId.Name = "colPrincipalId";
             this.colPrincipalId.Visible = true;
-            this.colPrincipalId.VisibleIndex = 10;
+            this.colPrincipalId.VisibleIndex = 0;
+            this.colPrincipalId.Width = 76;
             // 
             // colPrincipalName
             // 
             this.colPrincipalName.FieldName = "PrincipalName";
             this.colPrincipalName.Name = "colPrincipalName";
             this.colPrincipalName.Visible = true;
-            this.colPrincipalName.VisibleIndex = 11;
-            // 
-            // colSecPrincipalRoleMems
-            // 
-            this.colSecPrincipalRoleMems.FieldName = "SecPrincipalRoleMems";
-            this.colSecPrincipalRoleMems.Name = "colSecPrincipalRoleMems";
-            this.colSecPrincipalRoleMems.Visible = true;
-            this.colSecPrincipalRoleMems.VisibleIndex = 12;
-            // 
-            // colRoleType6
-            // 
-            this.colRoleType6.Caption = "RoleType";
-            this.colRoleType6.FieldName = "RoleType";
-            this.colRoleType6.Name = "colRoleType6";
-            this.colRoleType6.Visible = true;
-            this.colRoleType6.VisibleIndex = 13;
+            this.colPrincipalName.VisibleIndex = 1;
+            this.colPrincipalName.Width = 193;
             // 
             // cardView2
             // 
@@ -340,6 +333,7 @@
             this.colSecPrincipalRoleMems1,
             this.colPrincipalId1,
             this.colPrincipalName1});
+            this.secResponsGV.EnableAutoFormat = false;
             this.secResponsGV.GridControl = this.secResponsGC;
             this.secResponsGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
             this.secResponsGV.Name = "secResponsGV";
@@ -457,6 +451,7 @@
             this.colSecPrincipalRoleMems2,
             this.colPrincipalId2,
             this.colPrincipalName2});
+            this.secMasterGV.EnableAutoFormat = false;
             this.secMasterGV.GridControl = this.secMasterGC;
             this.secMasterGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.ReadOnly;
             this.secMasterGV.Name = "secMasterGV";
@@ -531,6 +526,7 @@
             this.colSecPrincipalRoleMems3,
             this.colPrincipalId3,
             this.colPrincipalName3});
+            this.secJournalGV.EnableAutoFormat = false;
             this.secJournalGV.GridControl = this.secJournalGC;
             this.secJournalGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.ReadOnly;
             this.secJournalGV.Name = "secJournalGV";
@@ -605,6 +601,7 @@
             this.colSecPrincipalRoleMems4,
             this.colPrincipalId4,
             this.colPrincipalName4});
+            this.secReportGV.EnableAutoFormat = false;
             this.secReportGV.GridControl = this.secReportGC;
             this.secReportGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.ReadOnly;
             this.secReportGV.Name = "secReportGV";
@@ -679,6 +676,7 @@
             this.colSecPrincipalRoleMems5,
             this.colPrincipalId5,
             this.colPrincipalName5});
+            this.secFormGV.EnableAutoFormat = false;
             this.secFormGV.GridControl = this.secFormGC;
             this.secFormGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.ReadOnly;
             this.secFormGV.Name = "secFormGV";
@@ -753,6 +751,7 @@
             this.colSecPrincipalRoleMems6,
             this.colPrincipalId6,
             this.colPrincipalName6});
+            this.secActionsGV.EnableAutoFormat = false;
             this.secActionsGV.GridControl = this.secActionsGC;
             this.secActionsGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.ReadOnly;
             this.secActionsGV.Name = "secActionsGV";
@@ -820,6 +819,7 @@
             this.colAccessType,
             this.colEffectiveFrom1,
             this.colEffectiveTo1});
+            this.membershipGV.EnableAutoFormat = false;
             this.membershipGV.GridControl = this.membershipGC;
             this.membershipGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
             this.membershipGV.Name = "membershipGV";
@@ -858,6 +858,14 @@
             this.colEffectiveTo1.Name = "colEffectiveTo1";
             this.colEffectiveTo1.Visible = true;
             this.colEffectiveTo1.VisibleIndex = 4;
+            // 
+            // seedAccessTypeBI
+            // 
+            this.seedAccessTypeBI.Caption = "Seed DB Access type";
+            this.seedAccessTypeBI.Glyph = ((System.Drawing.Image)(resources.GetObject("seedAccessTypeBI.Glyph")));
+            this.seedAccessTypeBI.Id = 2;
+            this.seedAccessTypeBI.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("seedAccessTypeBI.LargeGlyph")));
+            this.seedAccessTypeBI.Name = "seedAccessTypeBI";
             // 
             // SecPrincipalFrm
             // 
@@ -946,7 +954,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colLangId;
         private DevExpress.XtraGrid.Columns.GridColumn colPrincipalId;
         private DevExpress.XtraGrid.Columns.GridColumn colPrincipalName;
-        private DevExpress.XtraGrid.Columns.GridColumn colSecPrincipalRoleMems;
         private DevExpress.XtraGrid.Views.Card.CardView cardView1;
         private System.Windows.Forms.BindingSource secResponsBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colRoleType;
@@ -985,7 +992,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colSecPrincipalRoleMems6;
         private DevExpress.XtraGrid.Columns.GridColumn colPrincipalId6;
         private DevExpress.XtraGrid.Columns.GridColumn colPrincipalName6;
-        private DevExpress.XtraGrid.Columns.GridColumn colRoleType6;
         private GUI.Grid.GridCtrlBase membershipGC;
         private GUI.Grid.GridViewBase membershipGV;
         private System.Windows.Forms.BindingSource secPrincipalRoleMemBindingSource;
@@ -994,5 +1000,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colAccessType;
         private DevExpress.XtraGrid.Columns.GridColumn colEffectiveFrom1;
         private DevExpress.XtraGrid.Columns.GridColumn colEffectiveTo1;
+        private DevExpress.XtraBars.BarButtonItem seedAccessTypeBI;
     }
 }

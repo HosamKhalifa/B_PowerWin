@@ -45,11 +45,15 @@
             this.colModifiedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModifiedAt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRolePrincipalName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.accessLookup = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.secAccessTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.membersGC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.membersGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MemeberLookup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.secPrincipalBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accessLookup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secAccessTypeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // membersGC
@@ -62,7 +66,8 @@
             this.membersGC.MenuManager = this.barManager1;
             this.membersGC.Name = "membersGC";
             this.membersGC.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.MemeberLookup});
+            this.MemeberLookup,
+            this.accessLookup});
             this.membersGC.Size = new System.Drawing.Size(766, 531);
             this.membersGC.TabIndex = 4;
             this.membersGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -127,6 +132,7 @@
             // 
             // colAccessType
             // 
+            this.colAccessType.ColumnEdit = this.accessLookup;
             this.colAccessType.FieldName = "AccessType";
             this.colAccessType.Name = "colAccessType";
             this.colAccessType.Visible = true;
@@ -196,6 +202,25 @@
             this.colRolePrincipalName.VisibleIndex = 0;
             this.colRolePrincipalName.Width = 115;
             // 
+            // accessLookup
+            // 
+            this.accessLookup.AutoHeight = false;
+            this.accessLookup.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.accessLookup.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccessTypeName", "Access Type Name", 40, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending, DevExpress.Utils.DefaultBoolean.True),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccessTypeDescription", "Access Type Description", 60, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.accessLookup.DataSource = this.secAccessTypeBindingSource;
+            this.accessLookup.DisplayMember = "AccessTypeName";
+            this.accessLookup.KeyMember = "AccessType";
+            this.accessLookup.Name = "accessLookup";
+            this.accessLookup.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
+            this.accessLookup.ValueMember = "AccessType";
+            // 
+            // secAccessTypeBindingSource
+            // 
+            this.secAccessTypeBindingSource.DataSource = typeof(B_PowerWin.DB.SecAccessType);
+            // 
             // SecPrincipalEditorFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,6 +233,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.membersGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MemeberLookup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.secPrincipalBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accessLookup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secAccessTypeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,5 +258,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit MemeberLookup;
         private System.Windows.Forms.BindingSource secPrincipalBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colRolePrincipalName;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit accessLookup;
+        private System.Windows.Forms.BindingSource secAccessTypeBindingSource;
     }
 }

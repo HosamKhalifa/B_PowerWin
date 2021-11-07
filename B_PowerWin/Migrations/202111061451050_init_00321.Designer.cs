@@ -7,13 +7,13 @@ namespace B_PowerWin.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class init_0019 : IMigrationMetadata
+    public sealed partial class init_00321 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(init_0019));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init_00321));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110300954055_init_0019"; }
+            get { return "202111061451050_init_00321"; }
         }
         
         string IMigrationMetadata.Source

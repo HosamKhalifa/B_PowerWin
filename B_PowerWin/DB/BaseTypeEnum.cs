@@ -15,7 +15,7 @@ namespace B_PowerWin.DB
         CustomerGroup=1003,
         Vendor = 1004,
         VendorGroup=1005,
-        Item=1006,
+        //Item=1006,Replace with ItemInventory,ItemService
         ItemSize=1007,
         ItemColor = 1008,
         ItemBatch = 1009,
@@ -52,6 +52,20 @@ namespace B_PowerWin.DB
         SecPrincipalRoleMaster = 1040,
         SecPrincipalRoleJournal = 1041,
         SecPrincipalRoleForm = 1042,
-        SecPrincipalRoleAction = 1043
+        SecPrincipalRoleAction = 1043,
+        ItemInventory = 1044,
+        ItemService = 1045,
+        Company = 1046,
+        LedgerCalender = 1047,
+        LedgerCOA = 1048,
+        LedgerYear = 1049,
+        LedgerPeriod = 1050,
+        Currency = 1051,
+        Country = 1052,
+        City = 1054,
+        LedgerPostingProfile = 1055,
+        FixedAsset = 1056,
+        LedgerPostingProfileSetup=1057,
+        Item = 1058
     }
 }

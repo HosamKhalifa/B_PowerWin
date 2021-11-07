@@ -24,7 +24,10 @@ namespace B_PowerWin.GL.Forms
         {
             dbContext = new AppDbContext();
             dbContext.SysSequences.Load();
+            dbContext.BaseTypes.Where(x => x.RecordTypeType == DB.BaseTypeTypeEnum.Account).Load();
             sequBS.DataSource = dbContext.SysSequences.Local;
+            baseTypeBindingSource.DataSource = dbContext.BaseTypes.Local;
+
             sequBS.ResetBindings(true);
             base.RefreshData();
         }

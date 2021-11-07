@@ -47,7 +47,10 @@ namespace B_PowerWin.GUI
             buildLabaelsBI.ItemClick += (s, e) => {
                 DB.SeedDatabase.SeedEnumTable(MySession.Session.Database);
                 DB.SeedDatabase.SeedUILabels(MySession.Session.Database);
-               
+                DB.SeedDatabase.SeedAccessType(MySession.Session.Database);
+                
+
+
             };
         }
 

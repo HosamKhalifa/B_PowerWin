@@ -11,6 +11,10 @@ namespace B_PowerWin.DB
     [Table("doc_base")]
    public class DocumentBase:LineBase
     {
+        public DocumentBase():base()
+        {
+            CompanyId = MySession.Session.Company.Id;
+        }
         [Required]
         public int? CompanyId { get; set; }
         [Required,ForeignKey("JournalType")]
@@ -18,6 +22,7 @@ namespace B_PowerWin.DB
         public virtual JournalType JournalType { get; set; }//Reference 
         [StringLength(50), Required]
         public string DisplayNum { get; set; }
+        public long? DisplayNumSequVersion { get; set; }
         [StringLength(50)]
         public string ReferenceNum { get; set; }
         [Required]

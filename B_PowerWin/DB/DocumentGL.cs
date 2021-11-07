@@ -13,6 +13,10 @@ namespace B_PowerWin.DB
     [Table("doc_gl")]
    public class DocumentGL:DocumentBase
     {
+        public DocumentGL():base()
+        {
+
+        }
         public override bool IsBusinessObject()
         {
             return true;
@@ -23,10 +27,12 @@ namespace B_PowerWin.DB
         }
         public override void OnCreate(AppDbContext _db)
         {
+            long? li_DisplayNumSequVersion = null;
             var jourTypeRow = _db.JournalTypes.Find(this.JournalTypeId);
             BaseType = (int)BaseTypeEnum.DocumentGL;
             TransDayId = TransDate.HasValue ? TransDate.Value.DayID() : 0;
-            DisplayNum = jourTypeRow.JourDocumentNextValue(_db, TransDate);
+            DisplayNum = jourTypeRow.JourDocumentNextValue(_db, TransDate,out li_DisplayNumSequVersion);
+            DisplayNumSequVersion = li_DisplayNumSequVersion;
 
             base.OnCreate(_db);
         }

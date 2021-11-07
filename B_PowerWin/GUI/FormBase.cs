@@ -8,11 +8,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.Utils;
 
 namespace B_PowerWin.GUI
 {
     public partial class FormBase : DevExpress.XtraEditors.XtraForm
     {
+        public WorkspaceManager FormWorkspaceManager { get; set; }
         public FormArgs FormArgs { get; set; }
         public GUI.Grid.GridManager FormGridManager { get; set; }
         

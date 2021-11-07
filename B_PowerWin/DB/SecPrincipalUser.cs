@@ -54,6 +54,7 @@ namespace B_PowerWin.DB
         public byte[] UserImage { get; set; }
         public int? DefaultCompany { get; set; }
         public long? LastUserJob { get; set; }
+        [Required]
         public DateTime? EffectiveFrom { get; set; }
         public DateTime? EffectiveTo { get; set; }
         [StringLength(50)]

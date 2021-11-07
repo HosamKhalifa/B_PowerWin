@@ -69,8 +69,8 @@ namespace B_PowerWin.GUI.Grid
                     if (grdCol != null)
                     {
                      
-                        col.ApplyFieldSettings(gv, grdCol, true);
-                        if (col.LookupCode != DB.UILabelAutoLookup.None)
+                        col.ApplyFieldSettings(gv, grdCol, EnableAutoFormat);
+                        if (col.LookupCode != DB.UILabelAutoLookup.None )
                         {
                             LookupManager.ApplyGVLookup(gv, grdCol, col.LookupCode, col.LookupFilterExp);
                         }
@@ -149,15 +149,8 @@ namespace B_PowerWin.GUI.Grid
                     {
                         
                         var gv = (DevExpress.XtraGrid.Views.Grid.GridView)item;
-                        //InitNewrow 
-                        gv.InitNewRow += (s, e) => 
-                        {
-                            var lt_Row = (s as GridView).GetRow(e.RowHandle);
-                            if(lt_Row != null && lt_Row is LineBase)
-                            {
-                                (lt_Row as LineBase).OnInitNewRow(new DBEvents.InitNewRowEventArgs());
-                            }
-                        };
+                      
+
                         gv.OptionsView.ColumnAutoWidth = false;
                         gv.OptionsView.ShowAutoFilterRow = true;
                         gv.OptionsView.ShowFooter = true;
@@ -172,10 +165,15 @@ namespace B_PowerWin.GUI.Grid
                         
                         
                             gv.InitNewRow += (s, e) => {
-                                if (gv.OptionsBehavior.EditingMode == GridEditingMode.EditForm || gv.OptionsBehavior.EditingMode == GridEditingMode.EditFormInplace || gv.OptionsBehavior.EditingMode == GridEditingMode.EditFormInplaceHideCurrentRow)
+                                if(gv is GridViewBase && ((gv as GridViewBase).GridViewEditMode == GridViewEditModeEnum.FormEdit) )
                                 {
-                                    (s as GridViewBase).ShowEditForm();
+                                    if (gv.OptionsBehavior.EditingMode == GridEditingMode.EditForm || gv.OptionsBehavior.EditingMode == GridEditingMode.EditFormInplace || gv.OptionsBehavior.EditingMode == GridEditingMode.EditFormInplaceHideCurrentRow)
+                                    {
+                                        (s as GridViewBase).ShowEditForm();
+                                    }
+                                    
                                 }
+                               
                                 
                             };
                         

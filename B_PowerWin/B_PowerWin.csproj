@@ -44,7 +44,11 @@
     <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v16.1" />
     <Reference Include="DevExpress.Images.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v16.1.Drawing, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Spreadsheet.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v16.1" />
     <Reference Include="DevExpress.Sparkline.v16.1.Core" />
@@ -62,6 +66,7 @@
     <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v16.1.Extensions, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraSpreadsheet.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -123,7 +128,9 @@
     <Compile Include="DB\ItemBatchTypeEnum.cs" />
     <Compile Include="DB\ItemColor.cs" />
     <Compile Include="DB\ItemColorEnum.cs" />
+    <Compile Include="DB\ItemInventory.cs" />
     <Compile Include="DB\ItemSerialStatusEnum.cs" />
+    <Compile Include="DB\ItemService.cs" />
     <Compile Include="DB\ItemSize.cs" />
     <Compile Include="DB\ItemSizeEnum.cs" />
     <Compile Include="DB\ItemVariants.cs" />
@@ -136,17 +143,24 @@
     <Compile Include="DB\LedgerLineTypeEnum.cs" />
     <Compile Include="DB\LedgerPeriod.cs" />
     <Compile Include="DB\LedgerPeriodStatusEnum.cs" />
+    <Compile Include="DB\LedgerPostingEntryEnum.cs" />
+    <Compile Include="DB\LedgerPostingModuleEnum.cs" />
+    <Compile Include="DB\LedgerPostingProfileSetup.cs" />
+    <Compile Include="DB\LedgerPostingScopeEnum.cs" />
     <Compile Include="DB\LedgerYear.cs" />
     <Compile Include="DB\LineBase.cs" />
     <Compile Include="DB\LineBaseCRUDEnum.cs" />
     <Compile Include="DB\LineTotalEffectEnum.cs" />
     <Compile Include="DB\MainAccount.cs" />
+    <Compile Include="DB\MainAccountBalanceControlEnum.cs" />
     <Compile Include="DB\MainAccountGroup.cs" />
     <Compile Include="DB\MainAccountTypeEnum.cs" />
     <Compile Include="DB\NoYesEnum.cs" />
     <Compile Include="DB\PaymentTerm.cs" />
     <Compile Include="DB\Pos.cs" />
     <Compile Include="DB\PostingLayerEnum.cs" />
+    <Compile Include="DB\LedgerPostingProfile.cs" />
+    <Compile Include="DB\POS_SalesInvoiceEnum.cs" />
     <Compile Include="DB\Project.cs" />
     <Compile Include="DB\Purpose.cs" />
     <Compile Include="DB\SecAccessType.cs" />
@@ -180,6 +194,8 @@
     <Compile Include="DB\UILabelType.cs" />
     <Compile Include="DB\UIGridMaster.cs" />
     <Compile Include="DB\Vendor.cs" />
+    <Compile Include="DB\WorkflowStatusEnum.cs" />
+    <Compile Include="DB\WorkflowStep.cs" />
     <Compile Include="DB_Util.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -188,6 +204,18 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalMethods.cs" />
+    <Compile Include="GL\Forms\AccountGroupEditorFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\Forms\AccountGroupEditorFrm.Designer.cs">
+      <DependentUpon>AccountGroupEditorFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GL\Forms\CompanySetupFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\Forms\CompanySetupFrm.Designer.cs">
+      <DependentUpon>CompanySetupFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GL\Forms\GLDimensionSetup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,11 +234,29 @@
     <Compile Include="GL\Forms\MainAccountFrm.Designer.cs">
       <DependentUpon>MainAccountFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GL\Forms\MainAccountTreeFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\Forms\MainAccountTreeFrm.Designer.cs">
+      <DependentUpon>MainAccountTreeFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GL\Forms\MainAccountGroupFrm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GL\Forms\MainAccountGroupFrm.Designer.cs">
       <DependentUpon>MainAccountGroupFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GL\Forms\PostingProfileSetupEditorFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\Forms\PostingProfileSetupEditorFrm.Designer.cs">
+      <DependentUpon>PostingProfileSetupEditorFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GL\Forms\PostingProfileSetupFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\Forms\PostingProfileSetupFrm.Designer.cs">
+      <DependentUpon>PostingProfileSetupFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="GL\Forms\SysSequenceSetupFrm.cs">
       <SubType>Form</SubType>
@@ -321,21 +367,25 @@
     <Compile Include="MainFrm.Designer.cs">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110300948150_init_0017.cs" />
-    <Compile Include="Migrations\202110300948150_init_0017.designer.cs">
-      <DependentUpon>202110300948150_init_0017.cs</DependentUpon>
+    <Compile Include="Migrations\202111051622326_init_0031.cs" />
+    <Compile Include="Migrations\202111051622326_init_0031.designer.cs">
+      <DependentUpon>202111051622326_init_0031.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110300950513_init_0018.cs" />
-    <Compile Include="Migrations\202110300950513_init_0018.designer.cs">
-      <DependentUpon>202110300950513_init_0018.cs</DependentUpon>
+    <Compile Include="Migrations\202111051636534_init_00311.cs" />
+    <Compile Include="Migrations\202111051636534_init_00311.designer.cs">
+      <DependentUpon>202111051636534_init_00311.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110300954055_init_0019.cs" />
-    <Compile Include="Migrations\202110300954055_init_0019.designer.cs">
-      <DependentUpon>202110300954055_init_0019.cs</DependentUpon>
+    <Compile Include="Migrations\202111052204204_init_0032.cs" />
+    <Compile Include="Migrations\202111052204204_init_0032.designer.cs">
+      <DependentUpon>202111052204204_init_0032.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110302051340_init_0020.cs" />
-    <Compile Include="Migrations\202110302051340_init_0020.designer.cs">
-      <DependentUpon>202110302051340_init_0020.cs</DependentUpon>
+    <Compile Include="Migrations\202111061451050_init_00321.cs" />
+    <Compile Include="Migrations\202111061451050_init_00321.designer.cs">
+      <DependentUpon>202111061451050_init_00321.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111061748083_init_0033.cs" />
+    <Compile Include="Migrations\202111061748083_init_0033.designer.cs">
+      <DependentUpon>202111061748083_init_0033.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySession.cs" />
@@ -361,6 +411,12 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GL\Forms\AccountGroupEditorFrm.resx">
+      <DependentUpon>AccountGroupEditorFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GL\Forms\CompanySetupFrm.resx">
+      <DependentUpon>CompanySetupFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GL\Forms\GLDimensionSetup.resx">
       <DependentUpon>GLDimensionSetup.cs</DependentUpon>
     </EmbeddedResource>
@@ -370,8 +426,17 @@
     <EmbeddedResource Include="GL\Forms\MainAccountFrm.resx">
       <DependentUpon>MainAccountFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GL\Forms\MainAccountTreeFrm.resx">
+      <DependentUpon>MainAccountTreeFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GL\Forms\MainAccountGroupFrm.resx">
       <DependentUpon>MainAccountGroupFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GL\Forms\PostingProfileSetupEditorFrm.resx">
+      <DependentUpon>PostingProfileSetupEditorFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GL\Forms\PostingProfileSetupFrm.resx">
+      <DependentUpon>PostingProfileSetupFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GL\Forms\SysSequenceSetupFrm.resx">
       <DependentUpon>SysSequenceSetupFrm.cs</DependentUpon>
@@ -412,17 +477,20 @@
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110300948150_init_0017.resx">
-      <DependentUpon>202110300948150_init_0017.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111051622326_init_0031.resx">
+      <DependentUpon>202111051622326_init_0031.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110300950513_init_0018.resx">
-      <DependentUpon>202110300950513_init_0018.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111051636534_init_00311.resx">
+      <DependentUpon>202111051636534_init_00311.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110300954055_init_0019.resx">
-      <DependentUpon>202110300954055_init_0019.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111052204204_init_0032.resx">
+      <DependentUpon>202111052204204_init_0032.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110302051340_init_0020.resx">
-      <DependentUpon>202110302051340_init_0020.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111061451050_init_00321.resx">
+      <DependentUpon>202111061451050_init_00321.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111061748083_init_0033.resx">
+      <DependentUpon>202111061748083_init_0033.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -464,12 +532,25 @@
       <DependentUpon>XtraGridColumnInfoDS.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.AccountBase.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.AccountGroup.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.Bank.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.BaseType.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.BusinessUnit.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.City.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Company.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Country.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Currency.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.InventStore.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.JournalType.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.LedgerCalender.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.LedgerCOA.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.LedgerJournal.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.LedgerPostingProfile.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.LedgerPostingProfileSetup.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.MainAccount.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.MainAccountGroup.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.SecAccessType.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipal.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalRole.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalRoleAction.datasource" />

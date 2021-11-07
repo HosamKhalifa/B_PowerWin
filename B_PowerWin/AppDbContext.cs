@@ -133,7 +133,8 @@ namespace B_PowerWin
         public DbSet<Address> Addresses { get; set; }
         public DbSet<AccountGroup> AccountGroups { get; set; }
         public DbSet<JournalType> JournalTypes { get; set; }
-
+        public DbSet<LedgerPostingProfile> LedgerPostingProfiles { get; set; }
+        public DbSet<LedgerPostingProfileSetup> LedgerPostingProfileSetups { get; set; }
         public DbSet<DocumentBase> Documents { get; set; }
         public DbSet<DocumentLine> DocumentLines { get; set; }
         public DbSet<SysSequence> SysSequences { get; set; }
@@ -157,6 +158,7 @@ namespace B_PowerWin
         public DbSet<LedgerYear> LedgerYears { get; set; }
         public DbSet<LedgerPeriod> LedgerPeriods { get; set; }
         public DbSet<LedgerJournal> LedgerJournals { get; set; }
+        public DbSet <LedgerCOA> LedgerCOAs { get; set; }
         public DbSet<MainAccount> MainAccounts { get; set; }
         public DbSet<MainAccountGroup> MainAccountGroups { get; set; }
         public DbSet<BusinessUnit> BusinessUnits { get; set; }

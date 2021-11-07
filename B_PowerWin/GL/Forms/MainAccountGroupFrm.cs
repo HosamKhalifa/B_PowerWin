@@ -16,7 +16,7 @@ namespace B_PowerWin.GL.Forms
     public partial class MainAccountGroupFrm : B_PowerWin.GUI.EditFormBase
     {
         
-        public MainAccountGroupFrm()
+        public MainAccountGroupFrm():base()
         {
             InitializeComponent();
             InitData();

@@ -66,9 +66,10 @@ namespace B_PowerWin.GUI.Grid
     {
         private DB.BaseTypeEnum fBaseTypeEnum = DB.BaseTypeEnum.None;
         private GridViewEditModeEnum fGridViewEditMode = GridViewEditModeEnum.FormEdit;
+        private bool fEnableAutoFormat = false;
         public GridViewEditModeEnum GridViewEditMode {get { return fGridViewEditMode; }set { fGridViewEditMode = value; } }
         public DB.BaseTypeEnum BaseTypeEnum { get { return fBaseTypeEnum; } set { fBaseTypeEnum = value; } }
-
+        public bool EnableAutoFormat { get { return  fEnableAutoFormat; }set { fEnableAutoFormat = value; } }
         public void EnableEditButtons()
         {
             var gc = this.GridControl;
@@ -101,7 +102,7 @@ namespace B_PowerWin.GUI.Grid
                     if (this.DataSource != null)                                //Level 1
                     {
                         this.BeginInit();
-                        GridManager.InitGuiFromDB(gv:this,EnableAutoFormat:true);
+                        GridManager.InitGuiFromDB(gv:this,EnableAutoFormat:this.EnableAutoFormat);
                                                                                 
                         this.EndInit();
                         this.GridControl.ForceInitialize();

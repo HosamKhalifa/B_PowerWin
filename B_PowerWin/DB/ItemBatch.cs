@@ -12,6 +12,10 @@ namespace B_PowerWin.DB
     [Table("item_batch")]
   public class ItemBatch:LineBase
     {
+        public ItemBatch():base()
+        {
+
+        }
         public override void BuildMetaData(AppDbContext _db)
         {
             //Base entity
@@ -22,6 +26,7 @@ namespace B_PowerWin.DB
             //Security role
             var lt_Role = new SecPrincipalRoleMaster() { ObjectId = (int)le_BaseType, PrincipalId = $"{lt_BaseType.BaseTypeName}{lt_BaseType.RecordTypeType.ToString()}", PrincipalName = lt_BaseType.BaseTypeName, RoleType = SecAccessTypeTypeEnum.Master };
             _db.SecPrincipalRoleMasters.AddOrUpdate(lt_Role);
+
             base.BuildMetaData(_db);
         }
         public override bool IsBusinessObject()

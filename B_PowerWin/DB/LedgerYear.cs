@@ -18,7 +18,10 @@ namespace B_PowerWin.DB
         public bool IsOpen { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public LedgerCalender CalenderId { get; set; }
+        [ForeignKey("LedgerCalender")]
+        public int? CalenderId { get; set; }
+        public virtual LedgerCalender LedgerCalender { get; set; }
+        public virtual ICollection<LedgerPeriod> LedgerPeriods { get; set; }
 
 
     }

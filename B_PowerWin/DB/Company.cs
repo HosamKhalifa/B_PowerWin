@@ -11,6 +11,16 @@ namespace B_PowerWin.DB
     [Table("company")]
     public class Company
     {
+        public Company()
+        {
+            string ls_UserId = string.IsNullOrEmpty(MySession.Session?.UserId) ? "N/A" : MySession.Session.UserId;
+            CreatedBy = ls_UserId;
+            CreatedAt = DateTime.Now;
+            ModifiedAt = DateTime.Now;
+            ModifiedBy = ls_UserId;
+
+          
+        }
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None),Range(1001,9999)]
         public int? Id { get; set; }
         [StringLength(100), Required]

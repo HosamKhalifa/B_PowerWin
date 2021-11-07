@@ -23,7 +23,11 @@ namespace B_PowerWin.DB
         private int fStartValue;
 
         public event PropertyChangedEventHandler PropertyChanged;
-        
+        public SysSequence():base()
+        {
+            this.IsManualGeneration = false;
+            this.SysSequRecycle = SysSequRecycleEnum.Continuous;
+        }
         [NotMapped]
         public string DisplayTitle { get { return $"{SequNum} {SequName}"; } }
         private string FormatValue(int _Value)
@@ -36,7 +40,7 @@ namespace B_PowerWin.DB
             ls_Return = ls_Return.Replace(ls_HashesToReplace, ls_Value);
             return ls_Return;
         }
-        public string NextVal(AppDbContext _context,DateTime? _date)
+        public string NextVal(AppDbContext _context,DateTime? _date,out long? _SequVersionId)
         {
             string ls_Ret = "";
             DateTime ld_Date = _date.HasValue ? _date.Value : DateTime.Today;
@@ -63,6 +67,7 @@ namespace B_PowerWin.DB
                 _context.SysSequenceValues.Add(lo_ValueLineSearch);
                 _context.SaveChanges();
                 ls_Ret = FormatValue(lo_ValueLineSearch.CurrentValue);
+                _SequVersionId = lo_ValueLineSearch.SequValueVersion;
                 return ls_Ret;
             }
             else
@@ -71,11 +76,30 @@ namespace B_PowerWin.DB
                 _context.Database.ExecuteSqlCommand($" UPDATE sys_sequence_value SET CurrentValue = CurrentValue + 1 WHERE ");
 
             }
-
+            _SequVersionId = lo_ValueLineSearch.SequValueVersion;
             return ls_Ret;
         }
+        public static void NextValAccountBase(AppDbContext _db,AccountBase _AccountBase)
+        {
+            
+            DateTime ld_Date =DateTime.Today.Date;
+            long? li_SequVersionId = 0;
+            var lt_DBBase = _db.BaseTypes.Find(_AccountBase.BaseType);
+            if(lt_DBBase !=null && lt_DBBase.SequenceRequired)
+            {
+                if (!lt_DBBase.SysSequenceId.HasValue) { throw new Exception($"AccountBase: {_AccountBase.Name} Required sequence id is null Please config missing sequence for this Entity:{lt_DBBase.BaseTypeId} {lt_DBBase.BaseTypeName}"); }
+                _AccountBase.DisplayNum =  lt_DBBase.SysSequence.NextVal(_db, ld_Date, out li_SequVersionId);
+            }
+            else
+            {
+                _AccountBase.DisplayNumSequVersion = 0;
+                _AccountBase.DisplayNum = "0";
+            }
+            
+        }
         public virtual ICollection<JournalType> JournalTypeLines { get; set; }
-
+        
+        public virtual ICollection<BaseType> AccountBaseTypes { get; set; }
         public override bool IsBusinessObject()
         {
             return true;
@@ -110,6 +134,8 @@ namespace B_PowerWin.DB
         public DateTime? StartDate { get { return fStartDate; } set { fStartDate = value;OnPropertyChanged(); } }
         
         public SysSequRecycleEnum SysSequRecycle { get { return fSysSequRecycle; } set { fSysSequRecycle = value;OnPropertyChanged(); } }
+        [Required]
+        public bool IsManualGeneration { get; set; }
         [Required]
         public int StartValue { get { return fStartValue; } set { fStartValue = value;OnPropertyChanged(); } }
         [StringLength(30)]

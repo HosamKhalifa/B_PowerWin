@@ -20,10 +20,14 @@ namespace B_PowerWin.DB
         }
         public LineBase()
         {
+            Id = 0;
+            WFStatus = WorkflowStatusEnum.Draft;
             CreatedBy = MySession.Session.UserId;
             CreatedAt = DateTime.Now;
             ModifiedAt = DateTime.Now;
             ModifiedBy = MySession.Session.UserId;
+            
+            
             var baseTypeId = (int)GetBaseTypeEnum();
            
             this.BaseType = baseTypeId;
@@ -125,7 +129,9 @@ namespace B_PowerWin.DB
         public DateTime ModifiedAt { get; set; }
         [Required]
         public int BaseType { get; set; }
-        public long? ParnetId { get; set; }
+
+        [Required]
+        public WorkflowStatusEnum WFStatus { get; set; }
         #endregion
     }
 }

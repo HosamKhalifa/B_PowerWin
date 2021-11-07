@@ -12,6 +12,10 @@ namespace B_PowerWin.DB
     [Table("item_size")]
   public  class ItemSize:LineBase
     {
+        public ItemSize():base()
+        {
+
+        }
         public override void BuildMetaData(AppDbContext _db)
         {
             //Base entity
@@ -38,6 +42,7 @@ namespace B_PowerWin.DB
             base.OnCreate(_db);
         }
         public virtual ICollection<InventDimDefault> InventDimDefaults { get; set; }
+        public virtual ICollection<ItemVariants> ItemVariants { get; set; }
 
         public Item Item { get; set; }
         public ItemSizeEnum SizeEnum { get; set; }

@@ -18,7 +18,7 @@ namespace B_PowerWin.DB
         public int? StartMonth { get; set; }
         public int? ClosingPeriods { get; set; }
 
-        public List<LedgerYear> LedgerYears { get; set; }
+        public virtual ICollection<LedgerYear> LedgerYears { get; set; }
 
 
 

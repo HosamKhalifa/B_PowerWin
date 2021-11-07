@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Linq;
 using B_PowerWin.GUI.Grid;
+using DevExpress.XtraEditors;
 
 namespace B_PowerWin.Sec
 {
@@ -22,6 +23,14 @@ namespace B_PowerWin.Sec
         
         private void InitEvents()
         {
+            bar2.AddItem(seedAccessTypeBI);
+            seedAccessTypeBI.ItemClick +=(s,e)=>{
+                if(XtraMessageBox.Show("Seed DB with access type lines?","Seed DB",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    DB.SeedDatabase.SeedAccessType(dbContext);
+                }
+                
+            };
             secMasterGV.FocusedRowChanged += RolesGV_FocusedRowChanged; 
             secJournalGV.FocusedRowChanged += RolesGV_FocusedRowChanged;
             secResponsGV.FocusedRowChanged += RolesGV_FocusedRowChanged;
@@ -35,6 +44,10 @@ namespace B_PowerWin.Sec
             secReportGV.RowClick += GV_RowClick;
             secFormGV.RowClick += GV_RowClick;
             secActionsGV.RowClick += GV_RowClick;
+
+            
+
+
 
         }
 
@@ -94,12 +107,14 @@ namespace B_PowerWin.Sec
             FormGridManager = new GUI.Grid.GridManager();
 
             FormGridManager.Attach(secUserGC, secResponsGC, secMasterGC, secJournalGC, secReportGC, secFormGC,secActionsGC,membershipGC);
-           
+
+            //Lookup 
+            GUI.CustomLookup.LookupManager.CompanyGrdLookup(dbContext, secUserGV, colDefaultCompany, "");
 
             //*********************************Users**********************************************
             dbContext.SecPrincipalUsers.Load();
             secPrincipalUserBindingSource.DataSource = dbContext.SecPrincipalUsers.Local;
-            secUserGV.Columns.ColumnByFieldName("RoleType").OptionsColumn.AllowEdit = false;
+            //secUserGV.Columns.ColumnByFieldName("RoleType").OptionsColumn.AllowEdit = false;
             secUserGC.DataSource = secPrincipalUserBindingSource;
 
 

@@ -14,6 +14,10 @@ namespace B_PowerWin.DB
 
     public class ItemBatchSerial:LineBase
     {
+        public ItemBatchSerial():base()
+        {
+
+        }
         public override void BuildMetaData(AppDbContext _db)
         {
             //Base entity

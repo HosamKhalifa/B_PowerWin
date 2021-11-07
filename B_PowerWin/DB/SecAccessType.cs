@@ -28,6 +28,7 @@ namespace B_PowerWin.DB
         public NoYesEnum AllowRemove { get; set; }
         public NoYesEnum AllowApprove { get; set; }
         public NoYesEnum AllowReject { get; set; }
+        public NoYesEnum AllowReopen { get; set; }
         public NoYesEnum AllowPost { get; set; }
         public NoYesEnum AllowUnpost { get; set; }
 

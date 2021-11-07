@@ -23,6 +23,7 @@ namespace B_PowerWin
 
             InitGLMenu();
             InitInventoryMenu();
+            InitSalesMenu();
             InitSystemAdminMenu();
         }
 
@@ -35,6 +36,14 @@ namespace B_PowerWin
                 frm.Show();
 
             };
+            companySetupNBI.LinkClicked += (s, e) => {
+
+
+                var frm = new GL.Forms.CompanySetupFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
+                frm.Show();
+
+            };
+
         }
 
         private void InitMainMenu()
@@ -69,6 +78,18 @@ namespace B_PowerWin
             };
         }
 
+        private void InitSalesMenu()
+        {
+            //Posting profile setup
+            salesPostingProfileBI.LinkClicked += (s, e) => {
+
+
+                var frm = new GL.Forms.PostingProfileSetupFrm(DB.LedgerPostingModuleEnum.Sales) { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
+                frm.Show();
+
+            };
+        }
+
         private void InitGLMenu()
         {
             //Main account group
@@ -78,10 +99,10 @@ namespace B_PowerWin
                 frm.Show();
             };
             //Main Account
-            mainAccountNBI.LinkClicked += (s, e) => {
+            mainAccountTreeNBI.LinkClicked += (s, e) => {
 
                 e.Link.Item.Tag = DB.BaseTypeEnum.MainAccount;
-                var frm = new GL.Forms.MainAccountFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
+                var frm = new GL.Forms.MainAccountTreeFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
                 frm.Show();
 
             };
@@ -109,6 +130,7 @@ namespace B_PowerWin
                 frm.Show();
 
             };
+           
         }
 
         private void SkinManage()
