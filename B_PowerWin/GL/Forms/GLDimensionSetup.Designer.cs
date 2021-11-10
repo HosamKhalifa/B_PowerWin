@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GLDimensionSetup));
             this.dimensionNavPane = new DevExpress.XtraBars.Navigation.NavigationPane();
             this.businessUnitNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.businessUnitGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
-            this.businessUnitBS = new System.Windows.Forms.BindingSource();
+            this.businessUnitBS = new System.Windows.Forms.BindingSource(this.components);
             this.businessUnitGV = new B_PowerWin.GUI.Grid.GridViewBase();
-            this.colDimDefaults = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colInventDimDefaults = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBusinessUnitCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBusinessUnitName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLastErrorMessage = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,23 +47,23 @@
             this.colParnetId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.siteNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.siteGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
-            this.siteBS = new System.Windows.Forms.BindingSource();
+            this.siteBS = new System.Windows.Forms.BindingSource(this.components);
             this.siteGV = new B_PowerWin.GUI.Grid.GridViewBase();
             this.deptartmentNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.departmentGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
-            this.departmentBS = new System.Windows.Forms.BindingSource();
+            this.departmentBS = new System.Windows.Forms.BindingSource(this.components);
             this.departmentGV = new B_PowerWin.GUI.Grid.GridViewBase();
             this.projectNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.projectGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
-            this.projectBS = new System.Windows.Forms.BindingSource();
+            this.projectBS = new System.Windows.Forms.BindingSource(this.components);
             this.projectGV = new B_PowerWin.GUI.Grid.GridViewBase();
             this.purposeNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.purposeGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
-            this.purposeBS = new System.Windows.Forms.BindingSource();
+            this.purposeBS = new System.Windows.Forms.BindingSource(this.components);
             this.purposeGV = new B_PowerWin.GUI.Grid.GridViewBase();
             this.equipmentNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.equipmentGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
-            this.equipmentBS = new System.Windows.Forms.BindingSource();
+            this.equipmentBS = new System.Windows.Forms.BindingSource(this.components);
             this.equipmentGV = new B_PowerWin.GUI.Grid.GridViewBase();
             ((System.ComponentModel.ISupportInitialize)(this.dimensionNavPane)).BeginInit();
             this.dimensionNavPane.SuspendLayout();
@@ -152,8 +151,6 @@
             // 
             this.businessUnitGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.BusinessUnit;
             this.businessUnitGV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colDimDefaults,
-            this.colInventDimDefaults,
             this.colBusinessUnitCode,
             this.colBusinessUnitName,
             this.colLastErrorMessage,
@@ -164,93 +161,82 @@
             this.colModifiedAt,
             this.colBaseType,
             this.colParnetId});
+            this.businessUnitGV.EnableAutoFormat = false;
             this.businessUnitGV.GridControl = this.businessUnitGC;
             this.businessUnitGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.SimpleEdit;
             this.businessUnitGV.Name = "businessUnitGV";
-            // 
-            // colDimDefaults
-            // 
-            this.colDimDefaults.FieldName = "DimDefaults";
-            this.colDimDefaults.Name = "colDimDefaults";
-            this.colDimDefaults.Visible = true;
-            this.colDimDefaults.VisibleIndex = 0;
-            // 
-            // colInventDimDefaults
-            // 
-            this.colInventDimDefaults.FieldName = "InventDimDefaults";
-            this.colInventDimDefaults.Name = "colInventDimDefaults";
-            this.colInventDimDefaults.Visible = true;
-            this.colInventDimDefaults.VisibleIndex = 1;
+            this.businessUnitGV.OptionsView.ColumnAutoWidth = false;
+            this.businessUnitGV.OptionsView.ShowAutoFilterRow = true;
             // 
             // colBusinessUnitCode
             // 
             this.colBusinessUnitCode.FieldName = "BusinessUnitCode";
             this.colBusinessUnitCode.Name = "colBusinessUnitCode";
             this.colBusinessUnitCode.Visible = true;
-            this.colBusinessUnitCode.VisibleIndex = 2;
+            this.colBusinessUnitCode.VisibleIndex = 1;
+            this.colBusinessUnitCode.Width = 101;
             // 
             // colBusinessUnitName
             // 
             this.colBusinessUnitName.FieldName = "BusinessUnitName";
             this.colBusinessUnitName.Name = "colBusinessUnitName";
             this.colBusinessUnitName.Visible = true;
-            this.colBusinessUnitName.VisibleIndex = 3;
+            this.colBusinessUnitName.VisibleIndex = 2;
+            this.colBusinessUnitName.Width = 195;
             // 
             // colLastErrorMessage
             // 
             this.colLastErrorMessage.FieldName = "LastErrorMessage";
             this.colLastErrorMessage.Name = "colLastErrorMessage";
-            this.colLastErrorMessage.Visible = true;
-            this.colLastErrorMessage.VisibleIndex = 4;
+            this.colLastErrorMessage.Width = 99;
             // 
             // colId
             // 
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
             this.colId.Visible = true;
-            this.colId.VisibleIndex = 5;
+            this.colId.VisibleIndex = 0;
+            this.colId.Width = 64;
             // 
             // colCreatedBy
             // 
             this.colCreatedBy.FieldName = "CreatedBy";
             this.colCreatedBy.Name = "colCreatedBy";
-            this.colCreatedBy.Visible = true;
-            this.colCreatedBy.VisibleIndex = 6;
+            this.colCreatedBy.Width = 114;
             // 
             // colCreatedAt
             // 
             this.colCreatedAt.FieldName = "CreatedAt";
             this.colCreatedAt.Name = "colCreatedAt";
-            this.colCreatedAt.Visible = true;
-            this.colCreatedAt.VisibleIndex = 7;
+            this.colCreatedAt.Width = 114;
             // 
             // colModifiedBy
             // 
             this.colModifiedBy.FieldName = "ModifiedBy";
             this.colModifiedBy.Name = "colModifiedBy";
             this.colModifiedBy.Visible = true;
-            this.colModifiedBy.VisibleIndex = 8;
+            this.colModifiedBy.VisibleIndex = 3;
+            this.colModifiedBy.Width = 114;
             // 
             // colModifiedAt
             // 
             this.colModifiedAt.FieldName = "ModifiedAt";
             this.colModifiedAt.Name = "colModifiedAt";
             this.colModifiedAt.Visible = true;
-            this.colModifiedAt.VisibleIndex = 9;
+            this.colModifiedAt.VisibleIndex = 4;
+            this.colModifiedAt.Width = 114;
             // 
             // colBaseType
             // 
             this.colBaseType.FieldName = "BaseType";
             this.colBaseType.Name = "colBaseType";
-            this.colBaseType.Visible = true;
-            this.colBaseType.VisibleIndex = 10;
+            this.colBaseType.Width = 114;
             // 
             // colParnetId
             // 
             this.colParnetId.FieldName = "ParnetId";
             this.colParnetId.Name = "colParnetId";
-            this.colParnetId.Visible = true;
-            this.colParnetId.VisibleIndex = 11;
+            this.colParnetId.Width = 127;
             // 
             // siteNavPage
             // 
@@ -280,6 +266,7 @@
             // siteGV
             // 
             this.siteGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.Site;
+            this.siteGV.EnableAutoFormat = false;
             this.siteGV.GridControl = this.siteGC;
             this.siteGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
             this.siteGV.Name = "siteGV";
@@ -311,6 +298,7 @@
             // departmentGV
             // 
             this.departmentGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.Department;
+            this.departmentGV.EnableAutoFormat = false;
             this.departmentGV.GridControl = this.departmentGC;
             this.departmentGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
             this.departmentGV.Name = "departmentGV";
@@ -342,6 +330,7 @@
             // projectGV
             // 
             this.projectGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.Project;
+            this.projectGV.EnableAutoFormat = false;
             this.projectGV.GridControl = this.projectGC;
             this.projectGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
             this.projectGV.Name = "projectGV";
@@ -373,6 +362,7 @@
             // purposeGV
             // 
             this.purposeGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.Purpose;
+            this.purposeGV.EnableAutoFormat = false;
             this.purposeGV.GridControl = this.purposeGC;
             this.purposeGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
             this.purposeGV.Name = "purposeGV";
@@ -404,6 +394,7 @@
             // equipmentGV
             // 
             this.equipmentGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.Equipment;
+            this.equipmentGV.EnableAutoFormat = false;
             this.equipmentGV.GridControl = this.equipmentGC;
             this.equipmentGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
             this.equipmentGV.Name = "equipmentGV";
@@ -475,8 +466,6 @@
         private GUI.Grid.GridViewBase purposeGV;
         private GUI.Grid.GridCtrlBase equipmentGC;
         private GUI.Grid.GridViewBase equipmentGV;
-        private DevExpress.XtraGrid.Columns.GridColumn colDimDefaults;
-        private DevExpress.XtraGrid.Columns.GridColumn colInventDimDefaults;
         private DevExpress.XtraGrid.Columns.GridColumn colBusinessUnitCode;
         private DevExpress.XtraGrid.Columns.GridColumn colBusinessUnitName;
         private DevExpress.XtraGrid.Columns.GridColumn colLastErrorMessage;

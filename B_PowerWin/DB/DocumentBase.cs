@@ -11,6 +11,39 @@ namespace B_PowerWin.DB
     [Table("doc_base")]
    public class DocumentBase:LineBase
     {
+        #region ClassFieldNames
+        [NotMapped]
+        public static class DocumentBaseFields
+        {
+            public static string Address { get { return "Address"; } }
+            public static string City { get { return "City"; } }
+            public static string CityId { get { return "CityId"; } }
+            public static string CompanyId { get { return "CompanyId"; } }
+            public static string ContactName { get { return "ContactName"; } }
+            public static string Country { get { return "Country"; } }
+            public static string CountryId { get { return "CountryId"; } }
+            public static string DisplayNum { get { return "DisplayNum"; } }
+            public static string DisplayNumSequVersion { get { return "DisplayNumSequVersion"; } }
+            public static string HeadAccountBaseTypeId { get { return "HeadAccountBaseTypeId"; } }
+            public static string HeadAccountId { get { return "HeadAccountId"; } }
+            public static string HeadAccountName { get { return "HeadAccountName"; } }
+            public static string HeadLedgerAccountId { get { return "HeadLedgerAccountId"; } }
+            public static string JournalType { get { return "JournalType"; } }
+            public static string JournalTypeId { get { return "JournalTypeId"; } }
+            public static string LedgerJournals { get { return "LedgerJournals"; } }
+            public static string ParnetId { get { return "ParnetId"; } }
+            public static string PostingPeriod { get { return "PostingPeriod"; } }
+            public static string ReferenceNum { get { return "ReferenceNum"; } }
+            public static string TaxCardNum { get { return "TaxCardNum"; } }
+            public static string TaxCommRegisterNum { get { return "TaxCommRegisterNum"; } }
+            public static string TaxFileNum { get { return "TaxFileNum"; } }
+            public static string TaxGroup { get { return "TaxGroup"; } }
+            public static string TransDate { get { return "TransDate"; } }
+            public static string TransDayId { get { return "TransDayId"; } }
+        }
+       
+        
+        #endregion
         public DocumentBase():base()
         {
             CompanyId = MySession.Session.Company.Id;

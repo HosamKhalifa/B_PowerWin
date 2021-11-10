@@ -24,7 +24,19 @@ namespace B_PowerWin
             InitGLMenu();
             InitInventoryMenu();
             InitSalesMenu();
+            InitBankAndCashMenu();
             InitSystemAdminMenu();
+        }
+
+        private void InitBankAndCashMenu()
+        {
+            bankBI.LinkClicked += (s, e) => {
+
+
+                var frm = new GL.Forms.BankFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
+                frm.Show();
+
+            };
         }
 
         private void InitSystemAdminMenu()
@@ -88,6 +100,14 @@ namespace B_PowerWin
                 frm.Show();
 
             };
+            //Customers
+            customerBI.LinkClicked += (s, e) => {
+
+
+                var frm = new Sales.Forms.CustomerListPageFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
+                frm.Show();
+
+            };
         }
 
         private void InitGLMenu()
@@ -103,6 +123,13 @@ namespace B_PowerWin
 
                 e.Link.Item.Tag = DB.BaseTypeEnum.MainAccount;
                 var frm = new GL.Forms.MainAccountTreeFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
+                frm.Show();
+
+            };
+            mainAccountNBI.LinkClicked += (s, e) => {
+
+                e.Link.Item.Tag = DB.BaseTypeEnum.MainAccount;
+                var frm = new GL.Forms.MainAccountFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
                 frm.Show();
 
             };

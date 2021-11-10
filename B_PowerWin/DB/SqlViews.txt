@@ -16,3 +16,14 @@ FROM            sec_principal AS p INNER JOIN
 
 
 GO
+CREATE OR ALTER VIEW CustomerListPageQuery
+AS
+SELECT        L.Id, A.ReferenceNum, A.DisplayNum, A.Name, A.CompanyId, A.TaxGroup_Id, A.Country_IsoCode, A.Description, A.GroupId,
+              dbo.SF_AccountGroupFullName(a.GroupId)  GroupFullName,
+		      C.CreditLimit
+FROM            line_base AS L INNER JOIN
+                         account_base AS A ON L.Id = A.Id INNER JOIN
+                         customer AS C ON C.Id = A.Id 
+GO
+CREATE OR ALTER VIEW[dbo].[BankListPageQuery]  AS SELECT L.Id, A.ReferenceNum, A.DisplayNum, A.Name, A.CompanyId, A.TaxGroup_Id, A.Country_IsoCode, A.Description, A.GroupId, dbo.SF_AccountGroupFullName(a.GroupId)  GroupFullName FROM line_base AS L INNER JOIN  account_base AS A ON L.Id = A.Id INNER JOIN  vendor AS v ON v.Id = A.Id 
+GO 

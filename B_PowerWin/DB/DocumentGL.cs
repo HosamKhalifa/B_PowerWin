@@ -13,6 +13,18 @@ namespace B_PowerWin.DB
     [Table("doc_gl")]
    public class DocumentGL:DocumentBase
     {
+        #region ClassFieldNames
+        [NotMapped]
+        public static class DocumentGLFields
+        {
+            public static string CurrencyCode { get { return "CurrencyCode"; } }
+            public static string CurrencyExch { get { return "CurrencyExch"; } }
+            public static string DocTotalCC { get { return "DocTotalCC"; } }
+            public static string DocTotalFC { get { return "DocTotalFC"; } }
+
+        }
+
+        #endregion
         public DocumentGL():base()
         {
 

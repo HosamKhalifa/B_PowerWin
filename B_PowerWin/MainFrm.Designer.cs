@@ -35,17 +35,20 @@
             this.searchControl1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemSearchControl1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.salesNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
-            this.salesPostingProfileBI = new DevExpress.XtraNavBar.NavBarItem();
             this.purchaseNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
+            this.vendorBI = new DevExpress.XtraNavBar.NavBarItem();
             this.inentoryNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.inventStoreGroupNBI = new DevExpress.XtraNavBar.NavBarItem();
+            this.salesNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
+            this.salesPostingProfileBI = new DevExpress.XtraNavBar.NavBarItem();
+            this.customerBI = new DevExpress.XtraNavBar.NavBarItem();
             this.gLNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.mainAccountGroupNBI = new DevExpress.XtraNavBar.NavBarItem();
             this.mainAccountTreeNBI = new DevExpress.XtraNavBar.NavBarItem();
             this.gLDimensionNBI = new DevExpress.XtraNavBar.NavBarItem();
             this.sequSetupBI = new DevExpress.XtraNavBar.NavBarItem();
             this.jourSetupBI = new DevExpress.XtraNavBar.NavBarItem();
+            this.mainAccountNBI = new DevExpress.XtraNavBar.NavBarItem();
             this.hrNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.systemAdminNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.securitySetupGroupNBI = new DevExpress.XtraNavBar.NavBarItem();
@@ -71,6 +74,9 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barDockingMenuItem1 = new DevExpress.XtraBars.BarDockingMenuItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.banAndCashNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
+            this.bankBI = new DevExpress.XtraNavBar.NavBarItem();
+            this.cashBI = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
@@ -142,12 +148,13 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.gLNavBarGroup;
+            this.navBarControl1.ActiveGroup = this.banAndCashNavBarGroup;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.purchaseNavBarGroup,
             this.inentoryNavBarGroup,
             this.salesNavBarGroup,
+            this.banAndCashNavBarGroup,
             this.gLNavBarGroup,
             this.hrNavBarGroup,
             this.systemAdminNavBarGroup});
@@ -160,7 +167,12 @@
             this.jourSetupBI,
             this.securitySetupGroupNBI,
             this.companySetupNBI,
-            this.salesPostingProfileBI});
+            this.salesPostingProfileBI,
+            this.mainAccountNBI,
+            this.customerBI,
+            this.vendorBI,
+            this.bankBI,
+            this.cashBI});
             this.navBarControl1.Location = new System.Drawing.Point(0, 51);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 161;
@@ -169,25 +181,19 @@
             this.navBarControl1.TabIndex = 5;
             this.navBarControl1.Text = "navBarControl1";
             // 
-            // salesNavBarGroup
-            // 
-            this.salesNavBarGroup.Caption = "Sales";
-            this.salesNavBarGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.salesPostingProfileBI)});
-            this.salesNavBarGroup.Name = "salesNavBarGroup";
-            this.salesNavBarGroup.SmallImage = ((System.Drawing.Image)(resources.GetObject("salesNavBarGroup.SmallImage")));
-            // 
-            // salesPostingProfileBI
-            // 
-            this.salesPostingProfileBI.Caption = "Posting profile setup";
-            this.salesPostingProfileBI.Name = "salesPostingProfileBI";
-            this.salesPostingProfileBI.SmallImage = ((System.Drawing.Image)(resources.GetObject("salesPostingProfileBI.SmallImage")));
-            // 
             // purchaseNavBarGroup
             // 
             this.purchaseNavBarGroup.Caption = "Purchase";
+            this.purchaseNavBarGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.vendorBI)});
             this.purchaseNavBarGroup.Name = "purchaseNavBarGroup";
             this.purchaseNavBarGroup.SmallImage = ((System.Drawing.Image)(resources.GetObject("purchaseNavBarGroup.SmallImage")));
+            // 
+            // vendorBI
+            // 
+            this.vendorBI.Caption = "Vendor";
+            this.vendorBI.Name = "vendorBI";
+            this.vendorBI.SmallImage = ((System.Drawing.Image)(resources.GetObject("vendorBI.SmallImage")));
             // 
             // inentoryNavBarGroup
             // 
@@ -203,16 +209,37 @@
             this.inventStoreGroupNBI.Name = "inventStoreGroupNBI";
             this.inventStoreGroupNBI.SmallImage = ((System.Drawing.Image)(resources.GetObject("inventStoreGroupNBI.SmallImage")));
             // 
+            // salesNavBarGroup
+            // 
+            this.salesNavBarGroup.Caption = "Sales";
+            this.salesNavBarGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.salesPostingProfileBI),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.customerBI)});
+            this.salesNavBarGroup.Name = "salesNavBarGroup";
+            this.salesNavBarGroup.SmallImage = ((System.Drawing.Image)(resources.GetObject("salesNavBarGroup.SmallImage")));
+            // 
+            // salesPostingProfileBI
+            // 
+            this.salesPostingProfileBI.Caption = "Posting profile setup";
+            this.salesPostingProfileBI.Name = "salesPostingProfileBI";
+            this.salesPostingProfileBI.SmallImage = ((System.Drawing.Image)(resources.GetObject("salesPostingProfileBI.SmallImage")));
+            // 
+            // customerBI
+            // 
+            this.customerBI.Caption = "Customer";
+            this.customerBI.Name = "customerBI";
+            this.customerBI.SmallImage = ((System.Drawing.Image)(resources.GetObject("customerBI.SmallImage")));
+            // 
             // gLNavBarGroup
             // 
             this.gLNavBarGroup.Caption = "GL";
-            this.gLNavBarGroup.Expanded = true;
             this.gLNavBarGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.mainAccountGroupNBI),
             new DevExpress.XtraNavBar.NavBarItemLink(this.mainAccountTreeNBI),
             new DevExpress.XtraNavBar.NavBarItemLink(this.gLDimensionNBI),
             new DevExpress.XtraNavBar.NavBarItemLink(this.sequSetupBI),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.jourSetupBI)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.jourSetupBI),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.mainAccountNBI)});
             this.gLNavBarGroup.Name = "gLNavBarGroup";
             this.gLNavBarGroup.SmallImage = ((System.Drawing.Image)(resources.GetObject("gLNavBarGroup.SmallImage")));
             // 
@@ -245,6 +272,12 @@
             this.jourSetupBI.Caption = "Journals setup";
             this.jourSetupBI.Name = "jourSetupBI";
             this.jourSetupBI.SmallImage = ((System.Drawing.Image)(resources.GetObject("jourSetupBI.SmallImage")));
+            // 
+            // mainAccountNBI
+            // 
+            this.mainAccountNBI.Caption = "Main accounts";
+            this.mainAccountNBI.Name = "mainAccountNBI";
+            this.mainAccountNBI.SmallImage = ((System.Drawing.Image)(resources.GetObject("mainAccountNBI.SmallImage")));
             // 
             // hrNavBarGroup
             // 
@@ -448,6 +481,28 @@
             this.barSubItem1.Id = 4;
             this.barSubItem1.Name = "barSubItem1";
             // 
+            // banAndCashNavBarGroup
+            // 
+            this.banAndCashNavBarGroup.Caption = "Bank & Cash";
+            this.banAndCashNavBarGroup.Expanded = true;
+            this.banAndCashNavBarGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.bankBI),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.cashBI)});
+            this.banAndCashNavBarGroup.Name = "banAndCashNavBarGroup";
+            this.banAndCashNavBarGroup.SmallImage = ((System.Drawing.Image)(resources.GetObject("banAndCashNavBarGroup.SmallImage")));
+            // 
+            // bankBI
+            // 
+            this.bankBI.Caption = "Bank";
+            this.bankBI.Name = "bankBI";
+            this.bankBI.SmallImage = ((System.Drawing.Image)(resources.GetObject("bankBI.SmallImage")));
+            // 
+            // cashBI
+            // 
+            this.cashBI.Caption = "Cash";
+            this.cashBI.Name = "cashBI";
+            this.cashBI.SmallImage = ((System.Drawing.Image)(resources.GetObject("cashBI.SmallImage")));
+            // 
             // MainFrm
             // 
             this.ClientSize = new System.Drawing.Size(728, 527);
@@ -513,5 +568,11 @@
         private DevExpress.XtraNavBar.NavBarGroup purchaseNavBarGroup;
         private DevExpress.XtraNavBar.NavBarGroup salesNavBarGroup;
         private DevExpress.XtraNavBar.NavBarGroup hrNavBarGroup;
+        private DevExpress.XtraNavBar.NavBarItem mainAccountNBI;
+        private DevExpress.XtraNavBar.NavBarItem customerBI;
+        private DevExpress.XtraNavBar.NavBarItem vendorBI;
+        private DevExpress.XtraNavBar.NavBarGroup banAndCashNavBarGroup;
+        private DevExpress.XtraNavBar.NavBarItem bankBI;
+        private DevExpress.XtraNavBar.NavBarItem cashBI;
     }
 }

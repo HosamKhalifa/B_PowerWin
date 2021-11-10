@@ -13,6 +13,20 @@ namespace B_PowerWin.DB
     [Table("line_base")]
     public class LineBase:ILineBase
     {
+        #region ClassFieldNames
+        [NotMapped]
+        public static class LineBaseFields
+        {
+            public static string Id { get { return "Id"; } }
+            public static string WFStatus { get { return "WFStatus"; } }
+            public static string BaseType { get { return "BaseType"; } }
+            public static string CreatedAt { get { return "CreatedAt"; } }
+            public static string CreatedBy { get { return "CreatedBy"; } }
+            public static string ModifiedAt { get { return "ModifiedAt"; } }
+            public static string ModifiedBy { get { return "ModifiedBy"; } }
+
+        }
+        #endregion
         public event InitNewRowHandler InitNewRow;
         public virtual void OnInitNewRow(InitNewRowEventArgs e)
         {

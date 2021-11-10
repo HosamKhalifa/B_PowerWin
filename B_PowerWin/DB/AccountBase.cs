@@ -11,6 +11,29 @@ namespace B_PowerWin.DB
     [Table("account_base")]
    public class AccountBase:LineBase
     {
+        #region CalssFieldNames
+        [NotMapped]
+        public static class AccountBaseFields
+        {
+            public static string AccountGroup { get { return "AccountGroup"; } }
+            public static string CompanyId { get { return "CompanyId"; } }
+            public static string Description { get { return "Description"; } }
+            public static string DimDefaults { get { return "DimDefaults"; } }
+            public static string DisplayNum { get { return "DisplayNum"; } }
+            public static string DisplayNumSequ { get { return "DisplayNumSequ"; } }
+            public static string DisplayNumSequVersion { get { return "DisplayNumSequVersion"; } }
+            public static string GroupId { get { return "GroupId"; } }
+            public static string MainAccount { get { return "MainAccount"; } }
+            public static string MainAccountId { get { return "MainAccountId"; } }
+            public static string MainAccountSetManually { get { return "MainAccountSetManually"; } }
+            public static string Name { get { return "Name"; } }
+            public static string ParnetId { get { return "ParnetId"; } }
+            public static string ReferenceNum { get { return "ReferenceNum"; } }
+            public static string Suspended { get { return "Suspended"; } }
+            public static string TaxGroup { get { return "TaxGroup"; } }
+        }
+
+        #endregion
         public AccountBase():base()
         {
             

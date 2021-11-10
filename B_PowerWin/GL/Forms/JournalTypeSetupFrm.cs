@@ -30,22 +30,17 @@ namespace B_PowerWin.GL.Forms
             FormGridManager = new GUI.Grid.GridManager();
             jourTypeGC.DataSource = jourTypeBS;
             FormGridManager.Attach(jourTypeGC);
-            //jourTypeGV.DataSourceChanged += (s, e) => {
-            //    var gv = (s as GridView);
-            //    if (gv.DataSource is BindingSource)
-            //    {
-            //        var lt_Rows = (gv.DataSource as BindingSource).List;
-            //        foreach (var item in lt_Rows)
-            //        {
-            //            if (item is DB.JournalType)
-            //            {
-            //                (item as DB.JournalType).PropertyChanged += JournalTypeSetupFrm_PropertyChanged;
-            //            }
-            //        }
-
-
-            //    }
-            //};
+            jourTypeBS.AddingNew += (s, e) => {
+                e.NewObject = new DB.JournalType() {
+                    PostingLayer = DB.PostingLayerEnum.GL,
+                    DetailSummary = DB.JournalTypeDetailSummaryEnum.Detail,
+                    SequGenerateAtPosting= true,
+                    AmountsInclueTax = true,
+                    WFStatus  = DB.WorkflowStatusEnum.Draft
+                };
+            };
+               
+            ;
             jourTypeGV.ValidateRow += (s, e) => {
                 var lt_Row = (DB.JournalType)e.Row;
                 if (lt_Row.JourType == DB.JournalTypeEnum.BudgetEntry)

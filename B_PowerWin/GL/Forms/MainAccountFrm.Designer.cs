@@ -33,7 +33,6 @@
             this.mainAccountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainAccountGV = new B_PowerWin.GUI.Grid.GridViewBase();
             this.colMainAccountType = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMainAccountGroupId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBalanceControl = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDisableManualEntry = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRequiredBusinessUnit = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,18 +54,10 @@
             this.colDisplayNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colReferenceNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colGroupId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTaxGroup = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDisplayNumSequVersion = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMainAccountSetManually = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMainAccountId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSuspended = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colParnetId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colParentIdList = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.parentAccLookup = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.mainAccountLookup = new System.Windows.Forms.BindingSource(this.components);
             this.colParentNameList = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMainAccount = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colAccountGroup = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLastErrorMessage = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedAt = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -77,6 +68,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountGC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parentAccLookup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainAccountLookup)).BeginInit();
             this.SuspendLayout();
             // 
             // mainAccountGC
@@ -88,6 +81,8 @@
             this.mainAccountGC.MainView = this.mainAccountGV;
             this.mainAccountGC.MenuManager = this.barManager1;
             this.mainAccountGC.Name = "mainAccountGC";
+            this.mainAccountGC.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.parentAccLookup});
             this.mainAccountGC.Size = new System.Drawing.Size(766, 531);
             this.mainAccountGC.TabIndex = 4;
             this.mainAccountGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -102,7 +97,6 @@
             this.mainAccountGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.MainAccount;
             this.mainAccountGV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMainAccountType,
-            this.colMainAccountGroupId,
             this.colBalanceControl,
             this.colDisableManualEntry,
             this.colRequiredBusinessUnit,
@@ -124,18 +118,8 @@
             this.colDisplayNum,
             this.colReferenceNum,
             this.colDescription,
-            this.colGroupId,
-            this.colTaxGroup,
-            this.colDisplayNumSequVersion,
-            this.colMainAccountSetManually,
-            this.colMainAccountId,
-            this.colSuspended,
             this.colParnetId,
-            this.colParentIdList,
             this.colParentNameList,
-            this.colMainAccount,
-            this.colAccountGroup,
-            this.colLastErrorMessage,
             this.colId,
             this.colCreatedBy,
             this.colCreatedAt,
@@ -147,302 +131,245 @@
             this.mainAccountGV.GridControl = this.mainAccountGC;
             this.mainAccountGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
             this.mainAccountGV.Name = "mainAccountGV";
+            this.mainAccountGV.OptionsView.ColumnAutoWidth = false;
+            this.mainAccountGV.OptionsView.ShowAutoFilterRow = true;
             // 
             // colMainAccountType
             // 
+            this.colMainAccountType.Caption = "Type";
             this.colMainAccountType.FieldName = "MainAccountType";
             this.colMainAccountType.Name = "colMainAccountType";
+            this.colMainAccountType.OptionsEditForm.VisibleIndex = 50;
             this.colMainAccountType.Visible = true;
-            this.colMainAccountType.VisibleIndex = 0;
-            // 
-            // colMainAccountGroupId
-            // 
-            this.colMainAccountGroupId.FieldName = "MainAccountGroupId";
-            this.colMainAccountGroupId.Name = "colMainAccountGroupId";
-            this.colMainAccountGroupId.Visible = true;
-            this.colMainAccountGroupId.VisibleIndex = 1;
+            this.colMainAccountType.VisibleIndex = 3;
+            this.colMainAccountType.Width = 118;
             // 
             // colBalanceControl
             // 
             this.colBalanceControl.FieldName = "BalanceControl";
             this.colBalanceControl.Name = "colBalanceControl";
-            this.colBalanceControl.Visible = true;
-            this.colBalanceControl.VisibleIndex = 2;
+            this.colBalanceControl.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colBalanceControl.OptionsEditForm.VisibleIndex = 60;
             // 
             // colDisableManualEntry
             // 
             this.colDisableManualEntry.FieldName = "DisableManualEntry";
             this.colDisableManualEntry.Name = "colDisableManualEntry";
-            this.colDisableManualEntry.Visible = true;
-            this.colDisableManualEntry.VisibleIndex = 3;
+            this.colDisableManualEntry.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colDisableManualEntry.OptionsEditForm.VisibleIndex = 70;
             // 
             // colRequiredBusinessUnit
             // 
             this.colRequiredBusinessUnit.FieldName = "RequiredBusinessUnit";
             this.colRequiredBusinessUnit.Name = "colRequiredBusinessUnit";
-            this.colRequiredBusinessUnit.Visible = true;
-            this.colRequiredBusinessUnit.VisibleIndex = 4;
+            this.colRequiredBusinessUnit.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colRequiredBusinessUnit.OptionsEditForm.VisibleIndex = 90;
             // 
             // colRequiredSite
             // 
             this.colRequiredSite.FieldName = "RequiredSite";
             this.colRequiredSite.Name = "colRequiredSite";
-            this.colRequiredSite.Visible = true;
-            this.colRequiredSite.VisibleIndex = 5;
+            this.colRequiredSite.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colRequiredSite.OptionsEditForm.VisibleIndex = 100;
             // 
             // colRequiredDept
             // 
             this.colRequiredDept.FieldName = "RequiredDept";
             this.colRequiredDept.Name = "colRequiredDept";
-            this.colRequiredDept.Visible = true;
-            this.colRequiredDept.VisibleIndex = 6;
+            this.colRequiredDept.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colRequiredDept.OptionsEditForm.VisibleIndex = 110;
             // 
             // colRequiredEquipment
             // 
             this.colRequiredEquipment.FieldName = "RequiredEquipment";
             this.colRequiredEquipment.Name = "colRequiredEquipment";
-            this.colRequiredEquipment.Visible = true;
-            this.colRequiredEquipment.VisibleIndex = 7;
+            this.colRequiredEquipment.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colRequiredEquipment.OptionsEditForm.VisibleIndex = 120;
             // 
             // colRequiredProject
             // 
             this.colRequiredProject.FieldName = "RequiredProject";
             this.colRequiredProject.Name = "colRequiredProject";
-            this.colRequiredProject.Visible = true;
-            this.colRequiredProject.VisibleIndex = 8;
+            this.colRequiredProject.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colRequiredProject.OptionsEditForm.VisibleIndex = 130;
             // 
             // colRequiredPurpose
             // 
             this.colRequiredPurpose.FieldName = "RequiredPurpose";
             this.colRequiredPurpose.Name = "colRequiredPurpose";
-            this.colRequiredPurpose.Visible = true;
-            this.colRequiredPurpose.VisibleIndex = 9;
+            this.colRequiredPurpose.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colRequiredPurpose.OptionsEditForm.VisibleIndex = 140;
             // 
             // colRequiredBank
             // 
             this.colRequiredBank.FieldName = "RequiredBank";
             this.colRequiredBank.Name = "colRequiredBank";
-            this.colRequiredBank.Visible = true;
-            this.colRequiredBank.VisibleIndex = 10;
+            this.colRequiredBank.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colRequiredBank.OptionsEditForm.VisibleIndex = 150;
             // 
             // colRequiredCash
             // 
             this.colRequiredCash.FieldName = "RequiredCash";
             this.colRequiredCash.Name = "colRequiredCash";
-            this.colRequiredCash.Visible = true;
-            this.colRequiredCash.VisibleIndex = 11;
+            this.colRequiredCash.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colRequiredCash.OptionsEditForm.VisibleIndex = 160;
             // 
             // colRequiredCustomer
             // 
             this.colRequiredCustomer.FieldName = "RequiredCustomer";
             this.colRequiredCustomer.Name = "colRequiredCustomer";
-            this.colRequiredCustomer.Visible = true;
-            this.colRequiredCustomer.VisibleIndex = 12;
+            this.colRequiredCustomer.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colRequiredCustomer.OptionsEditForm.VisibleIndex = 170;
             // 
             // colRequiredVendor
             // 
             this.colRequiredVendor.FieldName = "RequiredVendor";
             this.colRequiredVendor.Name = "colRequiredVendor";
-            this.colRequiredVendor.Visible = true;
-            this.colRequiredVendor.VisibleIndex = 13;
+            this.colRequiredVendor.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colRequiredVendor.OptionsEditForm.VisibleIndex = 180;
             // 
             // colRequiredEmployee
             // 
             this.colRequiredEmployee.FieldName = "RequiredEmployee";
             this.colRequiredEmployee.Name = "colRequiredEmployee";
-            this.colRequiredEmployee.Visible = true;
-            this.colRequiredEmployee.VisibleIndex = 14;
+            this.colRequiredEmployee.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colRequiredEmployee.OptionsEditForm.VisibleIndex = 190;
             // 
             // colRequiredPos
             // 
             this.colRequiredPos.FieldName = "RequiredPos";
             this.colRequiredPos.Name = "colRequiredPos";
-            this.colRequiredPos.Visible = true;
-            this.colRequiredPos.VisibleIndex = 15;
+            this.colRequiredPos.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colRequiredPos.OptionsEditForm.VisibleIndex = 200;
             // 
             // colIsTotal
             // 
             this.colIsTotal.FieldName = "IsTotal";
             this.colIsTotal.Name = "colIsTotal";
-            this.colIsTotal.Visible = true;
-            this.colIsTotal.VisibleIndex = 16;
+            this.colIsTotal.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             // 
             // colMainAccountGroup
             // 
             this.colMainAccountGroup.FieldName = "MainAccountGroup";
             this.colMainAccountGroup.Name = "colMainAccountGroup";
-            this.colMainAccountGroup.Visible = true;
-            this.colMainAccountGroup.VisibleIndex = 17;
+            this.colMainAccountGroup.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colMainAccountGroup.OptionsEditForm.VisibleIndex = 80;
             // 
             // colCompanyId
             // 
             this.colCompanyId.FieldName = "CompanyId";
             this.colCompanyId.Name = "colCompanyId";
-            this.colCompanyId.Visible = true;
-            this.colCompanyId.VisibleIndex = 18;
+            this.colCompanyId.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             // 
             // colName
             // 
             this.colName.FieldName = "Name";
             this.colName.Name = "colName";
+            this.colName.OptionsEditForm.VisibleIndex = 30;
             this.colName.Visible = true;
-            this.colName.VisibleIndex = 19;
+            this.colName.VisibleIndex = 2;
+            this.colName.Width = 209;
             // 
             // colDisplayNum
             // 
             this.colDisplayNum.FieldName = "DisplayNum";
             this.colDisplayNum.Name = "colDisplayNum";
-            this.colDisplayNum.Visible = true;
-            this.colDisplayNum.VisibleIndex = 20;
             // 
             // colReferenceNum
             // 
             this.colReferenceNum.FieldName = "ReferenceNum";
             this.colReferenceNum.Name = "colReferenceNum";
+            this.colReferenceNum.OptionsEditForm.VisibleIndex = 20;
             this.colReferenceNum.Visible = true;
-            this.colReferenceNum.VisibleIndex = 21;
+            this.colReferenceNum.VisibleIndex = 1;
+            this.colReferenceNum.Width = 104;
             // 
             // colDescription
             // 
             this.colDescription.FieldName = "Description";
             this.colDescription.Name = "colDescription";
-            this.colDescription.Visible = true;
-            this.colDescription.VisibleIndex = 22;
-            // 
-            // colGroupId
-            // 
-            this.colGroupId.FieldName = "GroupId";
-            this.colGroupId.Name = "colGroupId";
-            this.colGroupId.Visible = true;
-            this.colGroupId.VisibleIndex = 23;
-            // 
-            // colTaxGroup
-            // 
-            this.colTaxGroup.FieldName = "TaxGroup";
-            this.colTaxGroup.Name = "colTaxGroup";
-            this.colTaxGroup.Visible = true;
-            this.colTaxGroup.VisibleIndex = 24;
-            // 
-            // colDisplayNumSequVersion
-            // 
-            this.colDisplayNumSequVersion.FieldName = "DisplayNumSequVersion";
-            this.colDisplayNumSequVersion.Name = "colDisplayNumSequVersion";
-            this.colDisplayNumSequVersion.Visible = true;
-            this.colDisplayNumSequVersion.VisibleIndex = 25;
-            // 
-            // colMainAccountSetManually
-            // 
-            this.colMainAccountSetManually.FieldName = "MainAccountSetManually";
-            this.colMainAccountSetManually.Name = "colMainAccountSetManually";
-            this.colMainAccountSetManually.Visible = true;
-            this.colMainAccountSetManually.VisibleIndex = 26;
-            // 
-            // colMainAccountId
-            // 
-            this.colMainAccountId.FieldName = "MainAccountId";
-            this.colMainAccountId.Name = "colMainAccountId";
-            this.colMainAccountId.Visible = true;
-            this.colMainAccountId.VisibleIndex = 27;
-            // 
-            // colSuspended
-            // 
-            this.colSuspended.FieldName = "Suspended";
-            this.colSuspended.Name = "colSuspended";
-            this.colSuspended.Visible = true;
-            this.colSuspended.VisibleIndex = 28;
+            this.colDescription.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            this.colDescription.OptionsEditForm.VisibleIndex = 40;
             // 
             // colParnetId
             // 
+            this.colParnetId.ColumnEdit = this.parentAccLookup;
             this.colParnetId.FieldName = "ParnetId";
             this.colParnetId.Name = "colParnetId";
+            this.colParnetId.OptionsEditForm.VisibleIndex = 10;
             this.colParnetId.Visible = true;
-            this.colParnetId.VisibleIndex = 29;
+            this.colParnetId.VisibleIndex = 4;
+            this.colParnetId.Width = 258;
             // 
-            // colParentIdList
+            // parentAccLookup
             // 
-            this.colParentIdList.FieldName = "ParentIdList";
-            this.colParentIdList.Name = "colParentIdList";
-            this.colParentIdList.OptionsColumn.ReadOnly = true;
-            this.colParentIdList.Visible = true;
-            this.colParentIdList.VisibleIndex = 30;
+            this.parentAccLookup.AutoHeight = false;
+            this.parentAccLookup.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.parentAccLookup.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ReferenceNum", "Num", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", 80, "Name")});
+            this.parentAccLookup.DataSource = this.mainAccountLookup;
+            this.parentAccLookup.DisplayMember = "FullName";
+            this.parentAccLookup.KeyMember = "Id";
+            this.parentAccLookup.Name = "parentAccLookup";
+            this.parentAccLookup.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
+            this.parentAccLookup.ValueMember = "Id";
+            // 
+            // mainAccountLookup
+            // 
+            this.mainAccountLookup.DataSource = typeof(B_PowerWin.DB.MainAccount);
             // 
             // colParentNameList
             // 
             this.colParentNameList.FieldName = "ParentNameList";
             this.colParentNameList.Name = "colParentNameList";
             this.colParentNameList.OptionsColumn.ReadOnly = true;
-            this.colParentNameList.Visible = true;
-            this.colParentNameList.VisibleIndex = 31;
-            // 
-            // colMainAccount
-            // 
-            this.colMainAccount.FieldName = "MainAccount";
-            this.colMainAccount.Name = "colMainAccount";
-            this.colMainAccount.Visible = true;
-            this.colMainAccount.VisibleIndex = 32;
-            // 
-            // colAccountGroup
-            // 
-            this.colAccountGroup.FieldName = "AccountGroup";
-            this.colAccountGroup.Name = "colAccountGroup";
-            this.colAccountGroup.Visible = true;
-            this.colAccountGroup.VisibleIndex = 33;
-            // 
-            // colLastErrorMessage
-            // 
-            this.colLastErrorMessage.FieldName = "LastErrorMessage";
-            this.colLastErrorMessage.Name = "colLastErrorMessage";
-            this.colLastErrorMessage.Visible = true;
-            this.colLastErrorMessage.VisibleIndex = 34;
+            this.colParentNameList.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             // 
             // colId
             // 
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
+            this.colId.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             this.colId.Visible = true;
-            this.colId.VisibleIndex = 35;
+            this.colId.VisibleIndex = 0;
             // 
             // colCreatedBy
             // 
             this.colCreatedBy.FieldName = "CreatedBy";
             this.colCreatedBy.Name = "colCreatedBy";
-            this.colCreatedBy.Visible = true;
-            this.colCreatedBy.VisibleIndex = 36;
+            this.colCreatedBy.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             // 
             // colCreatedAt
             // 
             this.colCreatedAt.FieldName = "CreatedAt";
             this.colCreatedAt.Name = "colCreatedAt";
-            this.colCreatedAt.Visible = true;
-            this.colCreatedAt.VisibleIndex = 37;
+            this.colCreatedAt.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             // 
             // colModifiedBy
             // 
             this.colModifiedBy.FieldName = "ModifiedBy";
             this.colModifiedBy.Name = "colModifiedBy";
-            this.colModifiedBy.Visible = true;
-            this.colModifiedBy.VisibleIndex = 38;
+            this.colModifiedBy.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             // 
             // colModifiedAt
             // 
             this.colModifiedAt.FieldName = "ModifiedAt";
             this.colModifiedAt.Name = "colModifiedAt";
-            this.colModifiedAt.Visible = true;
-            this.colModifiedAt.VisibleIndex = 39;
+            this.colModifiedAt.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             // 
             // colBaseType
             // 
             this.colBaseType.FieldName = "BaseType";
             this.colBaseType.Name = "colBaseType";
-            this.colBaseType.Visible = true;
-            this.colBaseType.VisibleIndex = 40;
+            this.colBaseType.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             // 
             // colWFStatus
             // 
             this.colWFStatus.FieldName = "WFStatus";
             this.colWFStatus.Name = "colWFStatus";
-            this.colWFStatus.Visible = true;
-            this.colWFStatus.VisibleIndex = 41;
+            this.colWFStatus.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             // 
             // MainAccountFrm
             // 
@@ -455,6 +382,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountGC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainAccountGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parentAccLookup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainAccountLookup)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,7 +395,6 @@
         private GUI.Grid.GridViewBase mainAccountGV;
         private System.Windows.Forms.BindingSource mainAccountBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colMainAccountType;
-        private DevExpress.XtraGrid.Columns.GridColumn colMainAccountGroupId;
         private DevExpress.XtraGrid.Columns.GridColumn colBalanceControl;
         private DevExpress.XtraGrid.Columns.GridColumn colDisableManualEntry;
         private DevExpress.XtraGrid.Columns.GridColumn colRequiredBusinessUnit;
@@ -488,18 +416,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDisplayNum;
         private DevExpress.XtraGrid.Columns.GridColumn colReferenceNum;
         private DevExpress.XtraGrid.Columns.GridColumn colDescription;
-        private DevExpress.XtraGrid.Columns.GridColumn colGroupId;
-        private DevExpress.XtraGrid.Columns.GridColumn colTaxGroup;
-        private DevExpress.XtraGrid.Columns.GridColumn colDisplayNumSequVersion;
-        private DevExpress.XtraGrid.Columns.GridColumn colMainAccountSetManually;
-        private DevExpress.XtraGrid.Columns.GridColumn colMainAccountId;
-        private DevExpress.XtraGrid.Columns.GridColumn colSuspended;
         private DevExpress.XtraGrid.Columns.GridColumn colParnetId;
-        private DevExpress.XtraGrid.Columns.GridColumn colParentIdList;
         private DevExpress.XtraGrid.Columns.GridColumn colParentNameList;
-        private DevExpress.XtraGrid.Columns.GridColumn colMainAccount;
-        private DevExpress.XtraGrid.Columns.GridColumn colAccountGroup;
-        private DevExpress.XtraGrid.Columns.GridColumn colLastErrorMessage;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedBy;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedAt;
@@ -507,5 +425,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colModifiedAt;
         private DevExpress.XtraGrid.Columns.GridColumn colBaseType;
         private DevExpress.XtraGrid.Columns.GridColumn colWFStatus;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit parentAccLookup;
+        private System.Windows.Forms.BindingSource mainAccountLookup;
     }
 }

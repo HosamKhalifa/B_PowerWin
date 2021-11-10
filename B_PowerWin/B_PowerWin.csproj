@@ -163,6 +163,11 @@
     <Compile Include="DB\POS_SalesInvoiceEnum.cs" />
     <Compile Include="DB\Project.cs" />
     <Compile Include="DB\Purpose.cs" />
+    <Compile Include="DB\Query\BankListPageQuery.cs" />
+    <Compile Include="DB\Query\CashListPageQuery.cs" />
+    <Compile Include="DB\Query\CustomerListPageQuery.cs" />
+    <Compile Include="DB\Query\MainAccountTreeQuery.cs" />
+    <Compile Include="DB\Query\VendorListPageQuery.cs" />
     <Compile Include="DB\SecAccessType.cs" />
     <Compile Include="DB\SecAccessTypeTypeEnum.cs" />
     <Compile Include="DB\SecPrincipal.cs" />
@@ -209,6 +214,12 @@
     </Compile>
     <Compile Include="GL\Forms\AccountGroupEditorFrm.Designer.cs">
       <DependentUpon>AccountGroupEditorFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GL\Forms\BankFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\Forms\BankFrm.Designer.cs">
+      <DependentUpon>BankFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="GL\Forms\CompanySetupFrm.cs">
       <SubType>Form</SubType>
@@ -263,6 +274,12 @@
     </Compile>
     <Compile Include="GL\Forms\SysSequenceSetupFrm.Designer.cs">
       <DependentUpon>SysSequenceSetupFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ListPageFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ListPageFormBase.Designer.cs">
+      <DependentUpon>ListPageFormBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Invent\InventStoreFrm.cs">
       <SubType>Form</SubType>
@@ -387,10 +404,26 @@
     <Compile Include="Migrations\202111061748083_init_0033.designer.cs">
       <DependentUpon>202111061748083_init_0033.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111101740330_Init_0034.cs" />
+    <Compile Include="Migrations\202111101740330_Init_0034.designer.cs">
+      <DependentUpon>202111101740330_Init_0034.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sales\Forms\CustomerEditFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\Forms\CustomerEditFrm.Designer.cs">
+      <DependentUpon>CustomerEditFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Forms\CustomerListPageFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\Forms\CustomerListPageFrm.Designer.cs">
+      <DependentUpon>CustomerListPageFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sec\SecPrincipalEditorFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -413,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GL\Forms\AccountGroupEditorFrm.resx">
       <DependentUpon>AccountGroupEditorFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GL\Forms\BankFrm.resx">
+      <DependentUpon>BankFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GL\Forms\CompanySetupFrm.resx">
       <DependentUpon>CompanySetupFrm.cs</DependentUpon>
@@ -440,6 +476,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GL\Forms\SysSequenceSetupFrm.resx">
       <DependentUpon>SysSequenceSetupFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ListPageFormBase.resx">
+      <DependentUpon>ListPageFormBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Invent\InventStoreFrm.resx">
       <DependentUpon>InventStoreFrm.cs</DependentUpon>
@@ -492,6 +531,9 @@
     <EmbeddedResource Include="Migrations\202111061748083_init_0033.resx">
       <DependentUpon>202111061748083_init_0033.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111101740330_Init_0034.resx">
+      <DependentUpon>202111101740330_Init_0034.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -502,6 +544,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Sales\Forms\CustomerEditFrm.resx">
+      <DependentUpon>CustomerEditFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\Forms\CustomerListPageFrm.resx">
+      <DependentUpon>CustomerListPageFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sec\SecPrincipalEditorFrm.resx">
       <DependentUpon>SecPrincipalEditorFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -541,6 +589,7 @@
     <None Include="Properties\DataSources\B_PowerWin.DB.Company.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.Country.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.Currency.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Customer.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.InventStore.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.JournalType.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.LedgerCalender.datasource" />
@@ -550,6 +599,7 @@
     <None Include="Properties\DataSources\B_PowerWin.DB.LedgerPostingProfileSetup.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.MainAccount.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.MainAccountGroup.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Query.CustomerListPageQuery.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.SecAccessType.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipal.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalRole.datasource" />
@@ -576,6 +626,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GL\Reports\" />
+    <Folder Include="Sales\Reports\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DB\SqlScript.txt" />

@@ -29,12 +29,43 @@ namespace B_PowerWin.GUI.Grid
     public class GridManager
     {
 
+        #region StaticMethods
+        public static void SetupEditForm(GridView _gv,params string[] Fields)
+        {
+            //  this.colDescription.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+            //this.colDescription.OptionsEditForm.VisibleIndex = 40;
+            //[1]Disable all columns 
+            foreach (var col in _gv.Columns)
+            {
+                ((GridColumn)col).OptionsColumn.AllowEdit = false;
+                ((GridColumn)col).OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
+                ((GridColumn)col).OptionsEditForm.VisibleIndex = 0;
+
+            }
+            foreach (var field in Fields)
+            {
+                int indx = 0;
+                var lc_col = _gv.Columns.ColumnByFieldName(field);
+                if(lc_col == null) { continue; }
+                indx+=5;
+                lc_col.OptionsColumn.AllowEdit = true;
+                lc_col.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
+                lc_col.OptionsEditForm.VisibleIndex = indx;
+
+            }
+
+        }
+        #endregion
+
         #region Properties
         public Grid.GridCtrlBase[] GridControls { get; set; }
         
         public DevExpress.XtraPivotGrid.PivotGridControl[] PivotGridControls { get; set; }
         public object GridControl { get; private set; }
         #endregion
+
+
+
         #region Methods
         public void Attach(params Grid.GridCtrlBase[] _gridControls)
         {
@@ -612,7 +643,8 @@ namespace B_PowerWin.GUI.Grid
             }
 
         }
-       
+        
+
         #endregion
     }
 }

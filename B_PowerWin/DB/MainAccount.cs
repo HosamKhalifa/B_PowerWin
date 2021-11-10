@@ -60,6 +60,13 @@ namespace B_PowerWin.DB
         public override void OnCreate(AppDbContext _db)
         {
             BaseType = (int)BaseTypeEnum.MainAccount;
+            if (ParnetId.HasValue)
+            {
+                var parnet = _db.MainAccounts.Find(ParnetId);
+                
+                MainAccountType = parnet.MainAccountType;
+                
+            }
             base.OnCreate(_db);
         }
         [NotMapped]

@@ -12,6 +12,32 @@ CREATE SEQUENCE [dbo].[line_base_sequ]
  MAXVALUE 9223372036854775807
  CACHE 
 GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Name
+-- Create date: 
+-- Description:	Determinstic function return group full name
+-- =============================================
+CREATE OR ALTER FUNCTION dbo.SF_AccountGroupFullName 
+(
+	@GroupId bigint
+)
+RETURNS nvarchar(250)
+WITH SCHEMABINDING --Determinstic requirments in SQL Server
+AS 
+BEGIN
+	
+	DECLARE @Result nvarchar(250)
+
+	select  @Result =  g.ReferenceNum + ' ' + g.Name  from dbo.account_group g where g.Id = @GroupId
+	RETURN @Result
+
+END
+GO
+
 
 CREATE OR ALTER FUNCTION tf_sec_user_permissions(@UserId			nvarchar(120))
 returns @Report Table(Id						int identity,

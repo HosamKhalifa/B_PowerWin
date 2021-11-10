@@ -33,7 +33,10 @@ namespace B_PowerWin.GL.Forms
             dbContext = new AppDbContext();
             FormGridManager = new GUI.Grid.GridManager();
             FormGridManager.Attach(accountGroupGC);
-
+            accountGroupBindingSource.AddingNew += (s, e) => {
+                e.NewObject = new AccountGroup() {GroupedBaseTypeId = groupBaseType.BaseTypeId,ReferenceNum = "00",WFStatus = WorkflowStatusEnum.Draft };
+                
+            };
             RefreshData();
         }
     }

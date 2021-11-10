@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
 using System.Drawing;
+using DevExpress.XtraEditors;
 
 namespace B_PowerWin.GUI.CustomLookup
 {
@@ -107,7 +108,40 @@ namespace B_PowerWin.GUI.CustomLookup
 
             return ret;
         }
+        public static void AccountGroup(AppDbContext _db, LookUpEdit _lookUp, BaseTypeEnum _GroupedBaseType)
+        {
+            Image limg_Ellipsis = DevExpress.Images.ImageResourceCache.Default.GetImage("images/edit/copy_16x16.png");
+            var bs = new BindingSource();
+            _db.AccountGroups.Where(x => x.GroupedBaseTypeId == (int)_GroupedBaseType).Load();
+            bs.DataSource = _db.AccountGroups.Local;
+            _lookUp.Name = $"{PRRFIX}ACC_GRP_{_GroupedBaseType.ToString()}_LOV";
+            _lookUp.Properties.DataSource = bs;
+            _lookUp.Properties.DisplayMember = "FullName";
+            _lookUp.Properties.ValueMember = "Id";
+            _lookUp.Properties.KeyMember = "Id";
+            _lookUp.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
 
+            _lookUp.Properties.Columns.Add(new LookUpColumnInfo() { FieldName = "Id", Caption = "Id", Width = 10 });
+            _lookUp.Properties.Columns.Add(new LookUpColumnInfo() { FieldName = "FullName", Caption = "Name", Width = 55 });
+
+            //Buttons setup
+            _lookUp.Properties.Buttons.Add(
+                new EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "Edit...", -1, true, true, true, DevExpress.XtraEditors.ImageLocation.MiddleCenter, limg_Ellipsis)
+                );
+            //Buttons event handlers
+            _lookUp.Properties.ButtonClick += (s, e) => {
+                if (e.Button.Kind == ButtonPredefines.Ellipsis)
+                {
+                    GL.Forms.AccountGroupEditorFrm frm = new GL.Forms.AccountGroupEditorFrm(_GroupedBaseType) { StartPosition = FormStartPosition.CenterParent };
+                    frm.FormClosing += (l_s, l_e) => {
+                        _db.AccountGroups.Where(x => x.GroupedBaseTypeId == (int)_GroupedBaseType).Load();
+                    };
+                    frm.ShowDialog();
+                }
+            };
+            
+
+        }
         public static RepositoryItemLookUpEdit AccountBase(AppDbContext _db, GridViewBase _gv, GridColumn _gvcol, BaseTypeEnum _BaseType)
         {
             

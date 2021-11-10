@@ -1,4 +1,5 @@
 ﻿using B_PowerWin.DB;
+using B_PowerWin.DB.Query;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,8 @@ namespace B_PowerWin.GL.Forms
 {
     public partial class MainAccountFrm : B_PowerWin.GUI.EditFormBase
     {
+        List<DB.Query.MainAccountTreeQuery> mainAccountTreeList;
+        AppDbContext lookupContext;
         public MainAccountFrm()
         {
             InitializeComponent();
@@ -20,8 +23,13 @@ namespace B_PowerWin.GL.Forms
         }
         public override void RefreshData()
         {
+            
             base.RefreshData();
             dbContext.MainAccounts.Where(x => x.IsTotal == false).Load();
+            lookupContext.MainAccounts.Where(x => x.IsTotal == true ).Load();
+            mainAccountTreeList = lookupContext.Database.SqlQuery<MainAccountTreeQuery>(MainAccountTreeQuery.SELECT_SQL).ToList();
+            mainAccountLookup.DataSource = mainAccountTreeList;
+            mainAccountLookup.ResetBindings(true);
             mainAccountBindingSource.ResetBindings(true);
 
 
@@ -29,10 +37,13 @@ namespace B_PowerWin.GL.Forms
         private void InitData()
         {
             dbContext = new AppDbContext();
+            lookupContext = new AppDbContext();
 
             FormGridManager = new GUI.Grid.GridManager();
+            FormGridManager.Attach(mainAccountGC);
 
             mainAccountBindingSource.DataSource = dbContext.MainAccounts.Local;
+            mainAccountLookup.DataSource = lookupContext.MainAccounts.Local;
             mainAccountGC.DataSource = mainAccountBindingSource;
 
             mainAccountBindingSource.AddingNew += (s, e) => {

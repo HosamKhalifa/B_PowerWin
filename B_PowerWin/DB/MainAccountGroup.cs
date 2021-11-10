@@ -44,6 +44,8 @@ namespace B_PowerWin.DB
         [Required]
         public MainAccountTypeEnum MainAccountType { get; set; }
         public ICollection<MainAccount> MainAccounts { get; set; }
+        [NotMapped]
+        public string FullName { get { return $"{GroupNum} {GroupName}"; } }
 
     }
 }
