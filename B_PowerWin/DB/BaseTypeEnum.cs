@@ -66,6 +66,7 @@ namespace B_PowerWin.DB
         LedgerPostingProfile = 1055,
         FixedAsset = 1056,
         LedgerPostingProfileSetup=1057,
-        Item = 1058
+        Item = 1058,
+        ItemInventoryBarcode = 1059
     }
 }

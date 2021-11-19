@@ -12,6 +12,10 @@ namespace B_PowerWin.DB
     [Table("customer")]
     public class Customer:AccountBase
     {
+        public static class CustomerFields
+        {
+            public static string CreditLimit { get { return "CreditLimit"; } }
+        }
         public Customer():base()
         {
 

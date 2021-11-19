@@ -26,10 +26,10 @@ namespace B_PowerWin
             SkinManager.EnableFormSkins();
             
             UserLookAndFeel.Default.SetSkinStyle("Office 2010 Blue");
+            new MySession("root");
             var mainFrm = new MainFrm();
-            new MySession("root", mainFrm);
-            
-            
+            MySession.Session.MainForm = mainFrm;
+
             Application.Run(mainFrm);
             //Application.Run(new MainFrm());
         }

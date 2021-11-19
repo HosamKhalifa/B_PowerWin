@@ -44,8 +44,10 @@ namespace B_PowerWin.DB
         public virtual ICollection<InventDimDefault> InventDimDefaults { get; set; }
         public virtual ICollection<ItemVariants> ItemVariants { get; set; }
 
-        public Item Item { get; set; }
-        public ItemSizeEnum SizeEnum { get; set; }
+        [Required, ForeignKey("ItemInventory")]
+        public long? ItemInventoryId { get; set; }
+        public virtual ItemInventory ItemInventory { get; set; }
+        public ItemColorEnum ColorEnum { get; set; }
         [StringLength(60)]
         public string ItemColorName { get; set; }
         

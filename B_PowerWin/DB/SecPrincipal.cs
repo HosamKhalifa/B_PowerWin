@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity.Infrastructure;
 
 namespace B_PowerWin.DB
 {
@@ -60,7 +61,7 @@ namespace B_PowerWin.DB
             return exp;
         }
 
-        public virtual void OnUpdate(AppDbContext _db)
+        public virtual void OnUpdate(AppDbContext _db, DbEntityEntry _entryStatus)
         {
             if (!ValidateLine(_db, LineBaseCRUDEnum.Update))
             {

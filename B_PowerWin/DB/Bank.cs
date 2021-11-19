@@ -70,5 +70,6 @@ namespace B_PowerWin.DB
         }
 
         public virtual ICollection<DimDefault> DimDefaults { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }

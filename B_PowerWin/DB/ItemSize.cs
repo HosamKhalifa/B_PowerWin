@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace B_PowerWin.DB
 {
     [Table("item_size")]
-  public  class ItemSize:LineBase
+    public class ItemSize : LineBase
     {
-        public ItemSize():base()
+        public ItemSize() : base()
         {
 
         }
@@ -43,8 +43,9 @@ namespace B_PowerWin.DB
         }
         public virtual ICollection<InventDimDefault> InventDimDefaults { get; set; }
         public virtual ICollection<ItemVariants> ItemVariants { get; set; }
-
-        public Item Item { get; set; }
+        [Required,ForeignKey("ItemInventory")]
+        public long? ItemInventoryId { get; set; }
+        public virtual ItemInventory ItemInventory { get;set;}
         public ItemSizeEnum SizeEnum { get; set; }
         [StringLength(60)]
         public string ItemSizeName { get; set; }

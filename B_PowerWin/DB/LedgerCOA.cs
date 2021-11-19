@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,7 +65,7 @@ namespace B_PowerWin.DB
            
         }
 
-        public void OnUpdate(AppDbContext _db)
+        public void OnUpdate(AppDbContext _db, DbEntityEntry _entryStatus)
         {
             
         }

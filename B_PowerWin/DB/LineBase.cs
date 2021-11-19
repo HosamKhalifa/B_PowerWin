@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using B_PowerWin.SharedExt;
 using B_PowerWin.DBEvents;
+using System.Data.Entity.Infrastructure;
 
 namespace B_PowerWin.DB
 {
@@ -98,11 +99,10 @@ namespace B_PowerWin.DB
             this.BaseType = baseTypeId;
 
         }
-        public virtual void OnUpdate(AppDbContext _db)
+        public virtual void OnUpdate(AppDbContext _db, DbEntityEntry _entryStatus)
         {
             if (!ValidateLine(_db, LineBaseCRUDEnum.Update))
             {
-
                 throw GetLineExceptionDetails(_db, LineBaseCRUDEnum.Update);
             }
             ModifiedAt = DateTime.Now;

@@ -12,6 +12,15 @@ namespace B_PowerWin.DB
     [Table("tax_group")]
     public class TaxGroup:LineBase
     {
+        #region ClassFieldNames
+        [NotMapped]
+        public static class TaxGroupFields
+        {
+            public static string GroupNum { get { return "GroupNum"; } }
+            public static string GroupName { get { return "GroupName"; } }
+            
+        }
+        #endregion
         public override bool IsBusinessObject()
         {
             return true;
@@ -37,9 +46,13 @@ namespace B_PowerWin.DB
             BaseType = (int)BaseTypeEnum.TaxGroup;
             base.OnCreate(_db);
         }
+        [StringLength(30),Index("tax_grpup_group_num_uq",IsUnique =true)]
+        public string GroupNum { get; set; }
         public int? CompanyId { get; set; }
         [StringLength(50)]
         public string GroupName { get; set; }
+        public virtual ICollection<TaxGroupMemberSetup> Members { get; set; }
+        public string FullName { get { return $"{GroupNum} {GroupName}"; } }
 
     }
 }

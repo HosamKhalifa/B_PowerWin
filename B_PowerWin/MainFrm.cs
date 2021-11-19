@@ -1,5 +1,6 @@
 ﻿using B_PowerWin.Properties;
 using DevExpress.LookAndFeel;
+using DevExpress.XtraBars;
 using DevExpress.XtraNavBar;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace B_PowerWin
 {
     public partial class MainFrm : DevExpress.XtraEditors.XtraForm
     {
+        DevExpress.XtraTabbedMdi.XtraTabbedMdiManager MainXtraTabbedMdiManager;
         public MainFrm()
         {
             InitializeComponent();
@@ -24,19 +26,30 @@ namespace B_PowerWin
             InitGLMenu();
             InitInventoryMenu();
             InitSalesMenu();
+            InitHRMenu();
             InitBankAndCashMenu();
             InitSystemAdminMenu();
+        }
+
+        private void InitHRMenu()
+        {
+            employeeBI.LinkClicked += (s, e) => {
+                var frm = new HR.Forms.EmployeeFrm () { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
+                frm.Show();
+            };
         }
 
         private void InitBankAndCashMenu()
         {
             bankBI.LinkClicked += (s, e) => {
-
-
                 var frm = new GL.Forms.BankFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
                 frm.Show();
-
             };
+            cashBI.LinkClicked += (s, e) => {
+                var frm = new GL.Forms.CashFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
+                frm.Show();
+            };
+
         }
 
         private void InitSystemAdminMenu()
@@ -60,11 +73,22 @@ namespace B_PowerWin
 
         private void InitMainMenu()
         {
+            //Setup XtraTabbedMdiManager
+            if (MySession.Session.User.UseMdiTabbedManager)
+            {
+                MainXtraTabbedMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+                MainXtraTabbedMdiManager.Controller = this.barAndDockingController1;
+                MainXtraTabbedMdiManager.MdiParent = this;
+            }
+
             labelSetupBarItem.ItemClick += (s, e) => {
                 var frm = new GUI.UILabelManagerFrm() { MdiParent = this, WindowState = FormWindowState.Maximized };
                 frm.Show();
             };
-
+            userOptionsBI.ItemClick += (s, e) => {
+                var frm = new Sec.UserOptionsFrm() {  MdiParent = this, WindowState = FormWindowState.Maximized };
+                frm.Show();
+            };
             cascadeBarButtonItem.ItemClick += (s, e) => { LayoutMdi(MdiLayout.Cascade); };
             titleHorizontalBarButtonItem.ItemClick += (s, e) => { LayoutMdi(MdiLayout.TileHorizontal); };
             tileVerticalBarButtonItem.ItemClick += (s, e) => { LayoutMdi(MdiLayout.TileVertical); };
@@ -82,11 +106,13 @@ namespace B_PowerWin
         {
             //InventoryStore
             inventStoreGroupNBI.LinkClicked += (s, e) => {
-
-
                 var frm = new Invent.InventStoreFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
                 frm.Show();
-
+            };
+            //Item&Services
+            itemAndServicesSetupNBI.LinkClicked += (s, e) => {
+                var frm = new Invent.ItemFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
+                frm.Show();
             };
         }
 
@@ -104,7 +130,7 @@ namespace B_PowerWin
             customerBI.LinkClicked += (s, e) => {
 
 
-                var frm = new Sales.Forms.CustomerListPageFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
+                var frm = new Sales.Forms.CustomerFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
                 frm.Show();
 
             };
@@ -151,13 +177,15 @@ namespace B_PowerWin
             };
             //Sequences setup
             jourSetupBI.LinkClicked += (s, e) => {
-
-
                 var frm = new GL.Forms.JournalTypeSetupFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
                 frm.Show();
-
             };
-           
+            //Tax setup
+            taxSetupBI.LinkClicked += (s, e) => {
+                var frm = new GL.Forms.TaxSetupFrm() { Text = (s as NavBarItem).Caption, MdiParent = this, WindowState = FormWindowState.Maximized };
+                frm.Show();
+            };
+
         }
 
         private void SkinManage()

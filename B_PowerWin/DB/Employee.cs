@@ -12,7 +12,26 @@ namespace B_PowerWin.DB
     [Table("Employee")]
   public class Employee:AccountBase
     {
-        public Employee():base()
+        public static class EmployeeBaseFields
+        {
+            public static string IdentityCard { get { return "IdentityCard"; } }
+            public static string InsuranceNum { get { return "InsuranceNum"; } }
+            public static string Gender { get { return "Gender"; } }
+            public static string MaritalState { get { return "MaritalState"; } }
+            public static string Religion { get { return "Religion"; } }
+            public static string BirthDate { get { return "BirthDate"; } }
+            public static string StartDate { get { return "StartDate"; } }
+            public static string EndDate { get { return "EndDate"; } }
+            public static string BankAccountNum { get { return "BankAccountNum"; } }
+            public static string BankId { get { return "BankId"; } }
+            public static string Address { get { return "Address"; } }
+            public static string Mob { get { return "Mob"; } }
+            public static string Email { get { return "Email"; } }
+            public static string CountryId { get { return "CountryId"; } }
+            public static string CityId { get { return "CityId"; } }
+
+}
+public Employee():base()
         {
 
         }
@@ -73,6 +92,34 @@ namespace B_PowerWin.DB
         public string IdentityCard { get; set; }
         [StringLength(30)]
         public string InsuranceNum { get; set; }
+        public EmployeeGenderEnum Gender { get; set; }
+        public EmployeeMaritalStateEnum MaritalState { get; set; }
+        public EmployeeReligionEnum Religion { get; set; }
+        [Required]
+        public DateTime? BirthDate { get; set; }
+        [Required]
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        [StringLength(40)]
+        public string BankAccountNum { get; set; }
+        [ForeignKey("Bank")]
+        public long?  BankId   { get; set; }
+        [StringLength(200)]
+        public string Address { get; set; }
+        [StringLength(30)]
+        public string Mob { get; set; }
+        [StringLength(100)]
+        public string Email { get; set; }
+        [StringLength(5),ForeignKey("Country")]
+        public string CountryId { get; set; }
+        [ForeignKey("City")]
+        public long? CityId { get; set; }
+        [NotMapped]
+        public bool IsRetired { get {return !EndDate.HasValue || (EndDate.HasValue && EndDate.Value < DateTime.Today.Date); }  }
+
+        public virtual Bank Bank { set; get; }
+        public virtual Country Country { set; get; }
+        public virtual City City { set; get; }
 
 
 

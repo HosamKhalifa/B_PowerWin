@@ -17,6 +17,7 @@ namespace B_PowerWin.DB
         public string CityName { get; set; }
         [Required]
         public Country Country { get; set; }
+        public virtual ICollection<Employee> Employees{ get; set; }
 
     }
 }

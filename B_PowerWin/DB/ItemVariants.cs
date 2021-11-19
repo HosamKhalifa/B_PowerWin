@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
@@ -12,7 +14,23 @@ namespace B_PowerWin.DB
     [Table("item_variants")]
     public class ItemVariants:AccountBase
     {
-        public ItemVariants():base()
+        #region ClassFieldNames
+        [NotMapped]
+        public static class ItemVariantsFields
+        {
+            public static string PurchPrice { get { return "PurchPrice"; } }
+            public static string SalesPrice { get { return "SalesPrice"; } }
+            public static string SalesPriceMin { get { return "SalesPriceMin"; } }
+            public static string BuyFromCustomer { get { return "BuyFromCustomer"; } }
+            public static string ItemInventoryId { get { return "ItemInventoryId"; } }
+            public static string ItemSizeId { get { return "ItemSizeId"; } }
+            public static string ItemColorId { get { return "ItemColorId"; } }
+           
+
+}
+
+#endregion
+public ItemVariants():base()
         {
 
         }
@@ -66,11 +84,33 @@ namespace B_PowerWin.DB
         public override void OnCreate(AppDbContext _db)
         {
             BaseType = (int)BaseTypeEnum.ItemVariants;
+            //Name should be always calculated from Item Name+Size Name + Color Name
+            string ls_VarName = $"{this.ItemInventory.Name} {this.ItemSize.ItemSizeName} {this.ItemColor.ItemColorName}";
+            this.Name = ls_VarName;
             base.OnCreate(_db);
         }
+        public override void OnUpdate(AppDbContext _db, DbEntityEntry _entryStatus)
+        {
+            //Prohibting any updates on varianys columns
+            var li_ItemInventoryId  = _entryStatus.OriginalValues.GetValue<long?>(ItemVariantsFields.ItemInventoryId);
+            var li_ItemSizeId       = _entryStatus.OriginalValues.GetValue<long?>(ItemVariantsFields.ItemSizeId);
+            var li_ItemColorId      = _entryStatus.OriginalValues.GetValue<long?>(ItemVariantsFields.ItemColorId);
+
+            var lt_ItemInventory    = _db.ItemInventorys.Find(li_ItemInventoryId);
+            var lt_ItemSize         = _db.ItemInventorys.Find(li_ItemSizeId);
+            var lt_ItemColor        = _db.ItemInventorys.Find(li_ItemColorId);
+
+            this.ItemInventoryId    = li_ItemInventoryId;
+            this.ItemSizeId         = li_ItemSizeId;
+            this.ItemColorId        = li_ItemColorId;
+
+            //Name should be always calculated from Item Name+Size Name + Color Name
+            string ls_VarName = $"{lt_ItemInventory.Name} {lt_ItemSize.Name} {lt_ItemColor.Name}";
+            this.Name = ls_VarName;
+            base.OnUpdate(_db,_entryStatus);
+        }
         public virtual ICollection<InventDimDefault> InventDimDefaults { get; set; }
-        [StringLength(50), Index("item_variants_barcode_uq", IsUnique = true)]
-        public string BarCode { get; set; }
+        public virtual ICollection<ItemInventoryBarcode> ItemInventoryBarcodes { get; set; }
         public decimal? PurchPrice { get; set; }
         public decimal? SalesPrice { get; set; }
         public decimal? SalesPriceMin { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,10 +18,10 @@ namespace B_PowerWin.DB
             RoleType = SecAccessTypeTypeEnum.Responsibility; 
             base.OnCreate(_db);
         }
-        public override void OnUpdate(AppDbContext _db)
+        public override void OnUpdate(AppDbContext _db, DbEntityEntry _entryStatus)
         {
             RoleType = SecAccessTypeTypeEnum.Responsibility;
-            base.OnUpdate(_db);
+            base.OnUpdate(_db,_entryStatus);
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Infrastructure;
 
 namespace B_PowerWin.DB
 {
@@ -79,12 +80,12 @@ namespace B_PowerWin.DB
 
 
         }
-        public override void OnUpdate(AppDbContext _db)
+        public override void OnUpdate(AppDbContext _db, DbEntityEntry _entryStatus)
         {
             string ls_ParentIds = "";
             string ls_ParentNames = "";
 
-            base.OnUpdate(_db);
+            base.OnUpdate(_db,_entryStatus);
 
             if (ParnetId.HasValue && ParnetId != 0)
             {

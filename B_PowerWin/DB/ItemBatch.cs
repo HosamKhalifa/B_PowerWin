@@ -51,6 +51,7 @@ namespace B_PowerWin.DB
         public Vendor GuaranteeVendorId { get; set; }
         public int? GuaranteeMonths { get; set; }
         public ItemBatchTypeEnum ItemBatchType { get; set; }
+        public virtual ICollection<ItemInventoryBarcode> ItemInventoryBarcodes { get; set; }
 
 
     }

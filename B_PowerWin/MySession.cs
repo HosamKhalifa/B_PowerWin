@@ -18,7 +18,7 @@ namespace B_PowerWin
         }
         public AppDbContext Database { get; set; }
         public ObjectContext ObjectContext { get { return ((IObjectContextAdapter)Database).ObjectContext; } }
-        public MySession(string _userId,MainFrm _mainFrm)
+        public MySession(string _userId)
         {
                 Database = new AppDbContext();
             
@@ -30,7 +30,8 @@ namespace B_PowerWin
                 Company = Database.Companies.Find(usr.DefaultCompany);
                 LangId = string.IsNullOrEmpty(usr.LangId)? Settings.Default["LangId"].ToString():usr.LangId ;
                 SkinName = usr.SkinName;
-                MainForm = _mainFrm;
+                User = usr;
+               
                 
                 Session =this;
 
@@ -44,6 +45,7 @@ namespace B_PowerWin
         public Company Company { get; set; }
         public string LangId { get; set; }
         public string SkinName { get; set; }
+        public SecPrincipalUser User { get; set; }
 
 
 

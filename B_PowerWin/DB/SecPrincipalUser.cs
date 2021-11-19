@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
@@ -41,10 +42,10 @@ namespace B_PowerWin.DB
             Pwd = "";
             base.OnCreate(_db);
         }
-        public override void OnUpdate(AppDbContext _db)
+        public override void OnUpdate(AppDbContext _db, DbEntityEntry _entryStatus)
         {
             Pwd = Cryptography.Encrypt(Pwd);
-            base.OnUpdate(_db);
+            base.OnUpdate(_db, _entryStatus);
         }
        
         public int? UserKey { get; set; }
@@ -61,6 +62,8 @@ namespace B_PowerWin.DB
         public string SkinName { get; set; }
         [StringLength(10)]
         public string  LangId { get; set; }
+        
+        public bool UseMdiTabbedManager { get; set; }
 
 
     }

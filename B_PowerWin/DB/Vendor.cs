@@ -71,5 +71,6 @@ namespace B_PowerWin.DB
 
         public virtual ICollection<DimDefault> DimDefaults { get; set; }
         public virtual ICollection<InventDimDefault> InventDimDefaults { get; set; }
+        public virtual ICollection<ItemInventoryBarcode> ItemInventoryBarcodes { get; set; }
     }
 }

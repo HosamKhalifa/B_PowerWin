@@ -67,6 +67,8 @@ namespace B_PowerWin.DB
 
 
         public virtual ICollection<ItemVariants> ItemVariants { get; set; }
+        public virtual ICollection<ItemColor> ItemColors { get; set; }
+        public virtual ICollection<ItemSize> ItemSizes { get; set; }
 
     }
 }

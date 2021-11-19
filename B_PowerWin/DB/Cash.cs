@@ -11,6 +11,10 @@ namespace B_PowerWin.DB
     [Table("cash")]
     public class Cash:AccountBase
     {
+        public static class CashFields
+        {
+            public static string Employee { get { return "Employee"; } }
+        }
         public Cash():base()
         {
 

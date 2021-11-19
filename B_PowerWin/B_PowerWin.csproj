@@ -69,6 +69,7 @@
     <Reference Include="DevExpress.XtraRichEdit.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraSpreadsheet.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraWizard.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -116,6 +117,9 @@
     <Compile Include="DB\DocumentLine.cs" />
     <Compile Include="DB\DocumentLineInvent.cs" />
     <Compile Include="DB\Employee.cs" />
+    <Compile Include="DB\EmployeeGenderEnum.cs" />
+    <Compile Include="DB\EmployeeMaritalStateEnum.cs" />
+    <Compile Include="DB\EmployeeReligionEnum.cs" />
     <Compile Include="DB\EnumTable.cs" />
     <Compile Include="DB\Equipment.cs" />
     <Compile Include="DB\FormEntityEnum.cs" />
@@ -129,6 +133,8 @@
     <Compile Include="DB\ItemColor.cs" />
     <Compile Include="DB\ItemColorEnum.cs" />
     <Compile Include="DB\ItemInventory.cs" />
+    <Compile Include="DB\ItemInventoryBarcode.cs" />
+    <Compile Include="DB\ItemModeEnum.cs" />
     <Compile Include="DB\ItemSerialStatusEnum.cs" />
     <Compile Include="DB\ItemService.cs" />
     <Compile Include="DB\ItemSize.cs" />
@@ -221,6 +227,12 @@
     <Compile Include="GL\Forms\BankFrm.Designer.cs">
       <DependentUpon>BankFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GL\Forms\CashFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\Forms\CashFrm.Designer.cs">
+      <DependentUpon>CashFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GL\Forms\CompanySetupFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,11 +287,24 @@
     <Compile Include="GL\Forms\SysSequenceSetupFrm.Designer.cs">
       <DependentUpon>SysSequenceSetupFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GL\Forms\TaxSetupFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\Forms\TaxSetupFrm.Designer.cs">
+      <DependentUpon>TaxSetupFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomLookup\LookupSuspendedWhereEnum.cs" />
     <Compile Include="GUI\ListPageFormBase.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\ListPageFormBase.Designer.cs">
       <DependentUpon>ListPageFormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HR\Forms\EmployeeFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HR\Forms\EmployeeFrm.Designer.cs">
+      <DependentUpon>EmployeeFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Invent\InventStoreFrm.cs">
       <SubType>Form</SubType>
@@ -378,35 +403,27 @@
     <Compile Include="GUI\UILabelManagerFrm.Designer.cs">
       <DependentUpon>UILabelManagerFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Invent\ItemFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Invent\ItemFrm.Designer.cs">
+      <DependentUpon>ItemFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Invent\ItemWizardFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Invent\ItemWizardFrm.Designer.cs">
+      <DependentUpon>ItemWizardFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainFrm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainFrm.Designer.cs">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202111051622326_init_0031.cs" />
-    <Compile Include="Migrations\202111051622326_init_0031.designer.cs">
-      <DependentUpon>202111051622326_init_0031.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111051636534_init_00311.cs" />
-    <Compile Include="Migrations\202111051636534_init_00311.designer.cs">
-      <DependentUpon>202111051636534_init_00311.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111052204204_init_0032.cs" />
-    <Compile Include="Migrations\202111052204204_init_0032.designer.cs">
-      <DependentUpon>202111052204204_init_0032.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111061451050_init_00321.cs" />
-    <Compile Include="Migrations\202111061451050_init_00321.designer.cs">
-      <DependentUpon>202111061451050_init_00321.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111061748083_init_0033.cs" />
-    <Compile Include="Migrations\202111061748083_init_0033.designer.cs">
-      <DependentUpon>202111061748083_init_0033.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111101740330_Init_0034.cs" />
-    <Compile Include="Migrations\202111101740330_Init_0034.designer.cs">
-      <DependentUpon>202111101740330_Init_0034.cs</DependentUpon>
+    <Compile Include="Migrations\202111191808043_init_0039.cs" />
+    <Compile Include="Migrations\202111191808043_init_0039.designer.cs">
+      <DependentUpon>202111191808043_init_0039.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySession.cs" />
@@ -417,6 +434,12 @@
     </Compile>
     <Compile Include="Sales\Forms\CustomerEditFrm.Designer.cs">
       <DependentUpon>CustomerEditFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Forms\CustomerFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\Forms\CustomerFrm.Designer.cs">
+      <DependentUpon>CustomerFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Sales\Forms\CustomerListPageFrm.cs">
       <SubType>Form</SubType>
@@ -436,6 +459,12 @@
     <Compile Include="Sec\SecPrincipalFrm.Designer.cs">
       <DependentUpon>SecPrincipalFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sec\UserOptionsFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sec\UserOptionsFrm.Designer.cs">
+      <DependentUpon>UserOptionsFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="SharedExt\DateTimeExt.cs" />
     <Compile Include="SharedExt\ExceptionExtensions.cs" />
@@ -449,6 +478,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GL\Forms\BankFrm.resx">
       <DependentUpon>BankFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GL\Forms\CashFrm.resx">
+      <DependentUpon>CashFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GL\Forms\CompanySetupFrm.resx">
       <DependentUpon>CompanySetupFrm.cs</DependentUpon>
@@ -477,8 +509,14 @@
     <EmbeddedResource Include="GL\Forms\SysSequenceSetupFrm.resx">
       <DependentUpon>SysSequenceSetupFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GL\Forms\TaxSetupFrm.resx">
+      <DependentUpon>TaxSetupFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ListPageFormBase.resx">
       <DependentUpon>ListPageFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HR\Forms\EmployeeFrm.resx">
+      <DependentUpon>EmployeeFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Invent\InventStoreFrm.resx">
       <DependentUpon>InventStoreFrm.cs</DependentUpon>
@@ -513,26 +551,17 @@
     <EmbeddedResource Include="GUI\UILabelManagerFrm.resx">
       <DependentUpon>UILabelManagerFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Invent\ItemFrm.resx">
+      <DependentUpon>ItemFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Invent\ItemWizardFrm.resx">
+      <DependentUpon>ItemWizardFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111051622326_init_0031.resx">
-      <DependentUpon>202111051622326_init_0031.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111051636534_init_00311.resx">
-      <DependentUpon>202111051636534_init_00311.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111052204204_init_0032.resx">
-      <DependentUpon>202111052204204_init_0032.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111061451050_init_00321.resx">
-      <DependentUpon>202111061451050_init_00321.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111061748083_init_0033.resx">
-      <DependentUpon>202111061748083_init_0033.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111101740330_Init_0034.resx">
-      <DependentUpon>202111101740330_Init_0034.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111191808043_init_0039.resx">
+      <DependentUpon>202111191808043_init_0039.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -543,9 +572,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Sales\Forms\CustomerEditFrm.resx">
       <DependentUpon>CustomerEditFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\Forms\CustomerFrm.resx">
+      <DependentUpon>CustomerFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sales\Forms\CustomerListPageFrm.resx">
       <DependentUpon>CustomerListPageFrm.cs</DependentUpon>
@@ -555,6 +588,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sec\SecPrincipalFrm.resx">
       <DependentUpon>SecPrincipalFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sec\UserOptionsFrm.resx">
+      <DependentUpon>UserOptionsFrm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="GUI\Grid\AppServicesDataSet.xsc">
@@ -585,12 +621,20 @@
     <None Include="Properties\DataSources\B_PowerWin.DB.Bank.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.BaseType.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.BusinessUnit.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Cash.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.City.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.Company.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.Country.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.Currency.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.Customer.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Employee.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.InventStore.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Item.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.ItemColor.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.ItemInventory.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.ItemService.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.ItemSize.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.ItemVariants.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.JournalType.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.LedgerCalender.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.LedgerCOA.datasource" />
@@ -612,6 +656,10 @@
     <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalRoleResponsibility.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalUser.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.SysSequence.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.TaxCode.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.TaxCodeValueSetup.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.TaxGroup.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.TaxGroupMemberSetup.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.UILabel.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.GUI.CustomLookup.GL_Lookups.datasource" />
     <None Include="Properties\Settings.settings">
@@ -631,6 +679,7 @@
   <ItemGroup>
     <Content Include="DB\SqlScript.txt" />
     <Content Include="DB\SqlViews.txt" />
+    <None Include="Resources\InventoryItemWizard.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

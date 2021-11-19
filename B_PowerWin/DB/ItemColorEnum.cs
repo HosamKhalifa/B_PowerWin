@@ -17,7 +17,9 @@ namespace B_PowerWin.DB
         Yellow = 60,
         Brown = 70,
         Pink = 80,
-        Orange = 90
+        Orange = 90,
+        Purple = 100
+
 
 
     }

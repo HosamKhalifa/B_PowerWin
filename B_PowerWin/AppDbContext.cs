@@ -49,7 +49,7 @@ namespace B_PowerWin
                 //item.Property("ModifiedBy").CurrentValue = MySession.Session.UserId;
                 if(item.Entity is ILineBase)
                 {
-                    ((ILineBase)item.Entity).OnUpdate(this);
+                    ((ILineBase)item.Entity).OnUpdate(this,item);
                 }
 
             }
@@ -180,6 +180,9 @@ namespace B_PowerWin
         //***********Inventory**************************************************************
         #region Tables_Inventory
         public DbSet<Item> Items { get; set; }
+        public DbSet<ItemService> ItemServices { get; set; }
+        public DbSet<ItemInventory> ItemInventorys { get; set; }
+
         public DbSet<ItemSize> ItemSizes { get; set; }
         public DbSet<ItemColor> ItemColors { get; set; }
         public DbSet<ItemVariants> ItemVariants { get; set; }

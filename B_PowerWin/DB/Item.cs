@@ -20,6 +20,8 @@ namespace B_PowerWin.DB
         public decimal? PurchPrice { get; set; }
         public decimal? SalesPrice { get; set; }
         public decimal? SalesPriceMin { get; set; }
+        [Required]
+        public ItemModeEnum ItemMode { get; set; }
 
     }
 }

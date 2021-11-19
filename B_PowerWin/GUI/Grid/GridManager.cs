@@ -30,11 +30,9 @@ namespace B_PowerWin.GUI.Grid
     {
 
         #region StaticMethods
-        public static void SetupEditForm(GridView _gv,params string[] Fields)
+        public static void SetupEditForm(GridView _gv, List<string> Fields)
         {
-            //  this.colDescription.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
-            //this.colDescription.OptionsEditForm.VisibleIndex = 40;
-            //[1]Disable all columns 
+            int indx = 0;
             foreach (var col in _gv.Columns)
             {
                 ((GridColumn)col).OptionsColumn.AllowEdit = false;
@@ -44,7 +42,7 @@ namespace B_PowerWin.GUI.Grid
             }
             foreach (var field in Fields)
             {
-                int indx = 0;
+                
                 var lc_col = _gv.Columns.ColumnByFieldName(field);
                 if(lc_col == null) { continue; }
                 indx+=5;

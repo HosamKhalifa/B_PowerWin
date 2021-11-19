@@ -15,6 +15,7 @@ using DevExpress.XtraEditors;
 
 namespace B_PowerWin.GUI.CustomLookup
 {
+
    public class LookupManager
     {
         static string PRRFIX = "LOOKUP_MGR_";
@@ -60,6 +61,67 @@ namespace B_PowerWin.GUI.CustomLookup
             }
             return ret;
         }
+        public static RepositoryItemLookUpEdit CountryGrdLookup(AppDbContext _db, GridViewBase _gv, GridColumn _gvcol)
+        {
+           
+            var bs = new BindingSource();
+            _db.Countries.Load();
+            bs.DataSource = _db.Countries.Local;
+            var ret = new RepositoryItemLookUpEdit()
+            {
+                Name = $"{PRRFIX}COUNTRY_LOV",
+                DataSource = bs,
+                DisplayMember = "Name",
+                ValueMember = "IsoCode",
+                KeyMember = "IsoCode",
+                PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains,
+            };
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = "IsoCode", Caption = "Id", Width = 20 });
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = "Name", Caption = "Name", Width = 80 });
+          
+            if (_gv.GridControl.RepositoryItems.Contains(ret))
+            {
+                _gvcol.ColumnEditName = ret.Name;
+            }
+            else
+            {
+                _gv.GridControl.RepositoryItems.Add(ret);
+                _gvcol.ColumnEditName = ret.Name;
+            }
+            return ret;
+        }
+        public static RepositoryItemLookUpEdit CitiesGrdLookup(AppDbContext _db, GridViewBase _gv, GridColumn _gvcol)
+        {
+          
+            var bs = new BindingSource();
+            _db.Cities.Include(x => x.Country).Load();
+
+            bs.DataSource = _db.Cities.Local;
+            var ret = new RepositoryItemLookUpEdit()
+            {
+                Name = $"{PRRFIX}CITY_LOV",
+                DataSource = bs,
+                DisplayMember = "CityName",
+                ValueMember = "CityId",
+                KeyMember = "CityId",
+                PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains,
+            };
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = "CityId", Caption = "Id", Width = 10 });
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = "CityName", Caption = "Name", Width = 60 });
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = "Country.Name", Caption = "Country", Width = 30 });
+
+            if (_gv.GridControl.RepositoryItems.Contains(ret))
+            {
+                _gvcol.ColumnEditName = ret.Name;
+            }
+            else
+            {
+                _gv.GridControl.RepositoryItems.Add(ret);
+                _gvcol.ColumnEditName = ret.Name;
+            }
+            return ret;
+        }
+
         public static RepositoryItemLookUpEdit AccountGroup(AppDbContext _db, GridViewBase _gv, GridColumn _gvcol,BaseTypeEnum _GroupedBaseType)
         {
             Image limg_Ellipsis = DevExpress.Images.ImageResourceCache.Default.GetImage("images/edit/copy_16x16.png");
@@ -142,6 +204,7 @@ namespace B_PowerWin.GUI.CustomLookup
             
 
         }
+
         public static RepositoryItemLookUpEdit AccountBase(AppDbContext _db, GridViewBase _gv, GridColumn _gvcol, BaseTypeEnum _BaseType)
         {
             
@@ -191,6 +254,82 @@ namespace B_PowerWin.GUI.CustomLookup
             return ret;
         }
 
+        public static RepositoryItemLookUpEdit Bank(AppDbContext _db, GridViewBase _gv, GridColumn _gvcol, LookupSuspendedWhereEnum _SuspendedWhere = LookupSuspendedWhereEnum.All)
+        {
+            Image limg_Ellipsis = DevExpress.Images.ImageResourceCache.Default.GetImage("images/edit/copy_16x16.png");
+            var bs = new BindingSource();
+            switch (_SuspendedWhere)
+            {
+                case LookupSuspendedWhereEnum.All:
+                    _db.Banks.Load();
+                    break;
+                case LookupSuspendedWhereEnum.Suspended:
+                    _db.Banks.Where(x => x.Suspended == true ).Load();
+                    break;
+                case LookupSuspendedWhereEnum.NonSuspended:
+                    _db.Banks.Where(x => x.Suspended == false).Load();
+                    break;
+               
+            }
+           
+            bs.DataSource = _db.Banks.Local;
+            var ret = new RepositoryItemLookUpEdit()
+            {
+
+                Name = $"{PRRFIX}BANK_{_SuspendedWhere.ToString()}_LOV",
+                DataSource = bs,
+                DisplayMember = "FullName",
+                ValueMember = "Id",
+                KeyMember = "Id",
+                PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains,
+            };
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = "Id", Caption = "Id", Width = 10 });
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = "FullName", Caption = "Name", Width = 55 });
+
+            //Buttons setup
+            var eclipse = new EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "Edit...", -1, true, true, true, DevExpress.XtraEditors.ImageLocation.MiddleCenter, limg_Ellipsis);
+            ret.Buttons.Add(eclipse);
+            
+            //Buttons event handlers
+            ret.ButtonClick += (s, e) => {
+                if (e.Button.Kind == ButtonPredefines.Ellipsis)
+                {
+                   
+                    var frm = new GL.Forms.BankFrm() { StartPosition = FormStartPosition.CenterParent };
+                    frm.FormClosing += (l_s, l_e) => {
+                        switch (_SuspendedWhere)
+                        {
+                            case LookupSuspendedWhereEnum.All:
+                                _db.Banks.Load();
+                                break;
+                            case LookupSuspendedWhereEnum.Suspended:
+                                _db.Banks.Where(x => x.Suspended == true).Load();
+                                break;
+                            case LookupSuspendedWhereEnum.NonSuspended:
+                                _db.Banks.Where(x => x.Suspended == false).Load();
+                                break;
+
+                        }
+
+                        _db.Banks.Load();
+                    };
+                    frm.ShowDialog();
+                }
+            };
+            if (_gv.GridControl.RepositoryItems.Contains(ret))
+            {
+                _gvcol.ColumnEditName = ret.Name;
+            }
+            else
+            {
+                _gv.GridControl.RepositoryItems.Add(ret);
+                _gvcol.ColumnEditName = ret.Name;
+            }
+
+
+
+            return ret;
+        }
 
     }
 }

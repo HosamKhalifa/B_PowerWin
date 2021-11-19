@@ -12,6 +12,19 @@ namespace B_PowerWin.DB
     [Table("tax_code")]
     public class TaxCode:LineBase
     {
+        #region ClassFieldNames
+        [NotMapped]
+        public static class TaxCodeFields
+        {
+            public static string CompanyId { get { return "CompanyId"; } }
+            public static string TaxCodeId { get { return "TaxCodeId"; } }
+            public static string TaxCodeName { get { return "TaxCodeName"; } }
+            public static string ArTaxAccount { get { return "ArTaxAccount"; } }
+            public static string ApTaxAccount { get { return "ApTaxAccount"; } }
+            public static string SettlementTaxAccount { get { return "SettlementTaxAccount"; } }
+
+        }
+        #endregion
         public override bool IsBusinessObject()
         {
             return true;
@@ -45,7 +58,8 @@ namespace B_PowerWin.DB
         public MainAccount ArTaxAccount { get; set; }
         public MainAccount ApTaxAccount { get; set; }
         public MainAccount SettlementTaxAccount { get; set; }
-
-
+        public virtual ICollection<TaxGroupMemberSetup> Members { get; set; }
+        public virtual ICollection<TaxCodeValueSetup> Values { get; set; }
+        public string FullName { get { return $"{TaxCodeId} {TaxCodeName}"; } }
     }
 }

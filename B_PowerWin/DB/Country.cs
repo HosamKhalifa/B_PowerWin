@@ -15,8 +15,9 @@ namespace B_PowerWin.DB
         public string IsoCode { get; set; }
         [StringLength(50),Required]
         public string Name { get; set; }
-        public List<City> Cites { get; set; }
-        public List<AccountBase> Accounts { get; set; }
-        public List<DocumentBase> Documents { get; set; }
+        public virtual ICollection<City> Cites { get; set; }
+        public virtual ICollection<AccountBase> Accounts { get; set; }
+        public virtual ICollection<DocumentBase> Documents { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }

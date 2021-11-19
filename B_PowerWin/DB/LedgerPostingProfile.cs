@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
@@ -136,9 +137,13 @@ namespace B_PowerWin.DB
             
         }
 
-        public void OnUpdate(AppDbContext _db)
+        public virtual void OnUpdate(AppDbContext _db, DbEntityEntry _entryStatus)
         {
-           
+            if (!ValidateLine(_db, LineBaseCRUDEnum.Update))
+            {
+
+                throw GetLineExceptionDetails(_db, LineBaseCRUDEnum.Update);
+            }
         }
 
         public void OnDelete(AppDbContext _db)

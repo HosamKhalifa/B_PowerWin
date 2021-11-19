@@ -23,12 +23,13 @@ namespace B_PowerWin.GL.Forms
         private void InitData()
         {
             dbContext = new AppDbContext();
-            GridManager.SetupEditForm(bankGV,
+            GridManager.SetupEditForm(bankGV,new List<string>() {
                                       Bank.AccountBaseFields.ReferenceNum,
                                       Bank.AccountBaseFields.Name,
+                                      Bank.AccountBaseFields.Suspended,
                                       Bank.AccountBaseFields.GroupId,
                                       Bank.AccountBaseFields.Description
-                                      );
+                                      });
             FormGridManager = new GridManager();
             FormGridManager.Attach(bankGC);
 
@@ -43,5 +44,7 @@ namespace B_PowerWin.GL.Forms
             base.RefreshData();
 
         }
+
+
     }
 }
