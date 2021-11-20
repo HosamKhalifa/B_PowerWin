@@ -16,7 +16,7 @@ namespace B_PowerWin.DB
         [NotMapped]
         public static class AccountBaseFields
         {
-            public static string AccountGroup { get { return "AccountGroup"; } }
+            
             public static string CompanyId { get { return "CompanyId"; } }
             public static string Description { get { return "Description"; } }
             public static string DimDefaults { get { return "DimDefaults"; } }
@@ -31,7 +31,7 @@ namespace B_PowerWin.DB
             public static string ParnetId { get { return "ParnetId"; } }
             public static string ReferenceNum { get { return "ReferenceNum"; } }
             public static string Suspended { get { return "Suspended"; } }
-            public static string TaxGroup { get { return "TaxGroup"; } }
+            public static string TaxGroupId { get { return "TaxGroupId"; } }
         }
 
         #endregion
@@ -122,7 +122,8 @@ namespace B_PowerWin.DB
         public string Description { get; set; }
         [ForeignKey("AccountGroup")]
         public long? GroupId { get; set; }
-        public TaxGroup TaxGroup { get; set; }
+        [ForeignKey("TaxGroup")]
+        public long? TaxGroupId { get; set; }
 
         public long DisplayNumSequVersion { get; set; }
 
@@ -149,6 +150,7 @@ namespace B_PowerWin.DB
 
         public virtual MainAccount MainAccount { get; set; }
         public virtual AccountGroup AccountGroup { get; set; }
+        public virtual TaxGroup TaxGroup { get; set; }
 
     }
 }

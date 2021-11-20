@@ -12,7 +12,19 @@ namespace B_PowerWin.DB
     [Table("item")]
    public class Item:AccountBase
     {
-        public Item():base()
+        #region ClassFieldNames
+        [NotMapped]
+        public static class ItemFields
+        {
+            public static string PurchPrice { get { return "PurchPrice"; } }
+            public static string SalesPrice { get { return "SalesPrice"; } }
+            public static string SalesPriceMin { get { return "SalesPriceMin"; } }
+            public static string ItemMode { get { return "ItemMode"; } }
+
+
+        }
+        #endregion
+    public Item():base()
         {
 
         }

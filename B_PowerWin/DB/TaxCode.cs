@@ -19,9 +19,9 @@ namespace B_PowerWin.DB
             public static string CompanyId { get { return "CompanyId"; } }
             public static string TaxCodeId { get { return "TaxCodeId"; } }
             public static string TaxCodeName { get { return "TaxCodeName"; } }
-            public static string ArTaxAccount { get { return "ArTaxAccount"; } }
-            public static string ApTaxAccount { get { return "ApTaxAccount"; } }
-            public static string SettlementTaxAccount { get { return "SettlementTaxAccount"; } }
+            public static string ArTaxAccountId { get { return "ArTaxAccountId"; } }
+            public static string ApTaxAccountId { get { return "ApTaxAccountId"; } }
+            public static string SettlementTaxAccountId { get { return "SettlementTaxAccountId"; } }
 
         }
         #endregion
@@ -55,11 +55,18 @@ namespace B_PowerWin.DB
         public string TaxCodeId { get; set; }
         [StringLength(100)]
         public string TaxCodeName { get; set; }
-        public MainAccount ArTaxAccount { get; set; }
-        public MainAccount ApTaxAccount { get; set; }
-        public MainAccount SettlementTaxAccount { get; set; }
+        [ForeignKey("ArTaxAccount")]
+        public long? ArTaxAccountId { get; set; }
+        [ForeignKey("ApTaxAccount")]
+        public long? ApTaxAccountId { get; set; }
+        [ForeignKey("SettlementTaxAccount")]
+        public long? SettlementTaxAccountId { get; set; }
+        public virtual MainAccount ArTaxAccount { get; set; }
+        public virtual MainAccount ApTaxAccount { get; set; }
+        public virtual MainAccount SettlementTaxAccount { get; set; }
         public virtual ICollection<TaxGroupMemberSetup> Members { get; set; }
         public virtual ICollection<TaxCodeValueSetup> Values { get; set; }
         public string FullName { get { return $"{TaxCodeId} {TaxCodeName}"; } }
+
     }
 }

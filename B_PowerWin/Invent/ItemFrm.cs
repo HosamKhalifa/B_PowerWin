@@ -1,4 +1,7 @@
-﻿using System;
+﻿using B_PowerWin.DB;
+using B_PowerWin.GUI.CustomLookup;
+using B_PowerWin.GUI.Grid;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,16 +36,37 @@ namespace B_PowerWin.Invent
                 var frm = new ItemWizardFrm() { StartPosition = FormStartPosition.CenterScreen };
                 frm.Show();
             };
-            itemBindingSource.DataSource = dbContext.ItemInventorys.Local;
-            itemVariantsBindingSource.DataSource = dbContext.ItemVariants.Local;
+            itemBindingSource.DataSource            = dbContext.ItemInventorys.Local;
+            itemVariantsBindingSource.DataSource    = dbContext.ItemVariants.Local;
+            itemServiceBindingSource.DataSource     = dbContext.ItemServices.Local;
 
             itemBindingSource.ResetBindings(true);
             itemVariantsBindingSource.ResetBindings(true);
+            itemServiceBindingSource.ResetBindings(true);
 
 
             FormGridManager = new GUI.Grid.GridManager();
 
-            FormGridManager.Attach(itemGC,itemVarsGC);
+            FormGridManager.Attach(itemGC,itemVarsGC,serviceGC);
+            GridManager.SetupEditForm(itemGV, new List<string>() {
+                ItemInventory.AccountBaseFields.ReferenceNum,
+                ItemInventory.AccountBaseFields.Name,
+                ItemInventory.AccountBaseFields.Description,
+                ItemInventory.AccountBaseFields.Suspended,
+                ItemInventory.AccountBaseFields.GroupId,
+                ItemInventory.AccountBaseFields.TaxGroupId,
+                ItemInventory.ItemFields.ItemMode,
+                ItemInventory.ItemFields.PurchPrice,
+                ItemInventory.ItemFields.SalesPrice,
+                ItemInventory.ItemFields.SalesPriceMin
+            });
+            //Lookups setup
+            LookupManager.AccountGroup(dbContext, itemGV, colGroupId, DB.BaseTypeEnum.ItemInventory);
+            LookupManager.AccountGroup(dbContext, serviceGV, colGroupId_Services, DB.BaseTypeEnum.ItemService);
+
+            LookupManager.TaxGroup(dbContext, itemGV, colTaxGroupId);
+            LookupManager.TaxGroup(dbContext, serviceGV, colTaxGroup_Services);
+
             RefreshData();
         }
     }

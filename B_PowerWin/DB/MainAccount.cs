@@ -12,7 +12,32 @@ namespace B_PowerWin.DB
     [Table("main_account")]
     public class MainAccount:AccountBase
     {
-        public MainAccount():base()
+        #region ClassFieldNames
+        [NotMapped]
+        public static class MainAccountFields
+        {
+            public static string LedgerCOAId { get { return "LedgerCOAId"; } }
+            public static string MainAccountType { get { return "MainAccountType"; } }
+            public static string MainAccountGroupId { get { return "MainAccountGroupId"; } }
+            public static string BalanceControl { get { return "BalanceControl"; } }
+            public static string DisableManualEntry { get { return "DisableManualEntry"; } }
+            public static string RequiredBusinessUnit { get { return "RequiredBusinessUnit"; } }
+            public static string RequiredSite { get { return "RequiredSite"; } }
+            public static string RequiredDept { get { return "RequiredDept"; } }
+            public static string RequiredEquipment { get { return "RequiredEquipment"; } }
+            public static string RequiredProject { get { return "RequiredProject"; } }
+            public static string RequiredPurpose { get { return "RequiredPurpose"; } }
+            public static string RequiredBank { get { return "RequiredBank"; } }
+            public static string RequiredCash { get { return "RequiredCash"; } }
+            public static string RequiredCustomer { get { return "RequiredCustomer"; } }
+            public static string RequiredVendor { get { return "RequiredVendor"; } }
+            public static string RequiredEmployee { get { return "RequiredEmployee"; } }
+            public static string RequiredPos { get { return "RequiredPos"; } }
+            public static string IsTotal { get { return "IsTotal"; } }
+
+            }
+            #endregion
+public MainAccount():base()
         {
             this.BalanceControl = MainAccountBalanceControlEnum.None;
             this.DisableManualEntry = false;

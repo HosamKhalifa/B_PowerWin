@@ -425,6 +425,14 @@
     <Compile Include="Migrations\202111191808043_init_0039.designer.cs">
       <DependentUpon>202111191808043_init_0039.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111201610424_init_0040.cs" />
+    <Compile Include="Migrations\202111201610424_init_0040.designer.cs">
+      <DependentUpon>202111201610424_init_0040.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111202029029_init_0041.cs" />
+    <Compile Include="Migrations\202111202029029_init_0041.designer.cs">
+      <DependentUpon>202111202029029_init_0041.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySession.cs" />
     <Compile Include="Program.cs" />
@@ -562,6 +570,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111191808043_init_0039.resx">
       <DependentUpon>202111191808043_init_0039.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111201610424_init_0040.resx">
+      <DependentUpon>202111201610424_init_0040.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111202029029_init_0041.resx">
+      <DependentUpon>202111202029029_init_0041.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

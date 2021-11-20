@@ -49,7 +49,7 @@
             this.ReferenceNumTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.DescriptionTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.GroupIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.TaxGroupLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.taxGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SuspendedCheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -122,6 +122,7 @@
             this.colModifiedBy2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModifiedAt2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.itemInventoryPageValidation = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.TaxGroupLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).BeginInit();
             this.wizardControl1.SuspendLayout();
             this.itemInventoryPage.SuspendLayout();
@@ -136,7 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GroupIdLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TaxGroupLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.taxGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuspendedCheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
@@ -163,6 +164,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemVariantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemVarsGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemInventoryPageValidation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TaxGroupLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // wizardControl1
@@ -217,8 +219,8 @@
             this.dataLayoutControl1.Controls.Add(this.ReferenceNumTextEdit);
             this.dataLayoutControl1.Controls.Add(this.DescriptionTextEdit);
             this.dataLayoutControl1.Controls.Add(this.GroupIdLookUpEdit);
-            this.dataLayoutControl1.Controls.Add(this.TaxGroupLookUpEdit);
             this.dataLayoutControl1.Controls.Add(this.SuspendedCheckEdit);
+            this.dataLayoutControl1.Controls.Add(this.TaxGroupLookUpEdit);
             this.dataLayoutControl1.DataSource = this.itemInventoryBindingSource;
             this.dataLayoutControl1.Location = new System.Drawing.Point(25, 30);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
@@ -390,17 +392,9 @@
             conditionValidationRule6.ErrorText = "This value is not valid";
             this.itemInventoryPageValidation.SetValidationRule(this.GroupIdLookUpEdit, conditionValidationRule6);
             // 
-            // TaxGroupLookUpEdit
+            // taxGroupBindingSource
             // 
-            this.TaxGroupLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.itemInventoryBindingSource, "TaxGroup", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.TaxGroupLookUpEdit.Location = new System.Drawing.Point(479, 60);
-            this.TaxGroupLookUpEdit.Name = "TaxGroupLookUpEdit";
-            this.TaxGroupLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.TaxGroupLookUpEdit.Properties.NullText = "";
-            this.TaxGroupLookUpEdit.Size = new System.Drawing.Size(309, 20);
-            this.TaxGroupLookUpEdit.StyleController = this.dataLayoutControl1;
-            this.TaxGroupLookUpEdit.TabIndex = 12;
+            this.taxGroupBindingSource.DataSource = typeof(B_PowerWin.DB.TaxGroup);
             // 
             // SuspendedCheckEdit
             // 
@@ -967,6 +961,18 @@
             this.colModifiedAt2.FieldName = "ModifiedAt";
             this.colModifiedAt2.Name = "colModifiedAt2";
             // 
+            // TaxGroupLookUpEdit
+            // 
+            this.TaxGroupLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.itemInventoryBindingSource, "TaxGroup", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.TaxGroupLookUpEdit.Location = new System.Drawing.Point(479, 60);
+            this.TaxGroupLookUpEdit.Name = "TaxGroupLookUpEdit";
+            this.TaxGroupLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TaxGroupLookUpEdit.Properties.NullText = "";
+            this.TaxGroupLookUpEdit.Size = new System.Drawing.Size(309, 20);
+            this.TaxGroupLookUpEdit.StyleController = this.dataLayoutControl1;
+            this.TaxGroupLookUpEdit.TabIndex = 12;
+            // 
             // ItemWizardFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -989,7 +995,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GroupIdLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TaxGroupLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.taxGroupBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuspendedCheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
@@ -1016,6 +1022,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemVariantsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemVarsGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemInventoryPageValidation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TaxGroupLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1036,7 +1043,6 @@
         private DevExpress.XtraEditors.TextEdit ReferenceNumTextEdit;
         private DevExpress.XtraEditors.TextEdit DescriptionTextEdit;
         private DevExpress.XtraEditors.LookUpEdit GroupIdLookUpEdit;
-        private DevExpress.XtraEditors.LookUpEdit TaxGroupLookUpEdit;
         private DevExpress.XtraEditors.CheckEdit SuspendedCheckEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
@@ -1108,5 +1114,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colModifiedAt2;
         private DevExpress.XtraGrid.Columns.GridColumn colWFStatus2;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider itemInventoryPageValidation;
+        private System.Windows.Forms.BindingSource taxGroupBindingSource;
+        private DevExpress.XtraEditors.LookUpEdit TaxGroupLookUpEdit;
     }
 }

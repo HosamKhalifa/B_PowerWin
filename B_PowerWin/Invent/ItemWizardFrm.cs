@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using B_PowerWin.DB;
+using B_PowerWin.GUI.CustomLookup;
 
 namespace B_PowerWin.Invent
 {
@@ -59,6 +60,9 @@ namespace B_PowerWin.Invent
 
             itemVariantsBindingSource.DataSource = ItemVariantList;
             itemVariantsBindingSource.ResetBindings(true);
+            LookupManager.AccountGroup(dbContext, GroupIdLookUpEdit, BaseTypeEnum.ItemInventory);
+            LookupManager.TaxGroup(dbContext, TaxGroupLookUpEdit);
+
 
         }
 

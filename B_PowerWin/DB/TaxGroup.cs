@@ -52,6 +52,7 @@ namespace B_PowerWin.DB
         [StringLength(50)]
         public string GroupName { get; set; }
         public virtual ICollection<TaxGroupMemberSetup> Members { get; set; }
+        public virtual ICollection<TaxGroup> TaxGroups { get; set; }
         public string FullName { get { return $"{GroupNum} {GroupName}"; } }
 
     }

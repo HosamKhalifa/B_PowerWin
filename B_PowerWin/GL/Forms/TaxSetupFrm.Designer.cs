@@ -73,9 +73,9 @@
             this.colCompanyId1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTaxCodeId1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTaxCodeName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colArTaxAccount = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colApTaxAccount = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSettlementTaxAccount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colArTaxAccountId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colApTaxAccountId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSettlementTaxAccountId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedBy2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedAt2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModifiedBy2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -442,9 +442,9 @@
             this.colCompanyId1,
             this.colTaxCodeId1,
             this.colTaxCodeName,
-            this.colArTaxAccount,
-            this.colApTaxAccount,
-            this.colSettlementTaxAccount,
+            this.colArTaxAccountId,
+            this.colApTaxAccountId,
+            this.colSettlementTaxAccountId,
             this.colCreatedBy2,
             this.colCreatedAt2,
             this.colModifiedBy2,
@@ -490,29 +490,29 @@
             this.colTaxCodeName.VisibleIndex = 3;
             this.colTaxCodeName.Width = 158;
             // 
-            // colArTaxAccount
+            // colArTaxAccountId
             // 
-            this.colArTaxAccount.FieldName = "ArTaxAccount";
-            this.colArTaxAccount.Name = "colArTaxAccount";
-            this.colArTaxAccount.Visible = true;
-            this.colArTaxAccount.VisibleIndex = 4;
-            this.colArTaxAccount.Width = 114;
+            this.colArTaxAccountId.FieldName = "ArTaxAccountId";
+            this.colArTaxAccountId.Name = "colArTaxAccountId";
+            this.colArTaxAccountId.Visible = true;
+            this.colArTaxAccountId.VisibleIndex = 4;
+            this.colArTaxAccountId.Width = 114;
             // 
-            // colApTaxAccount
+            // colApTaxAccountId
             // 
-            this.colApTaxAccount.FieldName = "ApTaxAccount";
-            this.colApTaxAccount.Name = "colApTaxAccount";
-            this.colApTaxAccount.Visible = true;
-            this.colApTaxAccount.VisibleIndex = 5;
-            this.colApTaxAccount.Width = 104;
+            this.colApTaxAccountId.FieldName = "ApTaxAccountId";
+            this.colApTaxAccountId.Name = "colApTaxAccountId";
+            this.colApTaxAccountId.Visible = true;
+            this.colApTaxAccountId.VisibleIndex = 5;
+            this.colApTaxAccountId.Width = 104;
             // 
-            // colSettlementTaxAccount
+            // colSettlementTaxAccountId
             // 
-            this.colSettlementTaxAccount.FieldName = "SettlementTaxAccount";
-            this.colSettlementTaxAccount.Name = "colSettlementTaxAccount";
-            this.colSettlementTaxAccount.Visible = true;
-            this.colSettlementTaxAccount.VisibleIndex = 6;
-            this.colSettlementTaxAccount.Width = 99;
+            this.colSettlementTaxAccountId.FieldName = "SettlementTaxAccountId";
+            this.colSettlementTaxAccountId.Name = "colSettlementTaxAccountId";
+            this.colSettlementTaxAccountId.Visible = true;
+            this.colSettlementTaxAccountId.VisibleIndex = 6;
+            this.colSettlementTaxAccountId.Width = 99;
             // 
             // colCreatedBy2
             // 
@@ -753,9 +753,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCompanyId1;
         private DevExpress.XtraGrid.Columns.GridColumn colTaxCodeId1;
         private DevExpress.XtraGrid.Columns.GridColumn colTaxCodeName;
-        private DevExpress.XtraGrid.Columns.GridColumn colArTaxAccount;
-        private DevExpress.XtraGrid.Columns.GridColumn colApTaxAccount;
-        private DevExpress.XtraGrid.Columns.GridColumn colSettlementTaxAccount;
+        private DevExpress.XtraGrid.Columns.GridColumn colArTaxAccountId;
+        private DevExpress.XtraGrid.Columns.GridColumn colApTaxAccountId;
+        private DevExpress.XtraGrid.Columns.GridColumn colSettlementTaxAccountId;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedBy2;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedAt2;
         private DevExpress.XtraGrid.Columns.GridColumn colModifiedBy2;

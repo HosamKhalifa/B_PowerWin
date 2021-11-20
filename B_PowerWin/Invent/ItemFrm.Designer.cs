@@ -43,9 +43,8 @@
             this.colReferenceNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGroupId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTaxGroup = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTaxGroupId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSuspended = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colAccountGroup = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedAt = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -94,10 +93,9 @@
             this.colDisplayNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colReferenceNum1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescription1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colGroupId1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTaxGroup1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGroupId_Services = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTaxGroup_Services = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSuspended1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colAccountGroup1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedBy1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedAt1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModifiedBy1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -178,9 +176,8 @@
             this.colReferenceNum,
             this.colDescription,
             this.colGroupId,
-            this.colTaxGroup,
+            this.colTaxGroupId,
             this.colSuspended,
-            this.colAccountGroup,
             this.colId,
             this.colCreatedBy,
             this.colCreatedAt,
@@ -257,13 +254,13 @@
             this.colGroupId.VisibleIndex = 9;
             this.colGroupId.Width = 98;
             // 
-            // colTaxGroup
+            // colTaxGroupId
             // 
-            this.colTaxGroup.FieldName = "TaxGroup";
-            this.colTaxGroup.Name = "colTaxGroup";
-            this.colTaxGroup.Visible = true;
-            this.colTaxGroup.VisibleIndex = 10;
-            this.colTaxGroup.Width = 71;
+            this.colTaxGroupId.FieldName = "TaxGroupId";
+            this.colTaxGroupId.Name = "colTaxGroupId";
+            this.colTaxGroupId.Visible = true;
+            this.colTaxGroupId.VisibleIndex = 10;
+            this.colTaxGroupId.Width = 71;
             // 
             // colSuspended
             // 
@@ -272,14 +269,6 @@
             this.colSuspended.Visible = true;
             this.colSuspended.VisibleIndex = 11;
             this.colSuspended.Width = 38;
-            // 
-            // colAccountGroup
-            // 
-            this.colAccountGroup.FieldName = "AccountGroup";
-            this.colAccountGroup.Name = "colAccountGroup";
-            this.colAccountGroup.Visible = true;
-            this.colAccountGroup.VisibleIndex = 12;
-            this.colAccountGroup.Width = 38;
             // 
             // colId
             // 
@@ -306,7 +295,7 @@
             this.colModifiedBy.FieldName = "ModifiedBy";
             this.colModifiedBy.Name = "colModifiedBy";
             this.colModifiedBy.Visible = true;
-            this.colModifiedBy.VisibleIndex = 13;
+            this.colModifiedBy.VisibleIndex = 12;
             this.colModifiedBy.Width = 38;
             // 
             // colModifiedAt
@@ -314,7 +303,7 @@
             this.colModifiedAt.FieldName = "ModifiedAt";
             this.colModifiedAt.Name = "colModifiedAt";
             this.colModifiedAt.Visible = true;
-            this.colModifiedAt.VisibleIndex = 14;
+            this.colModifiedAt.VisibleIndex = 13;
             this.colModifiedAt.Width = 78;
             // 
             // colWFStatus
@@ -585,10 +574,9 @@
             this.colDisplayNum,
             this.colReferenceNum1,
             this.colDescription1,
-            this.colGroupId1,
-            this.colTaxGroup1,
+            this.colGroupId_Services,
+            this.colTaxGroup_Services,
             this.colSuspended1,
-            this.colAccountGroup1,
             this.colCreatedBy1,
             this.colCreatedAt1,
             this.colModifiedBy1,
@@ -604,7 +592,7 @@
             this.colId1.FieldName = "Id";
             this.colId1.Name = "colId1";
             this.colId1.Visible = true;
-            this.colId1.VisibleIndex = 13;
+            this.colId1.VisibleIndex = 12;
             // 
             // colPurchPrice1
             // 
@@ -669,19 +657,19 @@
             this.colDescription1.Visible = true;
             this.colDescription1.VisibleIndex = 8;
             // 
-            // colGroupId1
+            // colGroupId_Services
             // 
-            this.colGroupId1.FieldName = "GroupId";
-            this.colGroupId1.Name = "colGroupId1";
-            this.colGroupId1.Visible = true;
-            this.colGroupId1.VisibleIndex = 9;
+            this.colGroupId_Services.FieldName = "GroupId";
+            this.colGroupId_Services.Name = "colGroupId_Services";
+            this.colGroupId_Services.Visible = true;
+            this.colGroupId_Services.VisibleIndex = 9;
             // 
-            // colTaxGroup1
+            // colTaxGroup_Services
             // 
-            this.colTaxGroup1.FieldName = "TaxGroup";
-            this.colTaxGroup1.Name = "colTaxGroup1";
-            this.colTaxGroup1.Visible = true;
-            this.colTaxGroup1.VisibleIndex = 10;
+            this.colTaxGroup_Services.FieldName = "TaxGroup";
+            this.colTaxGroup_Services.Name = "colTaxGroup_Services";
+            this.colTaxGroup_Services.Visible = true;
+            this.colTaxGroup_Services.VisibleIndex = 10;
             // 
             // colSuspended1
             // 
@@ -690,47 +678,40 @@
             this.colSuspended1.Visible = true;
             this.colSuspended1.VisibleIndex = 11;
             // 
-            // colAccountGroup1
-            // 
-            this.colAccountGroup1.FieldName = "AccountGroup";
-            this.colAccountGroup1.Name = "colAccountGroup1";
-            this.colAccountGroup1.Visible = true;
-            this.colAccountGroup1.VisibleIndex = 12;
-            // 
             // colCreatedBy1
             // 
             this.colCreatedBy1.FieldName = "CreatedBy";
             this.colCreatedBy1.Name = "colCreatedBy1";
             this.colCreatedBy1.Visible = true;
-            this.colCreatedBy1.VisibleIndex = 14;
+            this.colCreatedBy1.VisibleIndex = 13;
             // 
             // colCreatedAt1
             // 
             this.colCreatedAt1.FieldName = "CreatedAt";
             this.colCreatedAt1.Name = "colCreatedAt1";
             this.colCreatedAt1.Visible = true;
-            this.colCreatedAt1.VisibleIndex = 15;
+            this.colCreatedAt1.VisibleIndex = 14;
             // 
             // colModifiedBy1
             // 
             this.colModifiedBy1.FieldName = "ModifiedBy";
             this.colModifiedBy1.Name = "colModifiedBy1";
             this.colModifiedBy1.Visible = true;
-            this.colModifiedBy1.VisibleIndex = 16;
+            this.colModifiedBy1.VisibleIndex = 15;
             // 
             // colModifiedAt1
             // 
             this.colModifiedAt1.FieldName = "ModifiedAt";
             this.colModifiedAt1.Name = "colModifiedAt1";
             this.colModifiedAt1.Visible = true;
-            this.colModifiedAt1.VisibleIndex = 17;
+            this.colModifiedAt1.VisibleIndex = 16;
             // 
             // colWFStatus1
             // 
             this.colWFStatus1.FieldName = "WFStatus";
             this.colWFStatus1.Name = "colWFStatus1";
             this.colWFStatus1.Visible = true;
-            this.colWFStatus1.VisibleIndex = 18;
+            this.colWFStatus1.VisibleIndex = 17;
             // 
             // newBI
             // 
@@ -783,9 +764,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colReferenceNum;
         private DevExpress.XtraGrid.Columns.GridColumn colDescription;
         private DevExpress.XtraGrid.Columns.GridColumn colGroupId;
-        private DevExpress.XtraGrid.Columns.GridColumn colTaxGroup;
+        private DevExpress.XtraGrid.Columns.GridColumn colTaxGroupId;
         private DevExpress.XtraGrid.Columns.GridColumn colSuspended;
-        private DevExpress.XtraGrid.Columns.GridColumn colAccountGroup;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedBy;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedAt;
@@ -834,10 +814,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDisplayNum;
         private DevExpress.XtraGrid.Columns.GridColumn colReferenceNum1;
         private DevExpress.XtraGrid.Columns.GridColumn colDescription1;
-        private DevExpress.XtraGrid.Columns.GridColumn colGroupId1;
-        private DevExpress.XtraGrid.Columns.GridColumn colTaxGroup1;
+        private DevExpress.XtraGrid.Columns.GridColumn colGroupId_Services;
+        private DevExpress.XtraGrid.Columns.GridColumn colTaxGroup_Services;
         private DevExpress.XtraGrid.Columns.GridColumn colSuspended1;
-        private DevExpress.XtraGrid.Columns.GridColumn colAccountGroup1;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedBy1;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedAt1;
         private DevExpress.XtraGrid.Columns.GridColumn colModifiedBy1;

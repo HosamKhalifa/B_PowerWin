@@ -55,9 +55,9 @@ namespace B_PowerWin.GL.Forms
             GridManager.SetupEditForm(taxCodeGV, new List<string>() {
                                       TaxCode.TaxCodeFields.TaxCodeId,
                                       TaxCode.TaxCodeFields.TaxCodeName,
-                                      TaxCode.TaxCodeFields.ApTaxAccount,
-                                      TaxCode.TaxCodeFields.ArTaxAccount,
-                                      TaxCode.TaxCodeFields.SettlementTaxAccount
+                                      TaxCode.TaxCodeFields.ApTaxAccountId,
+                                      TaxCode.TaxCodeFields.ArTaxAccountId,
+                                      TaxCode.TaxCodeFields.SettlementTaxAccountId
                                       });
 
             GridManager.SetupEditForm(taxCodeValuesGV, new List<string>() {
@@ -72,7 +72,10 @@ namespace B_PowerWin.GL.Forms
 
             FormGridManager = new GridManager();
             FormGridManager.Attach(taxGroupGC,taxGroupMemsGC,taxCodeGC,taxCodeValuesGC);
-            
+            LookupManager.MainAccount(dbContext, taxCodeGV, colArTaxAccountId, LookupSuspendedWhereEnum.NonSuspended);
+            LookupManager.MainAccount(dbContext, taxCodeGV, colApTaxAccountId, LookupSuspendedWhereEnum.NonSuspended);
+            LookupManager.MainAccount(dbContext, taxCodeGV, colSettlementTaxAccountId, LookupSuspendedWhereEnum.NonSuspended);
+
             taxGroupBindingSource.DataSource = dbContext.TaxGroups.Local;
             taxGroupMemberSetupBindingSource.DataSource = dbContext.TaxGroupMemberSetups.Local;
             taxCodeBindingSource.DataSource = dbContext.TaxCodes.Local;

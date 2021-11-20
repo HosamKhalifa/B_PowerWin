@@ -284,7 +284,7 @@ namespace B_PowerWin.GUI.CustomLookup
                 PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains,
             };
             ret.Columns.Add(new LookUpColumnInfo() { FieldName = "Id", Caption = "Id", Width = 10 });
-            ret.Columns.Add(new LookUpColumnInfo() { FieldName = "FullName", Caption = "Name", Width = 55 });
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = "FullName", Caption = "Name", Width = 90 });
 
             //Buttons setup
             var eclipse = new EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "Edit...", -1, true, true, true, DevExpress.XtraEditors.ImageLocation.MiddleCenter, limg_Ellipsis);
@@ -330,6 +330,164 @@ namespace B_PowerWin.GUI.CustomLookup
 
             return ret;
         }
+        public static RepositoryItemLookUpEdit MainAccount(AppDbContext _db, GridViewBase _gv, GridColumn _gvcol, LookupSuspendedWhereEnum _SuspendedWhere = LookupSuspendedWhereEnum.All)
+        {
+            Image limg_Ellipsis = DevExpress.Images.ImageResourceCache.Default.GetImage("images/edit/copy_16x16.png");
+            var bs = new BindingSource();
+            switch (_SuspendedWhere)
+            {
+                case LookupSuspendedWhereEnum.All:
+                    _db.MainAccounts.Load();
+                    break;
+                case LookupSuspendedWhereEnum.Suspended:
+                    _db.MainAccounts.Where(x => x.Suspended == true).Load();
+                    break;
+                case LookupSuspendedWhereEnum.NonSuspended:
+                    _db.MainAccounts.Where(x => x.Suspended == false).Load();
+                    break;
 
+            }
+
+            bs.DataSource = _db.MainAccounts.Local;
+            var ret = new RepositoryItemLookUpEdit()
+            {
+
+                Name = $"{PRRFIX}MAIN_ACCOUNT_{_SuspendedWhere.ToString()}_LOV",
+                DataSource = bs,
+                DisplayMember = "FullName",
+                ValueMember = "Id",
+                KeyMember = "Id",
+                PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains,
+            };
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = "Id", Caption = "Id", Width = 10 });
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = DB.MainAccount.AccountBaseFields.ReferenceNum, Caption = "Num", Width = 20 });
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = DB.MainAccount.AccountBaseFields.Name, Caption = "Name", Width = 55 });
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = DB.MainAccount.MainAccountFields.MainAccountType, Caption = "Type", Width = 15 });
+            //Buttons setup
+            var eclipse = new EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "Edit...", -1, true, true, true, DevExpress.XtraEditors.ImageLocation.MiddleCenter, limg_Ellipsis);
+            ret.Buttons.Add(eclipse);
+
+            //Buttons event handlers
+            ret.ButtonClick += (s, e) => {
+                if (e.Button.Kind == ButtonPredefines.Ellipsis)
+                {
+
+                    var frm = new GL.Forms.MainAccountFrm() { StartPosition = FormStartPosition.CenterParent };
+                    frm.FormClosing += (l_s, l_e) => {
+                        switch (_SuspendedWhere)
+                        {
+                            case LookupSuspendedWhereEnum.All:
+                                _db.MainAccounts.Load();
+                                break;
+                            case LookupSuspendedWhereEnum.Suspended:
+                                _db.MainAccounts.Where(x => x.Suspended == true).Load();
+                                break;
+                            case LookupSuspendedWhereEnum.NonSuspended:
+                                _db.MainAccounts.Where(x => x.Suspended == false).Load();
+                                break;
+
+                        }
+
+                    };
+                    frm.ShowDialog();
+                }
+            };
+            if (_gv.GridControl.RepositoryItems.Contains(ret))
+            {
+                _gvcol.ColumnEditName = ret.Name;
+            }
+            else
+            {
+                _gv.GridControl.RepositoryItems.Add(ret);
+                _gvcol.ColumnEditName = ret.Name;
+            }
+
+
+
+            return ret;
+        }
+        public static RepositoryItemLookUpEdit TaxGroup(AppDbContext _db, GridViewBase _gv, GridColumn _gvcol)
+        {
+            Image limg_Ellipsis = DevExpress.Images.ImageResourceCache.Default.GetImage("images/edit/copy_16x16.png");
+            var bs = new BindingSource();
+            _db.TaxGroups.Load();
+            bs.DataSource = _db.TaxGroups.Local;
+            var ret = new RepositoryItemLookUpEdit()
+            {
+
+                Name = $"{PRRFIX}TaxGroup_LOV",
+                DataSource = bs,
+                DisplayMember = "FullName",
+                ValueMember = "Id",
+                KeyMember = "Id",
+                PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains,
+            };
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = "Id", Caption = "Id", Width = 10 });
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = DB.TaxGroup.TaxGroupFields.GroupNum, Caption = "Num", Width = 20 });
+            ret.Columns.Add(new LookUpColumnInfo() { FieldName = DB.TaxGroup.TaxGroupFields.GroupName, Caption = "Name", Width = 70 });
+            //Buttons setup
+            var eclipse = new EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "Edit...", -1, true, true, true, DevExpress.XtraEditors.ImageLocation.MiddleCenter, limg_Ellipsis);
+            ret.Buttons.Add(eclipse);
+            //Buttons event handlers
+            ret.ButtonClick += (s, e) => {
+                if (e.Button.Kind == ButtonPredefines.Ellipsis)
+                {
+
+                    var frm = new GL.Forms.MainAccountFrm() { StartPosition = FormStartPosition.CenterParent };
+                    frm.FormClosing += (l_s, l_e) => {
+                        _db.TaxGroups.Load();
+
+                    };
+                    frm.ShowDialog();
+                }
+            };
+            if (_gv.GridControl.RepositoryItems.Contains(ret))
+            {
+                _gvcol.ColumnEditName = ret.Name;
+            }
+            else
+            {
+                _gv.GridControl.RepositoryItems.Add(ret);
+                _gvcol.ColumnEditName = ret.Name;
+            }
+
+
+
+            return ret;
+        }
+        public static void TaxGroup(AppDbContext _db, LookUpEdit _lookUp)
+        {
+            Image limg_Ellipsis = DevExpress.Images.ImageResourceCache.Default.GetImage("images/edit/copy_16x16.png");
+            var bs = new BindingSource();
+            _db.TaxGroups.Load();
+            bs.DataSource = _db.TaxGroups.Local;
+            _lookUp.Name = $"{PRRFIX}TaxGroup_LOV";
+            _lookUp.Properties.DataSource = bs;
+            _lookUp.Properties.DisplayMember = "FullName";
+            _lookUp.Properties.ValueMember = "Id";
+            _lookUp.Properties.KeyMember = "Id";
+            _lookUp.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
+
+            _lookUp.Properties.Columns.Add(new LookUpColumnInfo() { FieldName = "Id", Caption = "Id", Width = 10 });
+            _lookUp.Properties.Columns.Add(new LookUpColumnInfo() { FieldName = "FullName", Caption = "Name", Width = 90 });
+
+            //Buttons setup
+            _lookUp.Properties.Buttons.Add(
+                new EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "Edit...", -1, true, true, true, DevExpress.XtraEditors.ImageLocation.MiddleCenter, limg_Ellipsis)
+                );
+            //Buttons event handlers
+            _lookUp.Properties.ButtonClick += (s, e) => {
+                if (e.Button.Kind == ButtonPredefines.Ellipsis)
+                {
+                    var frm = new GL.Forms.TaxSetupFrm() { StartPosition = FormStartPosition.CenterParent };
+                    frm.FormClosing += (l_s, l_e) => {
+                        _db.TaxGroups.Load();
+                    };
+                    frm.ShowDialog();
+                }
+            };
+
+
+        }
     }
 }
