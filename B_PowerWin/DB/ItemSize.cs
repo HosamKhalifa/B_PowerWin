@@ -12,10 +12,21 @@ namespace B_PowerWin.DB
     [Table("item_size")]
     public class ItemSize : LineBase
     {
+        #region ClassFieldNames
+        [NotMapped]
+        public static class ItemSizeFields
+        {
+            public static string ItemInventoryId { get { return "ItemInventoryId"; } }
+            public static string SizeEnum { get { return "SizeEnum"; } }
+            public static string ItemSizeName { get { return "ItemSizeName"; } }
+            public static string BasicSizeConvertFactor { get { return "BasicSizeConvertFactor"; } }
+        }
+        #endregion
         public ItemSize() : base()
         {
 
         }
+
         public override void BuildMetaData(AppDbContext _db)
         {
             //Base entity

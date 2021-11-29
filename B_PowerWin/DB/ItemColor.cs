@@ -12,6 +12,16 @@ namespace B_PowerWin.DB
     [Table("item_color")]
     public class ItemColor:LineBase
     {
+        #region ClassFieldNames
+        [NotMapped]
+        public static class ItemColorFields
+        {
+            public static string ItemInventoryId { get { return "ItemInventoryId"; } }
+            public static string ColorEnum { get { return "ColorEnum"; } }
+            public static string ItemColorName { get { return "ItemColorName"; } }
+            
+        }
+        #endregion
         public ItemColor():base()
         {
 

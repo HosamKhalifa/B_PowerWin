@@ -36,6 +36,7 @@
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule4 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule5 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule6 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule7 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.wizardControl1 = new DevExpress.XtraWizard.WizardControl();
             this.welcomeWizardPage1 = new DevExpress.XtraWizard.WelcomeWizardPage();
             this.itemInventoryPage = new DevExpress.XtraWizard.WizardPage();
@@ -49,8 +50,8 @@
             this.ReferenceNumTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.DescriptionTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.GroupIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.taxGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SuspendedCheckEdit = new DevExpress.XtraEditors.CheckEdit();
+            this.TaxGroupLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForPurchPrice = new DevExpress.XtraLayout.LayoutControlItem();
@@ -121,8 +122,8 @@
             this.colCreatedAt2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModifiedBy2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModifiedAt2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.taxGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.itemInventoryPageValidation = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
-            this.TaxGroupLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).BeginInit();
             this.wizardControl1.SuspendLayout();
             this.itemInventoryPage.SuspendLayout();
@@ -137,8 +138,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GroupIdLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.taxGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuspendedCheckEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TaxGroupLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPurchPrice)).BeginInit();
@@ -163,8 +164,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemVarsGC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemVariantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemVarsGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.taxGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemInventoryPageValidation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TaxGroupLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // wizardControl1
@@ -242,6 +243,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.PurchPriceCalcEdit.Properties.Mask.EditMask = "G";
             this.PurchPriceCalcEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.PurchPriceCalcEdit.Properties.ShowCloseButton = true;
             this.PurchPriceCalcEdit.Size = new System.Drawing.Size(309, 20);
             this.PurchPriceCalcEdit.StyleController = this.dataLayoutControl1;
             this.PurchPriceCalcEdit.TabIndex = 4;
@@ -275,6 +277,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.SalesPriceCalcEdit.Properties.Mask.EditMask = "G";
             this.SalesPriceCalcEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.SalesPriceCalcEdit.Properties.ShowCloseButton = true;
             this.SalesPriceCalcEdit.Size = new System.Drawing.Size(309, 20);
             this.SalesPriceCalcEdit.StyleController = this.dataLayoutControl1;
             this.SalesPriceCalcEdit.TabIndex = 5;
@@ -304,6 +307,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.SalesPriceMinCalcEdit.Properties.Mask.EditMask = "G";
             this.SalesPriceMinCalcEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.SalesPriceMinCalcEdit.Properties.ShowCloseButton = true;
             this.SalesPriceMinCalcEdit.Size = new System.Drawing.Size(309, 20);
             this.SalesPriceMinCalcEdit.StyleController = this.dataLayoutControl1;
             this.SalesPriceMinCalcEdit.TabIndex = 6;
@@ -392,10 +396,6 @@
             conditionValidationRule6.ErrorText = "This value is not valid";
             this.itemInventoryPageValidation.SetValidationRule(this.GroupIdLookUpEdit, conditionValidationRule6);
             // 
-            // taxGroupBindingSource
-            // 
-            this.taxGroupBindingSource.DataSource = typeof(B_PowerWin.DB.TaxGroup);
-            // 
             // SuspendedCheckEdit
             // 
             this.SuspendedCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.itemInventoryBindingSource, "Suspended", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -406,6 +406,21 @@
             this.SuspendedCheckEdit.Size = new System.Drawing.Size(309, 19);
             this.SuspendedCheckEdit.StyleController = this.dataLayoutControl1;
             this.SuspendedCheckEdit.TabIndex = 13;
+            // 
+            // TaxGroupLookUpEdit
+            // 
+            this.TaxGroupLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.itemInventoryBindingSource, "TaxGroupId", true));
+            this.TaxGroupLookUpEdit.Location = new System.Drawing.Point(479, 60);
+            this.TaxGroupLookUpEdit.Name = "TaxGroupLookUpEdit";
+            this.TaxGroupLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TaxGroupLookUpEdit.Properties.NullText = "";
+            this.TaxGroupLookUpEdit.Size = new System.Drawing.Size(309, 20);
+            this.TaxGroupLookUpEdit.StyleController = this.dataLayoutControl1;
+            this.TaxGroupLookUpEdit.TabIndex = 12;
+            conditionValidationRule7.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule7.ErrorText = "This value is not valid";
+            this.itemInventoryPageValidation.SetValidationRule(this.TaxGroupLookUpEdit, conditionValidationRule7);
             // 
             // layoutControlGroup1
             // 
@@ -559,7 +574,7 @@
             // 
             // itemSizeGV
             // 
-            this.itemSizeGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.None;
+            this.itemSizeGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.ItemSize;
             this.itemSizeGV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colItemVariants,
             this.colItemInventoryId,
@@ -600,14 +615,14 @@
             this.colSizeEnum.FieldName = "SizeEnum";
             this.colSizeEnum.Name = "colSizeEnum";
             this.colSizeEnum.Visible = true;
-            this.colSizeEnum.VisibleIndex = 1;
+            this.colSizeEnum.VisibleIndex = 0;
             // 
             // colItemSizeName
             // 
             this.colItemSizeName.FieldName = "ItemSizeName";
             this.colItemSizeName.Name = "colItemSizeName";
             this.colItemSizeName.Visible = true;
-            this.colItemSizeName.VisibleIndex = 4;
+            this.colItemSizeName.VisibleIndex = 1;
             this.colItemSizeName.Width = 173;
             // 
             // colBasicSizeConvertFactor
@@ -622,8 +637,6 @@
             // 
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
-            this.colId.Visible = true;
-            this.colId.VisibleIndex = 3;
             this.colId.Width = 93;
             // 
             // colCreatedBy
@@ -655,8 +668,6 @@
             // 
             this.colWFStatus.FieldName = "WFStatus";
             this.colWFStatus.Name = "colWFStatus";
-            this.colWFStatus.Visible = true;
-            this.colWFStatus.VisibleIndex = 0;
             // 
             // itemColorPage
             // 
@@ -685,7 +696,7 @@
             // 
             // itemColorGV
             // 
-            this.itemColorGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.None;
+            this.itemColorGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.ItemColor;
             this.itemColorGV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colWFStatus1,
             this.colId1,
@@ -708,15 +719,11 @@
             // 
             this.colWFStatus1.FieldName = "WFStatus";
             this.colWFStatus1.Name = "colWFStatus1";
-            this.colWFStatus1.Visible = true;
-            this.colWFStatus1.VisibleIndex = 0;
             // 
             // colId1
             // 
             this.colId1.FieldName = "Id";
             this.colId1.Name = "colId1";
-            this.colId1.Visible = true;
-            this.colId1.VisibleIndex = 1;
             // 
             // colItemInventoryId1
             // 
@@ -734,7 +741,7 @@
             this.colColorEnum.FieldName = "ColorEnum";
             this.colColorEnum.Name = "colColorEnum";
             this.colColorEnum.Visible = true;
-            this.colColorEnum.VisibleIndex = 2;
+            this.colColorEnum.VisibleIndex = 0;
             this.colColorEnum.Width = 100;
             // 
             // colItemColorName
@@ -742,7 +749,7 @@
             this.colItemColorName.FieldName = "ItemColorName";
             this.colItemColorName.Name = "colItemColorName";
             this.colItemColorName.Visible = true;
-            this.colItemColorName.VisibleIndex = 3;
+            this.colItemColorName.VisibleIndex = 1;
             this.colItemColorName.Width = 245;
             // 
             // colCreatedBy1
@@ -961,17 +968,9 @@
             this.colModifiedAt2.FieldName = "ModifiedAt";
             this.colModifiedAt2.Name = "colModifiedAt2";
             // 
-            // TaxGroupLookUpEdit
+            // taxGroupBindingSource
             // 
-            this.TaxGroupLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.itemInventoryBindingSource, "TaxGroup", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.TaxGroupLookUpEdit.Location = new System.Drawing.Point(479, 60);
-            this.TaxGroupLookUpEdit.Name = "TaxGroupLookUpEdit";
-            this.TaxGroupLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.TaxGroupLookUpEdit.Properties.NullText = "";
-            this.TaxGroupLookUpEdit.Size = new System.Drawing.Size(309, 20);
-            this.TaxGroupLookUpEdit.StyleController = this.dataLayoutControl1;
-            this.TaxGroupLookUpEdit.TabIndex = 12;
+            this.taxGroupBindingSource.DataSource = typeof(B_PowerWin.DB.TaxGroup);
             // 
             // ItemWizardFrm
             // 
@@ -995,8 +994,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GroupIdLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.taxGroupBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuspendedCheckEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TaxGroupLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPurchPrice)).EndInit();
@@ -1021,8 +1020,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemVarsGC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemVariantsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemVarsGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.taxGroupBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemInventoryPageValidation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TaxGroupLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

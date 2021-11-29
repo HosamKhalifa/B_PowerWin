@@ -83,12 +83,10 @@
             this.serviceGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
             this.itemServiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.serviceGV = new B_PowerWin.GUI.Grid.GridViewBase();
-            this.colId1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPurchPrice1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSalesPrice1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSalesPriceMin1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colItemMode1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCompanyId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDisplayNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colReferenceNum1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -96,6 +94,7 @@
             this.colGroupId_Services = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTaxGroup_Services = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSuspended1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colId1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedBy1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedAt1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModifiedBy1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -132,7 +131,7 @@
             this.itemVarsPage,
             this.servicePage});
             this.itemSetupTabPane.RegularSize = new System.Drawing.Size(788, 321);
-            this.itemSetupTabPane.SelectedPage = this.itemVarsPage;
+            this.itemSetupTabPane.SelectedPage = this.itemsPage;
             this.itemSetupTabPane.Size = new System.Drawing.Size(788, 321);
             this.itemSetupTabPane.TabIndex = 4;
             this.itemSetupTabPane.Text = "tabPane1";
@@ -564,12 +563,10 @@
             // 
             this.serviceGV.BaseTypeEnum = B_PowerWin.DB.BaseTypeEnum.None;
             this.serviceGV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colId1,
             this.colPurchPrice1,
             this.colSalesPrice1,
             this.colSalesPriceMin1,
             this.colItemMode1,
-            this.colCompanyId,
             this.colName1,
             this.colDisplayNum,
             this.colReferenceNum1,
@@ -577,6 +574,7 @@
             this.colGroupId_Services,
             this.colTaxGroup_Services,
             this.colSuspended1,
+            this.colId1,
             this.colCreatedBy1,
             this.colCreatedAt1,
             this.colModifiedBy1,
@@ -586,132 +584,121 @@
             this.serviceGV.GridControl = this.serviceGC;
             this.serviceGV.GridViewEditMode = B_PowerWin.GUI.Grid.GridViewEditModeEnum.FormEdit;
             this.serviceGV.Name = "serviceGV";
-            // 
-            // colId1
-            // 
-            this.colId1.FieldName = "Id";
-            this.colId1.Name = "colId1";
-            this.colId1.Visible = true;
-            this.colId1.VisibleIndex = 12;
+            this.serviceGV.OptionsView.ColumnAutoWidth = false;
             // 
             // colPurchPrice1
             // 
             this.colPurchPrice1.FieldName = "PurchPrice";
             this.colPurchPrice1.Name = "colPurchPrice1";
             this.colPurchPrice1.Visible = true;
-            this.colPurchPrice1.VisibleIndex = 0;
+            this.colPurchPrice1.VisibleIndex = 4;
             // 
             // colSalesPrice1
             // 
             this.colSalesPrice1.FieldName = "SalesPrice";
             this.colSalesPrice1.Name = "colSalesPrice1";
             this.colSalesPrice1.Visible = true;
-            this.colSalesPrice1.VisibleIndex = 1;
+            this.colSalesPrice1.VisibleIndex = 5;
             // 
             // colSalesPriceMin1
             // 
             this.colSalesPriceMin1.FieldName = "SalesPriceMin";
             this.colSalesPriceMin1.Name = "colSalesPriceMin1";
             this.colSalesPriceMin1.Visible = true;
-            this.colSalesPriceMin1.VisibleIndex = 2;
+            this.colSalesPriceMin1.VisibleIndex = 6;
             // 
             // colItemMode1
             // 
             this.colItemMode1.FieldName = "ItemMode";
             this.colItemMode1.Name = "colItemMode1";
-            this.colItemMode1.Visible = true;
-            this.colItemMode1.VisibleIndex = 3;
-            // 
-            // colCompanyId
-            // 
-            this.colCompanyId.FieldName = "CompanyId";
-            this.colCompanyId.Name = "colCompanyId";
-            this.colCompanyId.Visible = true;
-            this.colCompanyId.VisibleIndex = 4;
             // 
             // colName1
             // 
             this.colName1.FieldName = "Name";
             this.colName1.Name = "colName1";
             this.colName1.Visible = true;
-            this.colName1.VisibleIndex = 5;
+            this.colName1.VisibleIndex = 2;
+            this.colName1.Width = 165;
             // 
             // colDisplayNum
             // 
             this.colDisplayNum.FieldName = "DisplayNum";
             this.colDisplayNum.Name = "colDisplayNum";
-            this.colDisplayNum.Visible = true;
-            this.colDisplayNum.VisibleIndex = 6;
             // 
             // colReferenceNum1
             // 
             this.colReferenceNum1.FieldName = "ReferenceNum";
             this.colReferenceNum1.Name = "colReferenceNum1";
             this.colReferenceNum1.Visible = true;
-            this.colReferenceNum1.VisibleIndex = 7;
+            this.colReferenceNum1.VisibleIndex = 1;
             // 
             // colDescription1
             // 
             this.colDescription1.FieldName = "Description";
             this.colDescription1.Name = "colDescription1";
-            this.colDescription1.Visible = true;
-            this.colDescription1.VisibleIndex = 8;
             // 
             // colGroupId_Services
             // 
             this.colGroupId_Services.FieldName = "GroupId";
             this.colGroupId_Services.Name = "colGroupId_Services";
             this.colGroupId_Services.Visible = true;
-            this.colGroupId_Services.VisibleIndex = 9;
+            this.colGroupId_Services.VisibleIndex = 7;
+            this.colGroupId_Services.Width = 150;
             // 
             // colTaxGroup_Services
             // 
-            this.colTaxGroup_Services.FieldName = "TaxGroup";
+            this.colTaxGroup_Services.FieldName = "TaxGroupId";
             this.colTaxGroup_Services.Name = "colTaxGroup_Services";
             this.colTaxGroup_Services.Visible = true;
-            this.colTaxGroup_Services.VisibleIndex = 10;
+            this.colTaxGroup_Services.VisibleIndex = 8;
+            this.colTaxGroup_Services.Width = 146;
             // 
             // colSuspended1
             // 
             this.colSuspended1.FieldName = "Suspended";
             this.colSuspended1.Name = "colSuspended1";
             this.colSuspended1.Visible = true;
-            this.colSuspended1.VisibleIndex = 11;
+            this.colSuspended1.VisibleIndex = 3;
+            this.colSuspended1.Width = 70;
+            // 
+            // colId1
+            // 
+            this.colId1.FieldName = "Id";
+            this.colId1.Name = "colId1";
+            this.colId1.Visible = true;
+            this.colId1.VisibleIndex = 0;
+            this.colId1.Width = 64;
             // 
             // colCreatedBy1
             // 
             this.colCreatedBy1.FieldName = "CreatedBy";
             this.colCreatedBy1.Name = "colCreatedBy1";
-            this.colCreatedBy1.Visible = true;
-            this.colCreatedBy1.VisibleIndex = 13;
             // 
             // colCreatedAt1
             // 
             this.colCreatedAt1.FieldName = "CreatedAt";
             this.colCreatedAt1.Name = "colCreatedAt1";
-            this.colCreatedAt1.Visible = true;
-            this.colCreatedAt1.VisibleIndex = 14;
             // 
             // colModifiedBy1
             // 
             this.colModifiedBy1.FieldName = "ModifiedBy";
             this.colModifiedBy1.Name = "colModifiedBy1";
             this.colModifiedBy1.Visible = true;
-            this.colModifiedBy1.VisibleIndex = 15;
+            this.colModifiedBy1.VisibleIndex = 9;
             // 
             // colModifiedAt1
             // 
             this.colModifiedAt1.FieldName = "ModifiedAt";
             this.colModifiedAt1.Name = "colModifiedAt1";
             this.colModifiedAt1.Visible = true;
-            this.colModifiedAt1.VisibleIndex = 16;
+            this.colModifiedAt1.VisibleIndex = 10;
             // 
             // colWFStatus1
             // 
             this.colWFStatus1.FieldName = "WFStatus";
             this.colWFStatus1.Name = "colWFStatus1";
             this.colWFStatus1.Visible = true;
-            this.colWFStatus1.VisibleIndex = 17;
+            this.colWFStatus1.VisibleIndex = 11;
             // 
             // newBI
             // 
@@ -804,12 +791,10 @@
         private GUI.Grid.GridCtrlBase serviceGC;
         private System.Windows.Forms.BindingSource itemServiceBindingSource;
         private GUI.Grid.GridViewBase serviceGV;
-        private DevExpress.XtraGrid.Columns.GridColumn colId1;
         private DevExpress.XtraGrid.Columns.GridColumn colPurchPrice1;
         private DevExpress.XtraGrid.Columns.GridColumn colSalesPrice1;
         private DevExpress.XtraGrid.Columns.GridColumn colSalesPriceMin1;
         private DevExpress.XtraGrid.Columns.GridColumn colItemMode1;
-        private DevExpress.XtraGrid.Columns.GridColumn colCompanyId;
         private DevExpress.XtraGrid.Columns.GridColumn colName1;
         private DevExpress.XtraGrid.Columns.GridColumn colDisplayNum;
         private DevExpress.XtraGrid.Columns.GridColumn colReferenceNum1;
@@ -817,6 +802,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colGroupId_Services;
         private DevExpress.XtraGrid.Columns.GridColumn colTaxGroup_Services;
         private DevExpress.XtraGrid.Columns.GridColumn colSuspended1;
+        private DevExpress.XtraGrid.Columns.GridColumn colId1;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedBy1;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedAt1;
         private DevExpress.XtraGrid.Columns.GridColumn colModifiedBy1;

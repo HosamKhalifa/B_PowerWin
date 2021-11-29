@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using B_PowerWin.DB;
 using B_PowerWin.GUI.CustomLookup;
+using B_PowerWin.GUI.Grid;
 
 namespace B_PowerWin.Invent
 {
     public partial class ItemWizardFrm : Form
     {
         AppDbContext dbContext;
+        GridManager formGridManager;
         public ItemInventory ItemInventory { get; set; }
         public List<ItemSize> ItemSizeList { get; set; }
         public List<ItemColor> ItemColorList { get; set; }
@@ -47,19 +49,32 @@ namespace B_PowerWin.Invent
         private void InitData()
         {
             dbContext = new AppDbContext();
+            formGridManager = new GridManager();
+            formGridManager.Attach(itemSizeGC, itemColorGC, itemVarsGC);
             ItemInventory = new ItemInventory() { Id = DB_Util.LineBaseSequNextVal(dbContext) };
 
             itemInventoryBindingSource.DataSource = new List<ItemInventory>() { ItemInventory };
             itemInventoryBindingSource.ResetBindings(true);
 
+            ItemSizeList = new List<ItemSize>();
             itemSizeBindingSource.DataSource = ItemSizeList;
             itemSizeBindingSource.ResetBindings(true);
+            GridManager.SetupEditForm(itemSizeGV, new List<string>() {
+                ItemSize.ItemSizeFields.SizeEnum,
+                ItemSize.ItemSizeFields.ItemSizeName,
+                ItemSize.ItemSizeFields.BasicSizeConvertFactor
+            });
 
+            ItemColorList = new List<ItemColor>();
             itemColorBindingSource.DataSource = ItemColorList;
             itemColorBindingSource.ResetBindings(true);
-
+            GridManager.SetupEditForm(itemColorGV, new List<string>() {
+                ItemColor.ItemColorFields.ColorEnum,
+                ItemColor.ItemColorFields.ItemColorName
+            });
             itemVariantsBindingSource.DataSource = ItemVariantList;
             itemVariantsBindingSource.ResetBindings(true);
+
             LookupManager.AccountGroup(dbContext, GroupIdLookUpEdit, BaseTypeEnum.ItemInventory);
             LookupManager.TaxGroup(dbContext, TaxGroupLookUpEdit);
 
@@ -76,11 +91,11 @@ namespace B_PowerWin.Invent
                 }
                 else if(e.PrevPage.Name == itemSizePage.Name)
                 {
-                    e.Cancel = itemSizeValidatePage();
+                    e.Cancel = !itemSizeValidatePage();
                 }
                 else if (e.PrevPage.Name == itemColorPage.Name)
                 {
-                    e.Cancel = itemColorValidatePage();
+                    e.Cancel = !itemColorValidatePage();
                 }
             }
         }
