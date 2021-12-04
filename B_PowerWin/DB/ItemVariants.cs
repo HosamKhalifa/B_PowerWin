@@ -84,9 +84,11 @@ public ItemVariants():base()
         public override void OnCreate(AppDbContext _db)
         {
             BaseType = (int)BaseTypeEnum.ItemVariants;
+            //string ls_SizeName  = this.ItemSize != null ? this.ItemSize.ItemSizeName : string.Empty;
+            //string ls_ColorName = this.ItemColor != null ? this.ItemColor.ItemColorName : string.Empty;
             //Name should be always calculated from Item Name+Size Name + Color Name
-            string ls_VarName = $"{this.ItemInventory.Name} {this.ItemSize.ItemSizeName} {this.ItemColor.ItemColorName}";
-            this.Name = ls_VarName;
+            //string ls_VarName = $"{this.ItemInventory.Name} {ls_SizeName} {ls_ColorName}";
+            this.Name = this.FullName;//ls_VarName;
             base.OnCreate(_db);
         }
         public override void OnUpdate(AppDbContext _db, DbEntityEntry _entryStatus)

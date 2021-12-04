@@ -101,6 +101,11 @@
             this.colModifiedAt1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWFStatus1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.newBI = new DevExpress.XtraBars.BarButtonItem();
+            this.itemVar_ItemInventLookup = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.itemVar_ItemSizeLookup = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.itemVar_ItemColorLookup = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.itemSizeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.itemColorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.itemSetupTabPane)).BeginInit();
             this.itemSetupTabPane.SuspendLayout();
             this.itemsPage.SuspendLayout();
@@ -115,6 +120,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.serviceGC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemServiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.serviceGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemVar_ItemInventLookup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemVar_ItemSizeLookup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemVar_ItemColorLookup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemSizeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemColorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // itemSetupTabPane
@@ -330,6 +340,10 @@
             this.itemVarsGC.MainView = this.itemVarGV;
             this.itemVarsGC.MenuManager = this.barManager1;
             this.itemVarsGC.Name = "itemVarsGC";
+            this.itemVarsGC.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.itemVar_ItemInventLookup,
+            this.itemVar_ItemSizeLookup,
+            this.itemVar_ItemColorLookup});
             this.itemVarsGC.Size = new System.Drawing.Size(770, 273);
             this.itemVarsGC.TabIndex = 0;
             this.itemVarsGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -408,16 +422,19 @@
             // 
             // colItemInventoryId_Var
             // 
+            this.colItemInventoryId_Var.ColumnEdit = this.itemVar_ItemInventLookup;
             this.colItemInventoryId_Var.FieldName = "ItemInventoryId";
             this.colItemInventoryId_Var.Name = "colItemInventoryId_Var";
             // 
             // colItemSizeId_Var
             // 
+            this.colItemSizeId_Var.ColumnEdit = this.itemVar_ItemSizeLookup;
             this.colItemSizeId_Var.FieldName = "ItemSizeId";
             this.colItemSizeId_Var.Name = "colItemSizeId_Var";
             // 
             // colItemColorId_Var
             // 
+            this.colItemColorId_Var.ColumnEdit = this.itemVar_ItemColorLookup;
             this.colItemColorId_Var.FieldName = "ItemColorId";
             this.colItemColorId_Var.Name = "colItemColorId_Var";
             // 
@@ -456,7 +473,7 @@
             // 
             // colItemSize_Var
             // 
-            this.colItemSize_Var.FieldName = "ItemSize";
+            this.colItemSize_Var.FieldName = "ItemSize.ItemSizeName";
             this.colItemSize_Var.Name = "colItemSize_Var";
             this.colItemSize_Var.Visible = true;
             this.colItemSize_Var.VisibleIndex = 9;
@@ -464,7 +481,7 @@
             // 
             // colItemColor_Var
             // 
-            this.colItemColor_Var.FieldName = "ItemColor";
+            this.colItemColor_Var.FieldName = "ItemColor.ItemColorName";
             this.colItemColor_Var.Name = "colItemColor_Var";
             this.colItemColor_Var.Visible = true;
             this.colItemColor_Var.VisibleIndex = 10;
@@ -709,6 +726,64 @@
             this.newBI.Name = "newBI";
             this.newBI.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
+            // itemVar_ItemInventLookup
+            // 
+            this.itemVar_ItemInventLookup.AutoHeight = false;
+            this.itemVar_ItemInventLookup.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.itemVar_ItemInventLookup.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 10, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("FullName", "Full Name", 50, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description", "Description", 40, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.itemVar_ItemInventLookup.DataSource = this.itemBindingSource;
+            this.itemVar_ItemInventLookup.DisplayMember = "FullName";
+            this.itemVar_ItemInventLookup.KeyMember = "Id";
+            this.itemVar_ItemInventLookup.Name = "itemVar_ItemInventLookup";
+            this.itemVar_ItemInventLookup.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
+            this.itemVar_ItemInventLookup.ValueMember = "Id";
+            // 
+            // itemVar_ItemSizeLookup
+            // 
+            this.itemVar_ItemSizeLookup.AutoHeight = false;
+            this.itemVar_ItemSizeLookup.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.itemVar_ItemSizeLookup.CascadingMember = "ItemInventoryId";
+            this.itemVar_ItemSizeLookup.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 10, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SizeEnum", "Size Enum", 20, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemSizeName", "Item Size Name", 70, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.itemVar_ItemSizeLookup.DataSource = this.itemSizeBindingSource;
+            this.itemVar_ItemSizeLookup.DisplayMember = "ItemSizeName";
+            this.itemVar_ItemSizeLookup.KeyMember = "Id";
+            this.itemVar_ItemSizeLookup.Name = "itemVar_ItemSizeLookup";
+            this.itemVar_ItemSizeLookup.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
+            this.itemVar_ItemSizeLookup.ValueMember = "Id";
+            // 
+            // itemVar_ItemColorLookup
+            // 
+            this.itemVar_ItemColorLookup.AutoHeight = false;
+            this.itemVar_ItemColorLookup.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.itemVar_ItemColorLookup.CascadingMember = "ItemInventoryId";
+            this.itemVar_ItemColorLookup.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 10, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ColorEnum", "Color Enum", 20, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemColorName", "Item Color Name", 70, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.itemVar_ItemColorLookup.DataSource = this.itemColorBindingSource;
+            this.itemVar_ItemColorLookup.DisplayMember = "ItemColorName";
+            this.itemVar_ItemColorLookup.KeyMember = "Id";
+            this.itemVar_ItemColorLookup.Name = "itemVar_ItemColorLookup";
+            this.itemVar_ItemColorLookup.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
+            this.itemVar_ItemColorLookup.ValueMember = "Id";
+            // 
+            // itemSizeBindingSource
+            // 
+            this.itemSizeBindingSource.DataSource = typeof(B_PowerWin.DB.ItemSize);
+            // 
+            // itemColorBindingSource
+            // 
+            this.itemColorBindingSource.DataSource = typeof(B_PowerWin.DB.ItemColor);
+            // 
             // ItemFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -730,6 +805,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.serviceGC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemServiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.serviceGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemVar_ItemInventLookup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemVar_ItemSizeLookup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemVar_ItemColorLookup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemSizeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemColorBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -808,5 +888,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn colModifiedBy1;
         private DevExpress.XtraGrid.Columns.GridColumn colModifiedAt1;
         private DevExpress.XtraGrid.Columns.GridColumn colWFStatus1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit itemVar_ItemInventLookup;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit itemVar_ItemSizeLookup;
+        private System.Windows.Forms.BindingSource itemSizeBindingSource;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit itemVar_ItemColorLookup;
+        private System.Windows.Forms.BindingSource itemColorBindingSource;
     }
 }

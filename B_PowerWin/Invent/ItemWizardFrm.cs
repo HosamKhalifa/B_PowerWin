@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using B_PowerWin.DB;
 using B_PowerWin.GUI.CustomLookup;
 using B_PowerWin.GUI.Grid;
+using DevExpress.XtraEditors;
+using B_PowerWin.SharedExt;
+using System.Data.Entity.Migrations;
 
 namespace B_PowerWin.Invent
 {
@@ -22,14 +25,71 @@ namespace B_PowerWin.Invent
         public List<ItemColor> ItemColorList { get; set; }
 
         public List<ItemVariants> ItemVariantList { get; set; }
+        public bool PersistChanges()
+        {
+            bool lb_Success = true;
+            try
+            {
 
+                var lcontxt = new AppDbContext();
+
+                lcontxt.ItemInventorys.AddOrUpdate(ItemInventory);
+                lcontxt.ItemSizes.AddOrUpdate(ItemSizeList.ToArray());
+                lcontxt.ItemColors.AddOrUpdate(ItemColorList.ToArray());
+                lcontxt.ItemVariants.AddOrUpdate(ItemVariantList.ToArray());
+                lcontxt.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.GetFullExceptionErrMessage());
+                lb_Success = false;
+            }
+            return lb_Success;
+        }
         public ItemWizardFrm()
         {
             InitializeComponent();
             InitData();
             InitEvents();
         }
+        private void BuildItemVariants()
+        {
+            ItemVariantList = dbContext.ItemVariants.Where(x => x.ItemInventoryId == this.ItemInventory.Id).ToList();
+            //Build item vars
+            var la_itemSizeArray  = ItemSizeList.Count  > 0 ? ItemSizeList.Select(x => x.Id).ToList():new List<long?>() { null};
+            var la_itemColorArray = ItemColorList.Count > 0 ? ItemColorList.Select(x => x.Id).ToList(): new List<long?>() { null};
+            var ls_SizeName = "";
+            var ls_ColorName = "";        
+            foreach (var sizeLine in la_itemSizeArray)
+            {
+                ls_SizeName  = sizeLine != null ? this.ItemSizeList.Single(x => x.Id == sizeLine).ItemSizeName : "";
+                
 
+                foreach (var colorLine in la_itemColorArray)
+                {
+                    ls_ColorName = colorLine != null ? this.ItemColorList.Single(x => x.Id == colorLine).ItemColorName:"";
+                    var lb_IsExisted = ItemVariantList.Exists(x => x.ItemSizeId == sizeLine && x.ItemColorId == colorLine);
+                    if (!lb_IsExisted)
+                    {
+                            ItemVariantList.Add(new ItemVariants() {
+                            Id = DB_Util.LineBaseSequNextVal(dbContext),
+                            ItemInventoryId = this.ItemInventory.Id,
+                            ItemSizeId = sizeLine,
+                            ItemColorId=colorLine,
+                            Name = $"{ItemInventory.Name} {ls_SizeName} {ls_ColorName}",
+                            ReferenceNum = ItemInventory.ReferenceNum,
+                            PurchPrice =ItemInventory.PurchPrice,
+                            SalesPrice = ItemInventory.SalesPrice,
+                            SalesPriceMin = ItemInventory.SalesPriceMin,
+                            BuyFromCustomer = false
+                            
+                        });
+                    }
+                }
+            }
+            itemVariantsBindingSource.DataSource = ItemVariantList;
+        }
         private void InitEvents()
         {
             wizardControl1.CancelClick += (s, e) => {
@@ -43,6 +103,18 @@ namespace B_PowerWin.Invent
             };
             itemVariantsBindingSource.AddingNew += (s, e) => {
                 e.NewObject = new ItemVariants() { Id = DB_Util.LineBaseSequNextVal(dbContext), ItemInventoryId = ItemInventory.Id };
+            };
+            wizardControl1.FinishClick += (s, e) => {
+               
+                if (PersistChanges())
+                {
+                    e.Cancel = false;
+                    this.Close();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             };
         }
 
@@ -96,6 +168,17 @@ namespace B_PowerWin.Invent
                 else if (e.PrevPage.Name == itemColorPage.Name)
                 {
                     e.Cancel = !itemColorValidatePage();
+
+                    if (!e.Cancel)
+                    {
+                        BuildItemVariants();
+                        itemVariantsBindingSource.ResetBindings(true);
+                        itemVarsGC.DataSource = itemVariantsBindingSource;
+                    }
+                }
+                else if (e.PrevPage.Name == itemVarsPage.Name)
+                {
+
                 }
             }
         }
