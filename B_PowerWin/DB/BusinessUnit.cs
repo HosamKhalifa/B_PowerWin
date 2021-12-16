@@ -77,6 +77,8 @@ namespace B_PowerWin.DB
         public virtual ICollection<DimDefault> DimDefaults { get; set; }
         public virtual ICollection<InventDimDefault> InventDimDefaults { get; set; }
 
+        [NotMapped]
+        public virtual string FullName { get { return $"{BusinessUnitCode} {BusinessUnitName} "; } }
 
     }
 }

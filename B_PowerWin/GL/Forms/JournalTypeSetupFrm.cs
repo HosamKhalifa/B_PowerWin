@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraGrid.Views.Grid;
+﻿using B_PowerWin.DB;
+using B_PowerWin.GUI.Grid;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,15 +54,18 @@ namespace B_PowerWin.GL.Forms
                     lt_Row.PostingLayer = DB.PostingLayerEnum.GL;
                 }
             };
-            //jourTypeBS.AddingNew += (s, e) => {
-            //    e.NewObject = new DB.JournalType() { JourType = DB.JournalTypeEnum.InventReturnToVend, PostingLayer = DB.PostingLayerEnum.Bugdet, DetailSummary = DB.JournalTypeDetailSummaryEnum.Summery };
-            //    (e.NewObject as DB.JournalType).PropertyChanged += JournalTypeSetupFrm_PropertyChanged;
-                
-            //};
-            //jourTypeGV.InitNewRow += (s, e) => {
-            //    var lt_Row = (DB.JournalType)(s as GridView).GetRow(e.RowHandle);
-            //    lt_Row.OnInitNewRow(new DBEvents.InitNewRowEventArgs());
-            //};
+
+            GridManager.SetupEditForm(jourTypeGV, new List<string>() {
+                JournalType.JournalTypeFields.JourName,
+                JournalType.JournalTypeFields.JourType,
+                JournalType.JournalTypeFields.PostingLayer,
+                JournalType.JournalTypeFields.SequId,
+                JournalType.JournalTypeFields.SequGenerateAtPosting,
+                JournalType.JournalTypeFields.DetailSummary,
+                JournalType.JournalTypeFields.AmountsInclueTax
+
+            });
+
             RefreshData();
 
         }

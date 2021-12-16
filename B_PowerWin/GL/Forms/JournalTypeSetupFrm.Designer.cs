@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.jourTypeGC = new B_PowerWin.GUI.Grid.GridCtrlBase();
-            this.jourTypeGV = new B_PowerWin.GUI.Grid.GridViewBase();
             this.jourTypeBS = new System.Windows.Forms.BindingSource(this.components);
+            this.jourTypeGV = new B_PowerWin.GUI.Grid.GridViewBase();
             this.colLedgerJournals = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDocuments = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompanyId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -52,8 +52,8 @@
             this.colBaseType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWFStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.jourTypeGC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jourTypeGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jourTypeBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jourTypeGV)).BeginInit();
             this.SuspendLayout();
             // 
             // jourTypeGC
@@ -65,10 +65,14 @@
             this.jourTypeGC.MainView = this.jourTypeGV;
             this.jourTypeGC.MenuManager = this.barManager1;
             this.jourTypeGC.Name = "jourTypeGC";
-            this.jourTypeGC.Size = new System.Drawing.Size(766, 531);
+            this.jourTypeGC.Size = new System.Drawing.Size(854, 531);
             this.jourTypeGC.TabIndex = 4;
             this.jourTypeGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.jourTypeGV});
+            // 
+            // jourTypeBS
+            // 
+            this.jourTypeBS.DataSource = typeof(B_PowerWin.DB.JournalType);
             // 
             // jourTypeGV
             // 
@@ -102,10 +106,6 @@
             this.jourTypeGV.OptionsView.ShowAutoFilterRow = true;
             this.jourTypeGV.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colId, DevExpress.Data.ColumnSortOrder.Ascending)});
-            // 
-            // jourTypeBS
-            // 
-            this.jourTypeBS.DataSource = typeof(B_PowerWin.DB.JournalType);
             // 
             // colLedgerJournals
             // 
@@ -229,13 +229,13 @@
             // JournalTypeSetupFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(766, 585);
+            this.ClientSize = new System.Drawing.Size(854, 585);
             this.Controls.Add(this.jourTypeGC);
             this.Name = "JournalTypeSetupFrm";
             this.Controls.SetChildIndex(this.jourTypeGC, 0);
             ((System.ComponentModel.ISupportInitialize)(this.jourTypeGC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jourTypeGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.jourTypeBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jourTypeGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -37,6 +37,20 @@ namespace B_PowerWin.DB
         {
             return BaseTypeEnum.DocumentGL;
         }
+        public override bool ValidateLine(AppDbContext _db, LineBaseCRUDEnum _CRUDType)
+        {
+            bool lb_Return = base.ValidateLine(_db, _CRUDType);
+
+            lb_Return = lb_Return && this.TransDate.HasValue;
+
+            this.TransDayId = this.TransDate.Value.DayID();
+            lb_Return = lb_Return && this.TransDayId > 0;
+
+            lb_Return = lb_Return && this.WFStatus == WorkflowStatusEnum.Draft;
+            lb_Return = lb_Return && this.JournalTypeId != null;
+
+            return lb_Return;
+        }
         public override void OnCreate(AppDbContext _db)
         {
             long? li_DisplayNumSequVersion = null;
@@ -68,6 +82,7 @@ namespace B_PowerWin.DB
         [Required]
         public decimal? CurrencyExch { get; set; }
         public decimal? DocTotalFC { get; set; }
+
 
 
 

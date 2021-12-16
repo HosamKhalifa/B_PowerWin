@@ -14,7 +14,24 @@ namespace B_PowerWin.DB
     [Table("journal_type")]
     public class JournalType:LineBase,INotifyPropertyChanged
     {
-        private JournalTypeEnum fJourType;
+        #region ClassFieldNames
+        [NotMapped]
+        public static class JournalTypeFields
+        {
+            public static string CompanyId { get { return "CompanyId"; } }
+            public static string JourType { get { return "JourType"; } }
+            public static string JourName { get { return "JourName"; } }
+            public static string PostingLayer { get { return "PostingLayer"; } }
+            public static string SequId { get { return "SequId"; } }
+            public static string SysSequence { get { return "SysSequence"; } }
+            public static string SequGenerateAtPosting { get { return "SequGenerateAtPosting"; } }
+            public static string DetailSummary { get { return "DetailSummary"; } }
+            public static string AmountsInclueTax { get { return "AmountsInclueTax"; } }
+           
+
+        }
+        #endregion
+private JournalTypeEnum fJourType;
         private string fJourName;
         private PostingLayerEnum fPostingLayer;
         private long? fSequId;

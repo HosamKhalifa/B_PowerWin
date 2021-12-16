@@ -51,6 +51,10 @@ namespace B_PowerWin.DB
 
         #endregion
 
+        public decimal? DebitFC { get; set; }
+        public decimal? CreditFC { get; set; }
+        public decimal? DebitCC { get; set; }
+        public decimal? CreditCC { get; set; }
         [StringLength(200)]
         public string LineTxt { get; set; }
         public decimal? Qty { get; set; }
@@ -69,8 +73,9 @@ namespace B_PowerWin.DB
         public long? TaxCodeId { get; set; }
 
         public decimal? TaxAmount { get; set; }
-        public decimal? LineValue { get; set; }
-        
+        public decimal? LineValueFC { get; set; }
+        public decimal? LineValueCC { get; set; }
+
         public LineTotalEffectEnum LineTotalEffect { get; set; }
         public decimal? CostPrice { get; set; }
 

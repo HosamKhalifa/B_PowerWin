@@ -123,6 +123,7 @@
     <Compile Include="DB\EnumTable.cs" />
     <Compile Include="DB\Equipment.cs" />
     <Compile Include="DB\FormEntityEnum.cs" />
+    <Compile Include="DB\GUI\UserParameter.cs" />
     <Compile Include="DB\ILineBase.cs" />
     <Compile Include="DB\InventDimDefault.cs" />
     <Compile Include="DB\InventStore.cs" />
@@ -245,6 +246,12 @@
     <Compile Include="GL\Forms\GLDimensionSetup.Designer.cs">
       <DependentUpon>GLDimensionSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="GL\Forms\GLJournal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\Forms\GLJournal.Designer.cs">
+      <DependentUpon>GLJournal.cs</DependentUpon>
+    </Compile>
     <Compile Include="GL\Forms\JournalTypeSetupFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,6 +299,25 @@
     </Compile>
     <Compile Include="GL\Forms\TaxSetupFrm.Designer.cs">
       <DependentUpon>TaxSetupFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GL\UXC\GLDimLists.cs" />
+    <Compile Include="GL\UXC\GLDimSelectXUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GL\UXC\GLDimSelectXUC.Designer.cs">
+      <DependentUpon>GLDimSelectXUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GL\UXC\GLLineEditorXUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GL\UXC\GLLineEditorXUC.Designer.cs">
+      <DependentUpon>GLLineEditorXUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GL\UXC\UserParamSelectXUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GL\UXC\UserParamSelectXUC.Designer.cs">
+      <DependentUpon>UserParamSelectXUC.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CustomLookup\LookupSuspendedWhereEnum.cs" />
     <Compile Include="GUI\ListPageFormBase.cs">
@@ -421,17 +447,9 @@
     <Compile Include="MainFrm.Designer.cs">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202111191808043_init_0039.cs" />
-    <Compile Include="Migrations\202111191808043_init_0039.designer.cs">
-      <DependentUpon>202111191808043_init_0039.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111201610424_init_0040.cs" />
-    <Compile Include="Migrations\202111201610424_init_0040.designer.cs">
-      <DependentUpon>202111201610424_init_0040.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111202029029_init_0041.cs" />
-    <Compile Include="Migrations\202111202029029_init_0041.designer.cs">
-      <DependentUpon>202111202029029_init_0041.cs</DependentUpon>
+    <Compile Include="Migrations\202112081339379_init_0042.cs" />
+    <Compile Include="Migrations\202112081339379_init_0042.designer.cs">
+      <DependentUpon>202112081339379_init_0042.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySession.cs" />
@@ -496,6 +514,9 @@
     <EmbeddedResource Include="GL\Forms\GLDimensionSetup.resx">
       <DependentUpon>GLDimensionSetup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GL\Forms\GLJournal.resx">
+      <DependentUpon>GLJournal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GL\Forms\JournalTypeSetupFrm.resx">
       <DependentUpon>JournalTypeSetupFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -519,6 +540,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GL\Forms\TaxSetupFrm.resx">
       <DependentUpon>TaxSetupFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GL\UXC\GLDimSelectXUC.resx">
+      <DependentUpon>GLDimSelectXUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GL\UXC\GLLineEditorXUC.resx">
+      <DependentUpon>GLLineEditorXUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GL\UXC\UserParamSelectXUC.resx">
+      <DependentUpon>UserParamSelectXUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ListPageFormBase.resx">
       <DependentUpon>ListPageFormBase.cs</DependentUpon>
@@ -568,14 +598,8 @@
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111191808043_init_0039.resx">
-      <DependentUpon>202111191808043_init_0039.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111201610424_init_0040.resx">
-      <DependentUpon>202111201610424_init_0040.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111202029029_init_0041.resx">
-      <DependentUpon>202111202029029_init_0041.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202112081339379_init_0042.resx">
+      <DependentUpon>202112081339379_init_0042.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -641,7 +665,13 @@
     <None Include="Properties\DataSources\B_PowerWin.DB.Country.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.Currency.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.Customer.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Department.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.DimDefault.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.DocumentGL.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.DocumentLine.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.Employee.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Equipment.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.GUI.UserParameter.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.InventStore.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.Item.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.ItemColor.datasource" />
@@ -657,6 +687,9 @@
     <None Include="Properties\DataSources\B_PowerWin.DB.LedgerPostingProfileSetup.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.MainAccount.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.MainAccountGroup.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Pos.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Project.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Purpose.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.Query.CustomerListPageQuery.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.SecAccessType.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipal.datasource" />
@@ -669,12 +702,14 @@
     <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalRoleReport.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalRoleResponsibility.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.SecPrincipalUser.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Site.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.SysSequence.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.TaxCode.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.TaxCodeValueSetup.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.TaxGroup.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.TaxGroupMemberSetup.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.DB.UILabel.datasource" />
+    <None Include="Properties\DataSources\B_PowerWin.DB.Vendor.datasource" />
     <None Include="Properties\DataSources\B_PowerWin.GUI.CustomLookup.GL_Lookups.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

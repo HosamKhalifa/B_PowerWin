@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-
+using B_PowerWin.SharedExt;
 namespace B_PowerWin.DB
 {
     [Table("doc_base")]
@@ -34,10 +34,11 @@ namespace B_PowerWin.DB
             public static string ParnetId { get { return "ParnetId"; } }
             public static string PostingPeriod { get { return "PostingPeriod"; } }
             public static string ReferenceNum { get { return "ReferenceNum"; } }
+            public static string DocDescription { get { return "DocDescription"; } }
             public static string TaxCardNum { get { return "TaxCardNum"; } }
             public static string TaxCommRegisterNum { get { return "TaxCommRegisterNum"; } }
             public static string TaxFileNum { get { return "TaxFileNum"; } }
-            public static string TaxGroup { get { return "TaxGroup"; } }
+            public static string TaxGroupId { get { return "TaxGroupId"; } }
             public static string TransDate { get { return "TransDate"; } }
             public static string TransDayId { get { return "TransDayId"; } }
         }
@@ -47,6 +48,23 @@ namespace B_PowerWin.DB
         public DocumentBase():base()
         {
             CompanyId = MySession.Session.Company.Id;
+        }
+        public override bool ValidateLine(AppDbContext _db, LineBaseCRUDEnum _CRUDType)
+        {
+           var ret = base.ValidateLine(_db, _CRUDType);
+            switch (_CRUDType)
+            {
+                case LineBaseCRUDEnum.Create:
+                case LineBaseCRUDEnum.Update:
+                case LineBaseCRUDEnum.Delete:
+                    ret = ret && _db.Documents.Find(Id).WFStatus == WorkflowStatusEnum.Draft;
+                    break;
+                default:
+                    break;
+            }
+            ret = ret && TransDate.HasValue && JournalTypeId.HasValue && CompanyId.HasValue;
+
+           return ret;
         }
         [Required]
         public int? CompanyId { get; set; }
@@ -58,10 +76,18 @@ namespace B_PowerWin.DB
         public long? DisplayNumSequVersion { get; set; }
         [StringLength(50)]
         public string ReferenceNum { get; set; }
+        [StringLength(250)]
+        public string DocDescription { get; set; }
         [Required]
         public DateTime? TransDate { get; set; }
-        
-        public int? TransDayId { get; set; }
+        int? _TransDayId;
+        [Required]
+        public int? TransDayId { get { return _TransDayId; }
+            set {
+                int dayId = TransDate.HasValue ? TransDate.Value.DayID() : 0;
+                _TransDayId = dayId;
+            }
+        }
         public int HeadAccountBaseTypeId { get; set; }/*Ledger,Customer,Vendor,Bank,Cash*/
         public long? HeadAccountId { get; set; }
         [StringLength(250)]
@@ -79,7 +105,9 @@ namespace B_PowerWin.DB
         [ForeignKey("City")]
         public long? CityId { get; set; }
         public virtual City City { get; set; }
-        public long? TaxGroup { get; set; }
+        [ForeignKey("TaxGroup")]
+        public long? TaxGroupId { get; set; }
+        public virtual TaxGroup TaxGroup { get; set; }
         public string TaxFileNum { get; set; }
         public string TaxCardNum { get; set; }
         public string TaxCommRegisterNum { get; set; }

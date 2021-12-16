@@ -8,6 +8,7 @@ namespace B_PowerWin.DB
 {
     public enum LedgerLineTypeEnum
     {
+        None=0,
         Ledger=10,
         Cust=20,
         Vend=30,
