@@ -313,6 +313,7 @@
     <Compile Include="GL\UXC\GLLineEditorXUC.Designer.cs">
       <DependentUpon>GLLineEditorXUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="GL\UXC\PopupLookup.cs" />
     <Compile Include="GL\UXC\UserParamSelectXUC.cs">
       <SubType>UserControl</SubType>
     </Compile>

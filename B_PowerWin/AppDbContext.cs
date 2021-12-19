@@ -141,7 +141,7 @@ namespace B_PowerWin
         public DbSet<SysSequenceValue> SysSequenceValues { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
-
+        public DbSet<DB.GUI.UserParameter> UserParameters { get; set; }
         public DbSet<DimDefault> DimDefaults { get; set; }
         public DbSet<InventDimDefault> InventDimDefaults { get; set; }
         public DbSet<UILabel> UILabels { get; set; }

@@ -22,6 +22,11 @@ namespace B_PowerWin.GL.UXC
         private static IEnumerable<Vendor> vendList;
         private static IEnumerable<Employee> empList;
         private static IEnumerable<Pos> pOSList;
+        private static IEnumerable<JournalType> journalTypeList;
+        private static IEnumerable<InventStore> inventoryStoreList;
+        private static IEnumerable<ItemInventory> itemInventoryList;
+        private static IEnumerable<ItemService> itemServiceList;
+
 
         public static void PopulateListFromDB(DB.BaseTypeEnum _tableName)
         {
@@ -69,6 +74,19 @@ namespace B_PowerWin.GL.UXC
                     case BaseTypeEnum.BusinessUnit:
                         GLDimLists.businessUnitList = db.BusinessUnits.AsEnumerable();
                         break;
+                    case BaseTypeEnum.JournalType:
+                        GLDimLists.journalTypeList = db.JournalTypes.AsEnumerable();
+                        break;
+                    case BaseTypeEnum.InventStore:
+                        GLDimLists.inventoryStoreList = db.InventStores.AsEnumerable();
+                        break;
+                    case BaseTypeEnum.ItemInventory:
+                        GLDimLists.itemInventoryList = db.ItemInventorys.AsEnumerable();
+                        break;
+                    case BaseTypeEnum.ItemService:
+                        GLDimLists.itemServiceList = db.ItemServices.AsEnumerable();
+                        break;
+
                     default:
                         break;
                 }
@@ -240,6 +258,58 @@ namespace B_PowerWin.GL.UXC
             {
                 GLDimLists.PopulateListFromDB(BaseTypeEnum.Pos);
                 return GLDimLists.pOSList;
+            }
+
+        }
+        public static IEnumerable<JournalType> GetJournalTypeList(bool _refreshFromDB = false)
+        {
+            if (GLDimLists.journalTypeList != null && !_refreshFromDB)
+            {
+                return GLDimLists.journalTypeList;
+            }
+            else
+            {
+                GLDimLists.PopulateListFromDB(BaseTypeEnum.JournalType);
+                return GLDimLists.journalTypeList;
+            }
+
+        }
+        public static IEnumerable<InventStore> GetInventStoreList(bool _refreshFromDB = false)
+        {
+            if (GLDimLists.inventoryStoreList != null && !_refreshFromDB)
+            {
+                return GLDimLists.inventoryStoreList;
+            }
+            else
+            {
+                GLDimLists.PopulateListFromDB(BaseTypeEnum.InventStore);
+                return GLDimLists.inventoryStoreList;
+            }
+
+        }
+        public static IEnumerable<ItemInventory> GetItemInventoryList(bool _refreshFromDB = false)
+        {
+            if (GLDimLists.itemInventoryList != null && !_refreshFromDB)
+            {
+                return GLDimLists.itemInventoryList;
+            }
+            else
+            {
+                GLDimLists.PopulateListFromDB(BaseTypeEnum.ItemInventory);
+                return GLDimLists.itemInventoryList;
+            }
+
+        }
+        public static IEnumerable<ItemService> GetItemServiceList(bool _refreshFromDB = false)
+        {
+            if (GLDimLists.itemServiceList != null && !_refreshFromDB)
+            {
+                return GLDimLists.itemServiceList;
+            }
+            else
+            {
+                GLDimLists.PopulateListFromDB(BaseTypeEnum.ItemService);
+                return GLDimLists.itemServiceList;
             }
 
         }

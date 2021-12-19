@@ -12,6 +12,14 @@ namespace B_PowerWin.DB
     [Table("business_unit")]
     public class BusinessUnit:LineBase
     {
+        #region ClassFieldNames
+        [NotMapped]
+        public static class BusinessUnitFields
+        {
+            public static string BusinessUnitCode { get { return "BusinessUnitCode"; } }
+            public static string BusinessUnitName { get { return "BusinessUnitName"; } }
+        }
+        #endregion
         public BusinessUnit():base()
         {
                 
