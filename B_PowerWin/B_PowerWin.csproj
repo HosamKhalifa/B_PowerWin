@@ -452,6 +452,10 @@
     <Compile Include="Migrations\202112081339379_init_0042.designer.cs">
       <DependentUpon>202112081339379_init_0042.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112251343280_init_0043.cs" />
+    <Compile Include="Migrations\202112251343280_init_0043.designer.cs">
+      <DependentUpon>202112251343280_init_0043.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySession.cs" />
     <Compile Include="Program.cs" />
@@ -601,6 +605,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112081339379_init_0042.resx">
       <DependentUpon>202112081339379_init_0042.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112251343280_init_0043.resx">
+      <DependentUpon>202112251343280_init_0043.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

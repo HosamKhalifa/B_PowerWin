@@ -14,13 +14,20 @@ namespace B_PowerWin.GL.UXC
 {
     public partial class GLLineEditorXUC : XtraUserControl
     {
+        public LedgerLineTypeEnum LedgerLineType { get; set; }
         public DocumentLine LineBase { get; set; }
         public DimDefault DefaultDimension { get; set; }
 
         public GLLineEditorXUC()
         {
             InitializeComponent();
+           
 
+        }
+
+        public void InitObject(LedgerLineTypeEnum _type)
+        {
+            this.LedgerLineType = _type;
         }
 
         private void creditFCLbl_Click(object sender, EventArgs e)
